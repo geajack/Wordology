@@ -1,0 +1,158 @@
+/***************************************************************
+ * 
+ *     GENERAL
+ * 
+ * *************************************************************/
+
+body
+{
+	font-size: 12pt;
+	font-family: sans-serif;
+	background: #F5F5F5;
+	padding: 25px;
+	margin: 0px;
+}
+
+#navBar
+{
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	height: 40px;
+	box-sizing: border-box;
+	position: relative;
+	top: 1px;
+}
+#navBar li
+{
+	display: inline-block;
+	background-color: white;
+	border: 1px solid black;
+	padding: 10px;
+	height: 40px;
+	box-sizing: border-box;
+	border-bottom: 1px solid black;
+	cursor: pointer;
+}
+#navBar li:hover
+{
+	text-decoration: underline;
+}
+#navBar li.activeTab
+{
+	border-bottom: none;
+	font-weight: bold;
+}
+#navBar li.activeTab:hover
+{
+	text-decoration: none;
+}
+
+.page
+{
+	background: white;
+	border: 1px solid black;
+	padding: 25px;
+	display: none;
+}
+.activePage
+{
+	display: block;
+}
+
+/***************************************************************
+ * 
+ *     OPTIONS TAB
+ * 
+ * *************************************************************/
+
+.optionsBlock
+{
+	margin-bottom: 10px;
+	padding: 0px;
+}
+
+#blacklistedPrefixes
+{
+	margin-top: 10px;
+}
+
+input[type="number"]
+{
+	width: 40px;
+}
+
+#addPrefixInput
+{
+	width: 100px;
+}
+
+#urlInput
+{
+	width: 400px;
+}
+
+#pageOptions > *:first-child
+{
+	margin-top: 0px;
+}
+
+input[type="range"]
+{
+	vertical-align: middle;
+}
+
+/***************************************************************
+ * 
+ *     DICTIONARY TAB
+ * 
+ * *************************************************************/
+
+#pageDictionary > div
+{
+	display: flex;
+}
+#wordTable
+{
+	flex-grow: 1;
+}
+
+#controls
+{
+	width: 300px;
+	margin-left: 20px;
+}
+#controls > *
+{
+	display: block;
+	width: 100%;
+	
+	height: 80px;
+	border-width: 3px;
+	border-style: outset;
+	border-color: silver;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	text-align: center;
+	line-height: 80px;
+	color: black;
+	text-decoration: none;
+	font-size: 12pt;
+	cursor: pointer;
+	background: silver;
+}
+#controls > *:active
+{
+	padding: 0px;
+	border-style: inset;
+}
+#downloadLink, #importButton
+{
+	background-color: #77AAEE;
+	border-color: #77AAEE;
+}
+#clearButton
+{
+	background-color: #FF6666;
+	border-color: #FF6666;
+}

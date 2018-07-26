@@ -1,0 +1,42 @@
+.vex
+{
+	font-size: 12pt;
+}
+.vex .word
+{
+	display: block;
+	text-align: center;
+	font-weight: bold;
+}
+
+.vex .suggestionNote
+{
+	font-size: 0.75em;
+	color: #777;
+}
+
+.vex a
+{
+	color: #3288e6;
+	text-decoration: underline;
+}
+
+.vex-overlay-reset
+{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	border-radius: 0px;
+	background-color: none;
+}
+
+.vex-content-reset
+{
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	border-radius: 0px;
+	background-color: none;
+}
