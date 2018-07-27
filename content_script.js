@@ -1,6 +1,6 @@
 (function ContentScript()
 {
-	var ALPHABET = "A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u00FF\\u0100-\\u017F\\u0180-\\u024F\\u0400-\\u04FF";
+	var ALPHABET = "A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u00FF\\u0100-\\u017F\\u0180-\\u024F\\u0400-\\u04FF\\u0370-\\u03FF";
 	var DF = new DictionaryFetcherPage("DictionaryFetcher");
 	var WM = new WordManager();
 	var TM = new ToggleManagerPage("ToggleManager",

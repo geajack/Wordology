@@ -12,7 +12,7 @@ function initDictionaryTab()
 					var json = e.target.result;
 					D.setData(JSON.parse(json)).then(
 						function()
-						{	console.log("Done putting data");
+						{
 							$("#wordTable").jsGrid("loadData");
 						}
 					);
@@ -24,7 +24,6 @@ function initDictionaryTab()
 		function(e)
 		{
 			var response = window.prompt("To delete all words, type \"yes\".");
-			console.log(response);
 			if (response == "yes")
 			{
 				D.clear().then(
@@ -45,18 +44,14 @@ function initDictionaryTab()
 	var controller = 	
 	{
 		loadData: async function(filter)
-		{			
-			console.log("Load data called");
+		{
 			var dictOfEntries = await D.getEverything();
 			var listOfEntries = Object.values(dictOfEntries);
-			console.log("Loaded:");
-			console.log(listOfEntries);
 			return listOfEntries;
 		},
 		
 		insertItem: function(item)
 		{
-			console.log(item);
 		},
 		
 		updateItem: function(item)
@@ -81,14 +76,17 @@ function initDictionaryTab()
 			controller: controller,
 			rowClick: function(args)
 			{
+				let entry = args.item;
+				let match = { entry: entry, exact: true };
 				WordEditDialog.open(
 					{
-						entry: args.item
+						word: entry.word,
+						match: match
 					}
 				).then(
-					function(entries)
+					function(responseEntry)
 					{
-						$("#wordTable").jsGrid("updateItem", entries.oldEntry, entries.newEntry);
+						$("#wordTable").jsGrid("updateItem", entry, responseEntry);
 					}
 				);
 			},
@@ -122,7 +120,8 @@ function initDictionaryTab()
 			function(data)
 			{
 				var json = JSON.stringify(Object.values(data));
-				document.getElementById("downloadLink").setAttribute("href", "data:application/json," + json);			
+				var escapedJson = json.replace(/ /g, "%20");
+				document.getElementById("downloadLink").setAttribute("href", "data:application/json," + escapedJson);			
 			}
 		);
 	}
