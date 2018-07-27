@@ -10,7 +10,7 @@ you learn a language *by* using it.
 part of your routine. Inspired by [Lingq]() and [FLTR](), Wordology allows you to add translations for individual words and display them with
 a simple mouse-over.
 
-![]()
+![](https://i.imgur.com/eJcm9rE.png)
 
 Wordology takes the point of view that language learning is largely a *quest for words* (a phrase coined by Lingq's Steve Kaufmann).
 Although learning grammar and idioms is daunting as well, it's my experience that by far the biggest hurdle in learning a language are
