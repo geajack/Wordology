@@ -14,7 +14,7 @@ a simple mouse-over.
 
 Wordology takes the point of view that language learning is largely a *quest for words* (a phrase coined by Lingq's Steve Kaufmann).
 Although learning grammar and idioms is daunting as well, it's my experience that by far the biggest hurdle in learning a language are
-the thousands of words that have to be learned before you can understand the language with any degree of fluency. Wordology is not a translationa
+the thousands of words that have to be learned before you can understand the language with any degree of fluency. Wordology is not a translation
 app: it's a progress tracker for your quest for words.
 
 **Features**
