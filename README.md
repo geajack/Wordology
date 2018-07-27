@@ -7,7 +7,7 @@ movies with subtitles, playing video games online, or living in an English-speak
 you learn a language *by* using it.
 
 **Wordology** is a browser add-on for Chrome and Firefox intended to help turn your foreign-language reading from homework into a natural
-part of your routine. Inspired by [Lingq]() and [FLTR](), Wordology allows you to add translations for individual words and display them with
+part of your routine. Inspired by [Lingq](https://www.lingq.com/) and [FLTR](https://sourceforge.net/projects/fltr/), Wordology allows you to add translations for individual words and display them with
 a simple mouse-over.
 
 ![](https://i.imgur.com/eJcm9rE.png)
