@@ -159,8 +159,6 @@ function initBlacklistedPrefixesInputs(storedList)
 				storedList = [];
 			}
 			blacklistedPrefixList = storedList;
-			console.log("Loading");
-			console.log(blacklistedPrefixList);
 			return storedList.map(x => ({prefix:x}));
 		},
 		
@@ -168,8 +166,6 @@ function initBlacklistedPrefixesInputs(storedList)
 		{
 			blacklistedPrefixList.push(item.prefix);
 			optionsManager.setOption("blacklistedPrefixes", blacklistedPrefixList);
-			console.log("Inserting");
-			console.log(blacklistedPrefixList);
 		},
 		
 		updateItem: function(item)
@@ -180,8 +176,6 @@ function initBlacklistedPrefixesInputs(storedList)
 		{
 			blacklistedPrefixList = blacklistedPrefixList.filter(x => x != item.prefix);
 			optionsManager.setOption("blacklistedPrefixes", blacklistedPrefixList);
-			console.log("Deleting");
-			console.log(blacklistedPrefixList);
 		}
 	};
 	

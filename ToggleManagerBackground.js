@@ -25,7 +25,7 @@ class ToggleManagerBackground
 		);
 		
 		new MessageSlot(name + "DoneRunning",
-			(message, sender) => {console.log("done running"); this.onDoneRunningMessage(sender.tab.id); }
+			(message, sender) => this.onDoneRunningMessage(sender.tab.id)
 		);
 		
 		browser.browserAction.onClicked.addListener(
