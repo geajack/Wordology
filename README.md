@@ -1,4 +1,4 @@
-![]()
+![](https://raw.githubusercontent.com/geajack/Wordology/master/icon96.png)
 
 # Wordology
 
