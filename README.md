@@ -24,7 +24,7 @@ app: it's a progress tracker for your quest for words.
 
 # How to use
 
-Once the add-on is installed, load any web page in your target language and click the Wordology button in the top-right corner of your browser. All words on the page will be highlighted in red. Click on any word to add a translation for it. From now on, on any web page, that word will be displayed in green, and you can view your translation just by hovering the mouse over it. **Note: Wordology currently only supports the Latin, Greek, and Cyrillic alphabets.** Please post on the issue tracker here or send an e-mail to wordologaddon@gmail.com if you would like support for other writing systems.
+Once the add-on is installed, load any web page in your target language and click the Wordology button in the top-right corner of your browser. All words on the page will be highlighted in red. Click on any word to add a translation for it. From now on, on any web page, that word will be displayed in green, and you can view your translation just by hovering the mouse over it. **Note: Wordology currently only supports the Latin, Greek, and Cyrillic alphabets.** Please post on the issue tracker here or send an e-mail to wordologyaddon@gmail.com if you would like support for other writing systems.
 
 ## Changing Wordology settings, viewing wordlist
 
