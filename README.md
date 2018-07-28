@@ -35,3 +35,7 @@ Wordology's behavior can be fine tuned from the settings page. How to access the
 **Chrome:** Right click the Wordology button and click "Options" in the drop-down menu.
 
 From this page you can also view and edit your saved words. More help on these features is available in the options page.
+
+# Download
+
+Wordology is available on the [Chrome](https://chrome.google.com/webstore/detail/wordology/ganonoebdpdnhcbolgkelccfaffgmlpd) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/wordology/) addon stores.
