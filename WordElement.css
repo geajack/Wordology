@@ -1,9 +1,10 @@
 span[wordology_word]
 {
 	display: inline-block;
+	position: relative;
 	padding: 0px;
 	border-radius: 0px;
-	position: relative;
+	text-indent: initial;	
 }
 span[wordology_word="hidden"]
 {
