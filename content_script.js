@@ -1,8 +1,13 @@
 (function ContentScript()
 {
-	var ALPHABET = "A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u00FF\\u0100-\\u017F\\u0180-\\u024F\\u0400-\\u04FF\\u0370-\\u03FF";
+	const LATIN_EXTENDED = "A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u00FF\\u0100-\\u017F\\u0180-\\u024F";
+	const CYRILLIC = "\\u0400-\\u04FF";
+	const GREEK = "\\u0370-\\u03FF";
+	const KOREAN = "\\u3131-\\uD79D";
+	const ALPHABET = LATIN_EXTENDED + CYRILLIC + GREEK + KOREAN;
+	
 	var DF = new DictionaryFetcherPage("DictionaryFetcher");
-	var WM = new WordManager();
+	var WM = null;
 	var TM = new ToggleManagerPage("ToggleManager",
 		{
 			onFirstOn   : init,
@@ -15,6 +20,8 @@
 	async function init()
 	{
 		options = await (new OptionsManager()).getOptions();
+
+		WM = new WordManager(ALPHABET);
 		
 		document.querySelector(":root").style.setProperty(
 			"--wordology-not-defined-color",

@@ -1,12 +1,12 @@
 class WordManager {
 
-	constructor() {
+	constructor(alphabet) {
 		this.wordElements = [];
+		this.regexp = new RegExp("([^" + alphabet + "]+)");
 	}
 	
-	processNode(dom, alphabet)
-	{
-		this.regexp = new RegExp("([^" + alphabet + "]+)");
+	processNode(dom)
+	{		
 		var textNodes = [];
 		var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ALL,
 			{

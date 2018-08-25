@@ -5,10 +5,10 @@
 
 	var TM = new ToggleManagerBackground("ToggleManager",
 		{
-			notReadyIcon : "./icon_inactive_32.png",
-			offIcon      : "./icon_off_32.png",
-			runningIcon  : "./icon_inactive_32.png",
-			onIcon       : "./icon_on_32.png"
+			notReadyIcon : "./icons/icon_inactive_32.png",
+			offIcon      : "./icons/icon_off_32.png",
+			runningIcon  : "./icons/icon_inactive_32.png",
+			onIcon       : "./icons/icon_on_32.png"
 		}
 	);
 
