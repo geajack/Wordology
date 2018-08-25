@@ -4,6 +4,7 @@ span[wordology_word]
 	padding: 0px;
 	border-radius: 0px;
 	position: relative;
+	text-indent: initial;
 }
 span[wordology_word="hidden"]
 {
