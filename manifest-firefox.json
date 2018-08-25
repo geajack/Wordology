@@ -1,0 +1,73 @@
+{
+	"manifest_version": 2,
+
+	"name": "Wordology",
+	"description": "Adds a calque to foreign-language web-pages to aid language learning.",
+	"version": "1.1",
+
+	"icons":
+	{
+		"48": "./icons/icon48.png",
+		"96": "./icons/icon96.png"
+	},
+
+	"applications":
+	{
+		"gecko":
+		{
+			"id": "wordology@wordology.com",
+			"strict_min_version": "42.0"
+		}
+	},
+
+	"background": {
+		"scripts": [
+			"browser-polyfill.min.js",
+			"OptionsManager.js",
+			"messages.js",
+			"Dictionary.js",
+			"DictionaryFetcherBackground.js",
+			"TabState.js",
+			"ToggleManagerBackground.js",
+			"background.js"
+		]
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"css": ["vex/vex-theme-custom.css", "vex/vex_custom.css", "WordEditDialog.css", "WordElement.css"],
+			"js": [
+				"browser-polyfill.min.js",
+				"vex/vex.combined.min.js",
+				"OptionsManager.js",
+				"messages.js",
+				"wordmatching.js",
+				"WordEditDialog.js",
+				"DictionaryFetcherPage.js",
+				"WordElement.js",
+				"WordManager.js",
+				"ToggleManagerPage.js",
+				"content_script.js"
+			],
+			"run_at": "document_idle"
+		}
+	],
+
+	"browser_action": {
+		"browser_style": true,
+		"default_icon": "./icons/icon_inactive_32.png"
+	},
+	
+	"options_ui": {
+		"browser_style": false,
+		"open_in_tab": true,
+		"page": "./settings/settings.html"
+	},
+
+	"permissions": [
+		"*://*/*",
+		"webNavigation",
+		"storage"
+	]
+}
