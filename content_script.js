@@ -21,7 +21,7 @@
 	{
 		options = await (new OptionsManager()).getOptions();
 
-		WM = new WordManager(ALPHABET);
+		WM = new WordManager(ALPHABET + options.separatorCharacters);
 		
 		document.querySelector(":root").style.setProperty(
 			"--wordology-not-defined-color",
@@ -36,7 +36,7 @@
 			cssStringFromHex(options.similarColor, options.similarOpacity/100)
 		);
 		
-		WM.processNode(document, ALPHABET);
+		WM.processNode(document);
 		var listOfWordsOnPage = WM.getWords();
 		
 		var dictionaryFetcherRequest =

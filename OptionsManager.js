@@ -108,5 +108,6 @@ OptionsManager.DefaultOptions =
 	similarColor        : "#6496FF",
 	notDefinedOpacity   : 35,
 	definedOpacity      : 35,
-	similarOpacity      : 35
+	similarOpacity      : 35,
+	separatorCharacters : ""
 };

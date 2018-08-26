@@ -55,6 +55,11 @@ async function initOptionsTab()
 		optionName: "similarOpacity",
 		options: options
 	});
+	linkInputToOption({
+		inputId: "separatorsInput",
+		optionName: "separatorCharacters",
+		options: options
+	});
 	
 	initBlacklistedPrefixesInputs(options.blacklistedPrefixes);
 	initWhitelistedSuffixesInputs(options.whitelistedSuffixes);
