@@ -1,16 +1,60 @@
-var optionsManager = new OptionsManager();
+const optionsManager = new OptionsManager();
 
 async function initOptionsTab()
 {	
 	var options = await optionsManager.getOptions();
-	
-	document.getElementById("useInflection").checked = options.useInflection;
-	document.getElementById("rootLength").value = options.minPrefixLength;
-	document.getElementById("suffixLength").value = options.maxSuffixLength;
-	document.getElementById("urlInput").value = options.lookupURL;
-	document.getElementById("undefinedColorInput").value = options.notDefinedColor;
-	document.getElementById("definedColorInput").value = options.definedColor;
-	document.getElementById("similarColorInput").value = options.similarColor;
+
+	linkInputToOption({
+		inputId: "useInflection",
+		optionName: "useInflection",
+		options: options,
+		propertyName: "checked"
+	});
+	linkInputToOption({
+		inputId: "rootLength",
+		optionName: "minPrefixLength",
+		options: options
+	});
+	linkInputToOption({
+		inputId: "suffixLength",
+		optionName: "maxSuffixLength",
+		options: options
+	});
+	linkInputToOption({
+		inputId: "urlInput",
+		optionName: "lookupURL",
+		options: options
+	});
+	linkInputToOption({
+		inputId: "undefinedColorInput",
+		optionName: "notDefinedColor",
+		options: options
+	});
+	linkInputToOption({
+		inputId: "definedColorInput",
+		optionName: "definedColor",
+		options: options
+	});
+	linkInputToOption({
+		inputId: "similarColorInput",
+		optionName: "similarColor",
+		options: options
+	});
+	linkInputToOption({
+		inputId: "undefinedOpacityInput",
+		optionName: "notDefinedOpacity",
+		options: options
+	});
+	linkInputToOption({
+		inputId: "definedOpacityInput",
+		optionName: "definedOpacity",
+		options: options
+	});
+	linkInputToOption({
+		inputId: "similarOpacityInput",
+		optionName: "similarOpacity",
+		options: options
+	});
 	
 	initBlacklistedPrefixesInputs(options.blacklistedPrefixes);
 	initWhitelistedSuffixesInputs(options.whitelistedSuffixes);
@@ -26,60 +70,21 @@ async function initOptionsTab()
 			optionsManager.setOption("similarColor", "#6496FF");
 		}
 	);
+}
+
+function linkInputToOption(config)
+{
+	var { inputId, optionName, options, propertyName, readFilter, writeFilter } = config;
 	
-	document.getElementById("undefinedColorInput").addEventListener("change",
+	propertyName = propertyName || "value";
+
+	document.getElementById(inputId)[propertyName] = options[optionName];
+
+	document.getElementById(inputId).addEventListener("change",
 		function(e)
 		{
-			var value = document.getElementById("undefinedColorInput").value;
-			optionsManager.setOption("notDefinedColor", value);
-		}
-	);
-	
-	document.getElementById("definedColorInput").addEventListener("change",
-		function(e)
-		{
-			var value = document.getElementById("definedColorInput").value;
-			optionsManager.setOption("definedColor", value);
-		}
-	);
-	
-	document.getElementById("similarColorInput").addEventListener("change",
-		function(e)
-		{
-			var value = document.getElementById("similarColorInput").value;
-			optionsManager.setOption("similarColor", value);
-		}
-	);
-	
-	document.getElementById("useInflection").addEventListener("change",
-		function(e)
-		{
-			var value = document.getElementById("useInflection").checked;
-			optionsManager.setOption("useInflection", value);
-		}
-	);
-	
-	document.getElementById("rootLength").addEventListener("change",
-		function(e)
-		{
-			var value = parseInt(document.getElementById("rootLength").value);
-			optionsManager.setOption("minPrefixLength", value);
-		}
-	);
-	
-	document.getElementById("suffixLength").addEventListener("change",
-		function(e)
-		{
-			var value = parseInt(document.getElementById("suffixLength").value);
-			optionsManager.setOption("maxSuffixLength", value);
-		}
-	);
-	
-	document.getElementById("urlInput").addEventListener("change",
-		function(e)
-		{
-			var value = document.getElementById("urlInput").value;
-			optionsManager.setOption("lookupURL", value);
+			var value = document.getElementById(inputId).value;
+			optionsManager.setOption(optionName, value);
 		}
 	);
 }

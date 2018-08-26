@@ -25,15 +25,15 @@
 		
 		document.querySelector(":root").style.setProperty(
 			"--wordology-not-defined-color",
-			cssStringFromHex(options.notDefinedColor, 0.35)
+			cssStringFromHex(options.notDefinedColor, options.notDefinedOpacity/100)
 		);
 		document.querySelector(":root").style.setProperty(
 			"--wordology-defined-color",
-			cssStringFromHex(options.definedColor, 0.35)
+			cssStringFromHex(options.definedColor, options.definedOpacity/100)
 		);
 		document.querySelector(":root").style.setProperty(
 			"--wordology-similar-color",
-			cssStringFromHex(options.similarColor, 0.35)
+			cssStringFromHex(options.similarColor, options.similarOpacity/100)
 		);
 		
 		WM.processNode(document, ALPHABET);

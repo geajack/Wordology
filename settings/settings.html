@@ -83,22 +83,33 @@
 		
 		<h1>Colors</h1>
 		<div class="optionsBlock">
-			<label for="undefinedColorInput">Undefined words:</label>
-			<input id="undefinedColorInput" name="undefinedColorInput" type="color" />
-			<label for="definedColorInput">Defined words:</label>
-			<input id="definedColorInput" name="similarColorInput" type="color" />
-			<label for="similarColorInput">Smart matched words:</label>
-			<input id="similarColorInput" name="similarColorInput" type="color" />
+			<div class="optionsBlock">
+				<label for="undefinedColorInput">Undefined words:</label>
+				<input id="undefinedColorInput" name="undefinedColorInput" type="color" />
+				<br />
+				<label for="undefinedOpacityInput">Opacity:</label>
+				<input id="undefinedOpacityInput" name="undefinedOpacityInput" type="range" min="0" max="100" />
+			</div>
+
+			<div class="optionsBlock">
+				<label for="definedColorInput">Defined words:</label>
+				<input id="definedColorInput" name="definedColorInput" type="color" />
+				<br />
+				<label for="definedOpacityInput">Opacity:</label>
+				<input id="definedOpacityInput" name="definedOpacityInput" type="range" min="0" max="100" />
+			</div>
+			
+			<div class="optionsBlock">
+				<label for="similarColorInput">Smart matched words:</label>
+				<input id="similarColorInput" name="similarColorInput" type="color" />
+				<br />
+				<label for="similarOpacityInput">Opacity:</label>
+				<input id="similarOpacityInput" name="similarOpacityInput" type="range" min="0" max="100" />
+			</div>
 		</div>
 		<div class="optionsBlock">
 			<button id="resetColorButton">Reset to default colors</button>
 		</div>
-		<!--
-		<div class="optionsBlock">
-			<label for="wordOpacityInput">Highlighting opacity:</label>
-			<input id="wordOpacityInput" name="wordOpacityInput" type="range" min="0" max="100" />
-		</div>
-		-->
 	</div>
 	
 	<div id="pageDictionary" class="page">

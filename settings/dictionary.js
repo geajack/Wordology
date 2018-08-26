@@ -1,8 +1,27 @@
+class FileInputButton
+{
+	constructor(buttonElement)
+	{
+		this.onChooseFile = function(f) {};
+		
+		this.fileInput = document.createElement("input");
+		this.fileInput.setAttribute("type", "file");
+		this.fileInput.setAttribute("accept", ".json,application/json")
+		this.fileInput.addEventListener("change",
+			e => this.onChooseFile(e.target.files[0])
+		);
+		
+		buttonElement.addEventListener("click",
+			e => this.fileInput.click()
+		);
+	}
+}
+
 function initDictionaryTab()
 {
 	var D = new Dictionary();
 	
-	var sFI = new SuperFileInput(document.getElementById("importButton"));
+	var sFI = new FileInputButton(document.getElementById("importButton"));
 	sFI.onChooseFile =
 		function(file)
 		{	
@@ -122,29 +141,6 @@ function initDictionaryTab()
 				var json = JSON.stringify(Object.values(data));
 				var escapedJson = json.replace(/ /g, "%20");
 				document.getElementById("downloadLink").setAttribute("href", "data:application/json," + escapedJson);			
-			}
-		);
-	}
-
-	function SuperFileInput(domElement)
-	{
-		this.domElement = domElement;
-		this.onChooseFile = function(f) {};
-		var _this = this;
-		
-		this.fileInput = document.createElement("input");
-		this.fileInput.setAttribute("type", "file");
-		this.fileInput.addEventListener("change",
-			function(e)
-			{
-				_this.onChooseFile(e.target.files[0]);
-			}
-		);
-		
-		this.domElement.addEventListener("click",
-			function(e)
-			{
-				_this.fileInput.click();
 			}
 		);
 	}
