@@ -64,11 +64,11 @@ class OptionsManager
 		}
 
 		var localData = await browser.storage.local.get();
-		var id = "0";
-		var options = localData[id + "/options"]
+		var profileId = "0";
+		var options = localData[profileId + "/options"]
 		options[optionName] = value;
 		var dataToSet = {}
-		dataToSet[id + "/options"] = options;
+		dataToSet[profileId + "/options"] = options;
 		this.dataSetPending = true;
 		var setDataPromise = browser.storage.local.set(dataToSet).then(() => {this.dataSetPending = false});
 		return setDataPromise;
