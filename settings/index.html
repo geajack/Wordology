@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	
+	<!----------------------
+		Stylesheets
+	----------------------->
+	
+	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="../WordEditDialog.css"/>
+	<link rel="stylesheet" href="../vex/vex_custom.css"/>
+	<link rel="stylesheet" href="../vex/vex-theme-custom.css"/>     
+	
+	<!----------------------
+		Scripts
+	----------------------->
+
+	<script type="text/javascript" src="../browser-polyfill.min.js"></script>
+	<script type="text/javascript" src="../vex/vex.combined.min.js"></script>
+	<script src="../OptionsManager.js"></script>
+	<script src="../Dictionary.js"></script>
+	<script src="../WordEditDialog.js"></script>
+	<script src="angular.js"></script>
+	<script src="ng-table.min.js"></script>
+	<script src="app.js"></script>
+	<script src="options-tab/options-tab.component.js"></script>
+	<script src="dictionary-tab/dictionary-tab.component.js"></script>
+	<script src="help-tab/help-tab.component.js"></script>
+</head>
+
+<body ng-app="app" ng-init="tab='options'">
+	
+	<ul id="navBar">
+		<li ng-class="tab == 'options'? 'activeTab':''" ng-click="tab='options'">Options</li>
+		<li ng-class="tab == 'dictionary'? 'activeTab':''" ng-click="tab='dictionary'">Words</li>
+		<li ng-class="tab == 'help'? 'activeTab':''" ng-click="tab='help'">Help</li>
+	</ul>
+	
+	<options-tab id="pageOptions" class="page" ng-class="tab == 'options'? 'activePage':''"></options-tab>
+	
+	<dictionary-tab id="pageDictionary" class="page" ng-class="tab == 'dictionary'? 'activePage':''"></dictionary-tab>
+	
+	<help-tab id="pageHelp" class="page" ng-class="tab == 'help'? 'activePage':''"></help-tab>
+
+</body>
+
+</html>

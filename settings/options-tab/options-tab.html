@@ -1,0 +1,78 @@
+
+<h1>Smart Matching</h1>
+<div class="optionsBlock">
+    <label for="rootLength">Minimum length of a root: </label>
+    <input id="rootLength" name="rootLength" type="number" min="1" value="3" />
+</div>
+<div class="optionsBlock">
+    <label>Blacklisted prefixes:</label>
+    <div id="blacklistedPrefixes"></div>
+</div>
+<div class="optionsBlock">
+    <label for="addPrefixInput">Blacklist prefix:</label>
+    <input id="addPrefixInput" name="addPrefixInput" type="text" />
+    <button id="addPrefixButton">Add</button>
+</div>
+<div class="optionsBlock">
+    <label for="suffixLength">Maximum length of a suffix:</label>
+    <input id="suffixLength" name="suffixLength" type="number" min="1" value="7" />
+</div>
+<div class="optionsBlock">
+    <label>Whitelisted suffixes:</label>
+    <div id="whitelistedSuffixes"></div>
+</div>
+<div class="optionsBlock">
+    <label for="addSuffixInput">Whitelist suffix:</label>
+    <input id="addSuffixInput" name="addSuffixInput" type="text" />
+    <button id="addSuffixButton">Add</button>
+</div>
+<div class="optionsBlock">
+    <strong><label for="useInflection">Use Smart Matching</label></strong>
+    <input id="useInflection" name="useInflection" type="checkbox" />
+</div>
+
+<h1>Lookup</h1>
+<div class="optionsBlock">
+    <p>Enter the URL of your preferred online dictionary, typing a dollar sign ($) where the word should be, eg.: <em>http://en.wiktionary.org/wiki/$</em>.</p>
+    <label for="urlInput">Lookup URL:</label>
+    <input id="urlInput" name="urlInput" type="text" />
+</div>
+
+<h1>Colors</h1>
+<div class="optionsBlock">
+    <div class="optionsBlock">
+        <label for="undefinedColorInput">Undefined words:</label>
+        <input id="undefinedColorInput" name="undefinedColorInput" type="color" />
+        <br />
+        <label for="undefinedOpacityInput">Opacity:</label>
+        <input id="undefinedOpacityInput" name="undefinedOpacityInput" type="range" min="0" max="100" />
+    </div>
+
+    <div class="optionsBlock">
+        <label for="definedColorInput">Defined words:</label>
+        <input id="definedColorInput" name="definedColorInput" type="color" />
+        <br />
+        <label for="definedOpacityInput">Opacity:</label>
+        <input id="definedOpacityInput" name="definedOpacityInput" type="range" min="0" max="100" />
+    </div>
+    
+    <div class="optionsBlock">
+        <label for="similarColorInput">Smart matched words:</label>
+        <input id="similarColorInput" name="similarColorInput" type="color" />
+        <br />
+        <label for="similarOpacityInput">Opacity:</label>
+        <input id="similarOpacityInput" name="similarOpacityInput" type="range" min="0" max="100" />
+    </div>
+</div>
+<div class="optionsBlock">
+    <button id="resetColorButton">Reset to default colors</button>
+</div>
+
+<h1>Extended Alphabet</h1>
+<div class="optionsBlock">
+    <p>Add extra characters to the alphabet recognized by Wordology. For example, if you add the hyphen ("-"), then Wordology will consider "flower-pot"
+        as one word rather than "flower" and "pot". Just type all extra characters together, with no spaces, eg <em>'-</em> to add ' and -.
+    </p>
+    <label for="separatorsInput">Extended alphabet:</label>
+    <input type="text" id="separatorsInput" name="separatorsInput" />
+</div>

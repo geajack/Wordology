@@ -51,7 +51,7 @@
 	
 	"options_ui": {
 		"open_in_tab": true,
-		"page": "./settings/settings.html"
+		"page": "./settings/index.html"
 	},
 
 	"permissions": [
