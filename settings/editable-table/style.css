@@ -1,0 +1,133 @@
+.nopaging .ng-table-pager
+{
+    display: none !important;
+}
+
+.editableTable
+{
+    font-family: sans-serif;
+    width: 100%;
+}
+
+.editableTable table
+{
+    /* background-color: #f7f7f7; */
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.editableTable tbody tr
+{
+    cursor: pointer;
+}
+.editableTable tbody tr:nth-child(odd) td
+{
+    background-color: #f7f7f7;
+}
+.editableTable tbody tr:nth-child(even) td
+{
+    /* background-color: #ddd; */
+}
+.editableTable tbody tr:hover td
+{
+    background-color: #eef5ff;
+}
+
+.editableTable tbody tr:nth-child(odd) td:last-child
+{
+    background-color: white !important;
+    width: 25px;
+}
+
+.editableTable .input-filter
+{
+    width: 90%;   
+}
+
+.editableTable .ng-table-pager
+{
+    background-color: #f7f7f7;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.editableTable .ng-table-counts:before
+{
+    content: "Items per page:";
+    display: block;
+    font-size: 11px;
+    color: rgba(0,0,0,0.4);
+    margin-bottom: 5px;
+}
+.editableTable .ng-table-counts button
+{
+    padding: 8px;
+    width: 25px;
+    text-align: center;
+    margin-right: 10px;
+    background-color: white;
+}
+
+.editableTable .ng-table-pagination
+{
+    position: absolute;
+    right: 10px;
+    bottom: -5px;
+}
+.editableTable .ng-table-pagination li
+{
+    display: inline-block;
+    margin-left: 3px;
+}
+.editableTable .ng-table-pagination li.active
+{
+    font-weight: bold;
+}
+.editableTable .ng-table-pagination li.disabled
+{
+}
+.editableTable .ng-table-pagination a
+{
+    all: inherit;
+    cursor: pointer;
+
+}
+
+.editableTable button
+{
+    all: initial;
+    font-family: sans-serif;
+    cursor: pointer;
+    box-shadow: rgba(0,0,0,0.5) 1px 1px 2px;
+}
+.editableTable button:active
+{
+    box-shadow: none;
+    position: relative;
+    top: 1px;
+    left: 1px;
+}
+
+.editableTable .deleteButton
+{
+    padding: 2px;
+    border-radius: 3px;
+    background-color: #f66;
+    box-shadow: rgba(0,0,0,0.5) 1px 1px 2px;
+}
+.editableTable .deleteButton img
+{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.editableTable td:last-of-type
+{
+    padding-left: 20px;
+}

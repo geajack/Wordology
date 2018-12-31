@@ -1,0 +1,15 @@
+<div class="editableTable" ng-class="{nopaging: !controller.paging}">
+    <table ng-table-dynamic="controller.tableParams with controller.ngTableColumns" show-filter="true">
+        <tr ng-repeat="row in $data track by row[controller.primaryKey]" ng-click="controller.onClickRow(row)">
+            <td ng-repeat="column in $columns">
+                <span ng-if="column.dataType !== 'command'">
+                    {{row[column.field]}}
+                </span>
+                <button class="deleteButton" ng-if="column.dataType === 'command'"
+                    ng-click="controller.deleteRow(row); $event.stopPropagation();">
+                    <img src="editable-table/trash.svg" height="15" />
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
