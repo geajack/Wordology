@@ -76,6 +76,7 @@ body
 	padding: 25px;
 	width: 100%;
 	display: none;
+	box-sizing: border-box;
 }
 .activePage
 {
