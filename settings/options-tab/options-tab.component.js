@@ -13,6 +13,14 @@ class OptionsTabController
             this.optionsLoaded = true;
             this.$scope.$digest();
         });
+        this.blacklistedPrefixes = [
+            { prefix: "przy" },
+            { prefix: "prze" },
+            { prefix: "naj" }
+        ];
+        this.prefixColumns = [
+            { name: "prefix", label: "Prefix", searchable: false }
+        ];
     }
 
     resetColorsToDefault()

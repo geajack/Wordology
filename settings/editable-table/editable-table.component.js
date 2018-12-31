@@ -7,16 +7,22 @@ class EditableTableController
 
     async onClickRow(row)
     {
-        await this.clickRowCallback(row[this.primaryKey]);
+        if (this.clickRowCallback)
+        {
+            await this.clickRowCallback(row[this.primaryKey]);
+        }
         this.updateView();
     }
 
     deleteRow(row)
     {
-        if (confirm(`Do you really want to delete ${row[this.primaryKey]}?`))
+        if (confirm(`Delete "${row[this.primaryKey]}"?`))
         {
             this.dataset = this.dataset.filter(r => r[this.primaryKey] !== row[this.primaryKey]);
-            this.deleteRowCallback(row[this.primaryKey]);
+            if (this.deleteRowCallback)
+            {
+                this.deleteRowCallback(row[this.primaryKey]);
+            }
             this.updateView();
         }
     }
@@ -38,7 +44,7 @@ class EditableTableController
                     field: column.name,
                     title: column.label,
                     sortable: column.name,
-                    filter: filter,
+                    filter: column.searchable ? filter : null,
                     show: true
                 }
             }

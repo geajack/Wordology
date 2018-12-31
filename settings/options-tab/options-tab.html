@@ -5,7 +5,12 @@
 </div>
 <div class="optionsBlock">
     <label>Blacklisted prefixes:</label>
-    <div id="blacklistedPrefixes"></div>
+    <editable-table id="blacklistedPrefixes" style="width: 200px; display: block;"
+        dataset="ctrl.blacklistedPrefixes"
+        columns="ctrl.prefixColumns"
+        primary-key="'prefix'"
+        paging="false">
+    </editable-table>
 </div>
 <div class="optionsBlock">
     <label for="addPrefixInput">Blacklist prefix:</label>

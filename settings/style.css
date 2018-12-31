@@ -4,13 +4,24 @@
  * 
  * *************************************************************/
 
+@font-face
+{
+	font-family: "Source Sans Pro";
+	src: url("latin.woff2") format("woff2");
+}
+
+:root
+{
+	--border-color: #555;
+}
+
 body
 {
 	font-size: 12pt;
-	font-family: sans-serif;
+	font-family: Source Sans Pro, sans-serif;
 	background: #F5F5F5;
 	padding: 25px;
-	margin: 0px;
+	margin: 0px;	
 }
 
 #navBar
@@ -27,11 +38,11 @@ body
 {
 	display: inline-block;
 	background-color: white;
-	border: 1px solid black;
+	border: 1px solid var(--border-color);
 	padding: 10px;
 	height: 40px;
 	box-sizing: border-box;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid var(--border-color);
 	cursor: pointer;
 }
 #navBar li:hover
@@ -51,7 +62,7 @@ body
 .page
 {
 	background: white;
-	border: 1px solid black;
+	border: 1px solid var(--border-color);
 	padding: 25px;
 	display: none;
 }
