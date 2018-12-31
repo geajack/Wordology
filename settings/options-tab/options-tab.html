@@ -3,7 +3,7 @@
     <label for="rootLength">Minimum length of a root: </label>
     <input id="rootLength" name="rootLength" type="number" min="1" ng-model="ctrl.options.minPrefixLength" />
 </div>
-<div class="optionsBlock">
+<div class="optionsBlock" ng-if="ctrl.blacklistedPrefixes.length > 0">
     <label>Blacklisted prefixes:</label>
     <editable-table id="blacklistedPrefixes" style="width: 200px; display: block;"
         dataset="ctrl.blacklistedPrefixes"
@@ -21,9 +21,14 @@
     <label for="suffixLength">Maximum length of a suffix:</label>
     <input id="suffixLength" name="suffixLength" type="number" min="1" ng-model="ctrl.options.maxSuffixLength" />
 </div>
-<div class="optionsBlock">
+<div class="optionsBlock" ng-if="ctrl.whitelistedSuffixes.length > 0">
     <label>Whitelisted suffixes:</label>
-    <div id="whitelistedSuffixes"></div>
+    <editable-table id="whiteslitedSuffixes" style="width: 200px; display: block;"
+        dataset="ctrl.whitelistedSuffixes"
+        columns="ctrl.suffixColumns"
+        primary-key="'suffix'"
+        paging="false">
+    </editable-table>
 </div>
 <div class="optionsBlock">
     <label for="addSuffixInput">Whitelist suffix:</label>

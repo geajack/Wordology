@@ -18,8 +18,16 @@ class OptionsTabController
             { prefix: "prze" },
             { prefix: "naj" }
         ];
+        this.whitelistedSuffixes = [
+            // { suffix: "łyście" },
+            // { suffix: "ejszy" },
+            // { suffix: "łyśmy" }
+        ];
         this.prefixColumns = [
             { name: "prefix", label: "Prefix", searchable: false }
+        ];
+        this.suffixColumns = [
+            { name: "suffix", label: "Suffix", searchable: false }
         ];
     }
 
