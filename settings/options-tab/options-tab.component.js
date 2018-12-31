@@ -6,23 +6,24 @@ class OptionsTabController
         this.options = null;
         this.oldOptions = null;
         this.optionsLoaded = false;
-        this.$scope = $scope
+        this.$scope = $scope;
         this.OM.getOptions().then(options => {
             this.options = options;
             this.oldOptions = Object.assign({}, options);
-            this.optionsLoaded = true;
-            this.$scope.$digest();
+            this.optionsLoaded = true;            
+            this.blacklistedPrefixes = [
+                { prefix: "przy" },
+                { prefix: "prze" },
+                { prefix: "naj" }
+            ];
+            this.whitelistedSuffixes = [
+                { suffix: "łyście" },
+                { suffix: "ejszy" },
+                { suffix: "łyśmy" }
+            ];
+            // this.$scope.$digest();
         });
-        this.blacklistedPrefixes = [
-            { prefix: "przy" },
-            { prefix: "prze" },
-            { prefix: "naj" }
-        ];
-        this.whitelistedSuffixes = [
-            // { suffix: "łyście" },
-            // { suffix: "ejszy" },
-            // { suffix: "łyśmy" }
-        ];
+        
         this.prefixColumns = [
             { name: "prefix", label: "Prefix", searchable: false }
         ];

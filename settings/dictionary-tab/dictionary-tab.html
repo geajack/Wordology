@@ -1,7 +1,19 @@
-<editable-table id="wordTable" style="width: 800px; display: block;">
-</editable-table>
-<div id="controls">	
-    <a id="downloadLink" href="" download="Dictionary.json">Download word list</a>	
-    <button id="importButton">Import from file</button>
-    <button id="clearButton">Clear Data</button>
+<div>
+    <section id="wordListSection">
+        <editable-table ng-if="ctrl.wordList.length > 0" id="wordTable"
+            dataset="ctrl.wordList"
+            columns="ctrl.wordListColumns"
+            primary-key="'word'"
+            paging="true">
+        </editable-table>
+        <div id="noWordsNotice" ng-if="ctrl.wordList.length === 0">
+            <span>You have no words added!</span>
+        </div>
+    </section>    
+
+    <section id="controls">	
+        <a id="downloadLink" href="" download="Dictionary.json">Download word list</a>	
+        <button id="importButton">Import from file</button>
+        <button id="clearButton">Clear Data</button>
+    </section>
 </div>

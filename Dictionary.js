@@ -95,13 +95,13 @@ class Dictionary
 				//request.result; uncommenting this makes onsuccess not run
 				request.onsuccess = function(event)
 				{
-					var responseEntries = {};
+					var dictOfEntries = {};
 					var dictionaryEntries = request.result;
 					for (var entry of dictionaryEntries)
 					{
-						responseEntries[entry.word] = entry;
+						dictOfEntries[entry.word] = entry;
 					}
-					resolve(responseEntries);
+					resolve(dictOfEntries);
 				};
 				request.onerror = function(event)
 				{

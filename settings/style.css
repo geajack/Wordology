@@ -24,6 +24,12 @@ body
 	margin: 0px;	
 }
 
+#contents
+{
+	max-width: 1000px;
+	margin: auto;
+}
+
 #navBar
 {
 	display: block;
@@ -43,6 +49,10 @@ body
 	height: 40px;
 	box-sizing: border-box;
 	border-bottom: 1px solid var(--border-color);
+	margin-right: 1px;
+	box-shadow: rgba(0,0,0,0.5) 2px 0px 0px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
 	cursor: pointer;
 }
 #navBar li:hover
@@ -64,6 +74,7 @@ body
 	background: white;
 	border: 1px solid var(--border-color);
 	padding: 25px;
+	width: 100%;
 	display: none;
 }
 .activePage
@@ -118,22 +129,34 @@ input[type="range"]
  *     DICTIONARY TAB
  * 
  * *************************************************************/
-
 #pageDictionary > div
 {
 	display: flex;
+	flex-flow: row;
 }
-#wordTable
+#pageDictionary #wordListSection
 {
 	flex-grow: 1;
 }
-
-#controls
+#pageDictionary #controls
 {
-	width: 300px;
 	margin-left: 20px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 200px;
 }
-#controls > *
+
+#pageDictionary #noWordsNotice
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	height: 100%;
+	text-shadow: rgba(0,0,0,0.3) 2px 2px 2px;
+}
+
+#pageDictionary #controls > *
 {
 	display: block;
 	width: 100%;
@@ -141,8 +164,8 @@ input[type="range"]
 	height: 80px;
 	border-width: 3px;
 	border-style: outset;
-	border-color: silver;
 	box-sizing: border-box;
+	border-radius: 10px;
 	margin-bottom: 10px;
 	text-align: center;
 	line-height: 80px;
@@ -150,9 +173,8 @@ input[type="range"]
 	text-decoration: none;
 	font-size: 12pt;
 	cursor: pointer;
-	background: silver;
 }
-#controls > *:active
+#pageDictionary #controls > *:active
 {
 	padding: 0px;
 	border-style: inset;
@@ -166,4 +188,9 @@ input[type="range"]
 {
 	background-color: #FF6666;
 	border-color: #FF6666;
+}
+
+#noWordsNotice
+{
+
 }

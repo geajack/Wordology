@@ -33,7 +33,7 @@ class EditableTableController
         this.tableParams.reload();
     }
 
-    $onInit()
+    $onChanges()
     {
         this.tableParams = new this.NgTableParams({}, { dataset: this.dataset });
         this.ngTableColumns = this.columns.map(
@@ -50,11 +50,6 @@ class EditableTableController
             }
         );        
         this.ngTableColumns.push({ dataType: "command" });
-        console.log(this.ngTableColumns);
-    }
-
-    $onChanges(changes)
-    {
     }
 }
 

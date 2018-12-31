@@ -36,17 +36,19 @@
 
 <body ng-app="app" ng-init="tab='options'">
 	
-	<ul id="navBar">
-		<li ng-class="tab == 'options'? 'activeTab':''" ng-click="tab='options'">Options</li>
-		<li ng-class="tab == 'dictionary'? 'activeTab':''" ng-click="tab='dictionary'">Words</li>
-		<li ng-class="tab == 'help'? 'activeTab':''" ng-click="tab='help'">Help</li>
-	</ul>
-	
-	<options-tab id="pageOptions" class="page" ng-class="tab == 'options'? 'activePage':''"></options-tab>
-	
-	<dictionary-tab id="pageDictionary" class="page" ng-class="tab == 'dictionary'? 'activePage':''"></dictionary-tab>
-	
-	<help-tab id="pageHelp" class="page" ng-class="tab == 'help'? 'activePage':''"></help-tab>
+	<div id="contents">
+		<ul id="navBar">
+			<li ng-class="tab == 'options'? 'activeTab':''" ng-click="tab='options'">Options</li>
+			<li ng-class="tab == 'dictionary'? 'activeTab':''" ng-click="tab='dictionary'">Words</li>
+			<li ng-class="tab == 'help'? 'activeTab':''" ng-click="tab='help'">Help</li>
+		</ul>
+		
+		<options-tab id="pageOptions" class="page" ng-class="tab == 'options'? 'activePage':''"></options-tab>
+		
+		<dictionary-tab id="pageDictionary" class="page" ng-class="tab == 'dictionary'? 'activePage':''"></dictionary-tab>
+		
+		<help-tab id="pageHelp" class="page" ng-class="tab == 'help'? 'activePage':''"></help-tab>
+	</div>
 
 </body>
 
