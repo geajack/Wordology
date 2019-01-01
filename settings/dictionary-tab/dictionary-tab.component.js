@@ -1,6 +1,6 @@
 class DictionaryTabController
 {
-    constructor($scope, $timeout)
+    constructor($scope)
     {
         this.$scope = $scope;
         this.wordList = null;
