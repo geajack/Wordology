@@ -130,6 +130,17 @@ input[type="range"]
 	vertical-align: middle;
 }
 
+.colors div
+{
+	width: 300px;
+	position: relative;
+}
+.colors input
+{
+	position: absolute;
+	right: 0px;
+}
+
 /***************************************************************
  * 
  *     DICTIONARY TAB
