@@ -29,7 +29,7 @@ class OptionsTabController
         this.onDeleteSuffix = this.onDeleteSuffix.bind(this);
     }
 
-    onClickAddPrefix()
+    addPrefix()
     {
         var backup = this.blacklistedPrefixes;
         this.blacklistedPrefixes = null;
@@ -57,7 +57,7 @@ class OptionsTabController
         this.OM.setOption("whitelistedSuffixes", newList);
     }
 
-    onClickAddSuffix()
+    addSuffix()
     {
         var backup = this.whitelistedSuffixes;
         this.whitelistedSuffixes = null;
