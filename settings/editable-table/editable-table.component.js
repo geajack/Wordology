@@ -41,7 +41,7 @@ class EditableTableController
             tableParameters.count = Infinity;
         }
 
-        this.tableParams = new this.NgTableParams(tableParameters, { dataset: this.dataset });
+        this.tableParams = new this.NgTableParams(tableParameters, { dataset: this.dataset, filterOptions: { filterComparator: this.filterComparator } });
         this.ngTableColumns = this.columns.map(
             column => {
                 let filter = {};
@@ -56,6 +56,11 @@ class EditableTableController
             }
         );        
         this.ngTableColumns.push({ dataType: "command" });
+    }
+
+    filterComparator(actual, expected)
+    {
+        return actual.search(expected) === 0;
     }
 }
 
