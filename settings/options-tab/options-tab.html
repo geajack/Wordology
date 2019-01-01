@@ -11,8 +11,11 @@
         primary-key="'prefix'"
         paging="false"
         delete-row-callback="ctrl.onDeletePrefix">
-    </editable-table>
+    </editable-table>    
 </div>
+<p class="noAffixesNotice" ng-if="ctrl.blacklistedPrefixes.length == 0">
+    Add prefixes to your blacklist below.
+</p>
 <div class="optionsBlock">
     <label for="addPrefixInput">Blacklist prefix:</label>
     <input id="addPrefixInput" name="addPrefixInput" type="text" ng-model="ctrl.prefixInput" ng-keyup="$event.keyCode == 13 && ctrl.addPrefix()" />
@@ -32,6 +35,9 @@
         delete-row-callback="ctrl.onDeleteSuffix">
     </editable-table>
 </div>
+<p class="noAffixesNotice" ng-if="ctrl.whitelistedSuffixes.length == 0">
+    Add suffixes to your whitelist below.
+</p>
 <div class="optionsBlock">
     <label for="addSuffixInput">Whitelist suffix:</label>
     <input id="addSuffixInput" name="addSuffixInput" type="text" ng-model="ctrl.suffixInput" ng-keyup="$event.keyCode == 13 && ctrl.addSuffix()"/>

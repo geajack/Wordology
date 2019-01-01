@@ -141,6 +141,12 @@ input[type="range"]
 	right: 0px;
 }
 
+.noAffixesNotice
+{
+	font-style: italic;
+	margin-left: 20px;
+}
+
 /***************************************************************
  * 
  *     DICTIONARY TAB
