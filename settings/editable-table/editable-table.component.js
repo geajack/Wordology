@@ -35,8 +35,13 @@ class EditableTableController
 
     $onChanges()
     {
-        console.log("Table noticed a change");
-        this.tableParams = new this.NgTableParams({}, { dataset: this.dataset });
+        var tableParameters = {}
+        if (!this.paging)
+        {
+            tableParameters.count = Infinity;
+        }
+
+        this.tableParams = new this.NgTableParams(tableParameters, { dataset: this.dataset });
         this.ngTableColumns = this.columns.map(
             column => {
                 let filter = {};
