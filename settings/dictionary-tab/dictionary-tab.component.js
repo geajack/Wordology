@@ -16,7 +16,11 @@ class DictionaryTabController
     loadWordList(dictOfEntries)
     {   
         this.wordList = null;
-        this.$scope.$apply(); // Make AngularJS notice the change
+        try
+        {
+            this.$scope.$apply(); // Make AngularJS notice the change
+        }
+        catch {}
         
         this.wordList = Object.values(dictOfEntries);
         this.dictionaryData = dictOfEntries;
@@ -25,7 +29,23 @@ class DictionaryTabController
         var downloadUri = `data:application/json,${json}`;
         document.getElementById("downloadLink").setAttribute("href", downloadUri); // Firefox's security features prevent AngularJS from setting href
         
-        this.$scope.$apply();
+        try
+        {
+            this.$scope.$apply();
+        }
+        catch {}
+    }
+
+    clearData()
+    {
+        var result = prompt(
+            "To delete your entire wordlist for this profile permanently,\n" +
+            "type DELETE below in all-capital letters, and click OK."
+        );
+        if (result === "DELETE")
+        {
+            this.loadWordList({});
+        }
     }
 
     importFile(data)
