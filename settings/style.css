@@ -168,9 +168,8 @@ input[type="range"]
 	width: 100%;
 	
 	height: 80px;
-	border-width: 3px;
-	border-style: outset;
 	box-sizing: border-box;
+	border: none;
 	border-radius: 10px;
 	margin-bottom: 10px;
 	text-align: center;
@@ -179,24 +178,20 @@ input[type="range"]
 	text-decoration: none;
 	font-size: 12pt;
 	cursor: pointer;
+	box-shadow: rgba(0, 0, 0, 0.6) 2px 4px 5px;
 }
 #pageDictionary #controls > *:active
 {
-	padding: 0px;
-	border-style: inset;
+	position: relative;
+	left: 2px;
+	top: 4px;
+	box-shadow: none;
 }
 #downloadLink, #importButton
 {
 	background-color: #77AAEE;
-	border-color: #77AAEE;
 }
 #clearButton
 {
 	background-color: #FF6666;
-	border-color: #FF6666;
-}
-
-#noWordsNotice
-{
-
 }
