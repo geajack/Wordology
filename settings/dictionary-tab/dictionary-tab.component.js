@@ -11,6 +11,23 @@ class DictionaryTabController
             { name: "word", label: "Word", searchable: true },
             { name: "definition", label: "Definition", searchable: true }
         ];
+        this.onClickWord = this.onClickWord.bind(this);
+        this.onDeleteWord = this.onDeleteWord.bind(this);
+    }
+
+    async onClickWord(word)
+    {
+        var definition = this.dictionaryData[word].definition;
+        var match = { entry: { word: word, definition: definition }, exact: true };
+        var result = await WordEditDialog.open({ word: word, match: match });
+        this.dictionaryData[word].definition = result.definition;
+        this.D.setData([{ word: word, definition: result.definition }]);
+        this.loadWordList(this.dictionaryData);
+    }
+
+    onDeleteWord(word)
+    {
+        this.D.removeEntries([word]);
     }
 
     loadWordList(dictOfEntries)
@@ -45,6 +62,7 @@ class DictionaryTabController
         if (result === "DELETE")
         {
             this.loadWordList({});
+            this.D.clear();
         }
     }
 
@@ -54,6 +72,7 @@ class DictionaryTabController
         {
             var dictOfEntries = JSON.parse(data);
             this.loadWordList(dictOfEntries);
+            this.D.setData(Object.values(dictOfEntries));
         }
         catch
         {

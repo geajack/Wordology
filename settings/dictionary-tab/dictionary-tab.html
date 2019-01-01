@@ -4,7 +4,9 @@
             dataset="ctrl.wordList"
             columns="ctrl.wordListColumns"
             primary-key="'word'"
-            paging="true">
+            paging="true"
+            click-row-callback="ctrl.onClickWord"
+            delete-row-callback="ctrl.onDeleteWord">
         </editable-table>
         <div id="noWordsNotice" ng-if="ctrl.wordList.length === 0">
             <span>You have no words added!</span>
