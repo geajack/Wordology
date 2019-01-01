@@ -14,8 +14,8 @@
 </div>
 <div class="optionsBlock">
     <label for="addPrefixInput">Blacklist prefix:</label>
-    <input id="addPrefixInput" name="addPrefixInput" type="text" />
-    <button id="addPrefixButton">Add</button>
+    <input id="addPrefixInput" name="addPrefixInput" type="text" ng-model="ctrl.prefixInput" />
+    <button id="addPrefixButton" ng-click="ctrl.onClickAddPrefix()">Add</button>
 </div>
 <div class="optionsBlock">
     <label for="suffixLength">Maximum length of a suffix:</label>
@@ -32,8 +32,8 @@
 </div>
 <div class="optionsBlock">
     <label for="addSuffixInput">Whitelist suffix:</label>
-    <input id="addSuffixInput" name="addSuffixInput" type="text" />
-    <button id="addSuffixButton">Add</button>
+    <input id="addSuffixInput" name="addSuffixInput" type="text" ng-model="ctrl.suffixInput"/>
+    <button id="addSuffixButton" ng-click="ctrl.onClickAddSuffix()">Add</button>
 </div>
 <div class="optionsBlock">
     <strong><label for="useInflection">Use Smart Matching</label></strong>

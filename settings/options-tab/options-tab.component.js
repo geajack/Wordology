@@ -6,22 +6,16 @@ class OptionsTabController
         this.options = null;
         this.oldOptions = null;
         this.optionsLoaded = false;
+        this.prefixInput = "";
+        this.suffixInput = "";
         this.$scope = $scope;
         this.OM.getOptions().then(options => {
             this.options = options;
             this.oldOptions = Object.assign({}, options);
-            this.optionsLoaded = true;            
-            this.blacklistedPrefixes = [
-                { prefix: "przy" },
-                { prefix: "prze" },
-                { prefix: "naj" }
-            ];
-            this.whitelistedSuffixes = [
-                { suffix: "łyście" },
-                { suffix: "ejszy" },
-                { suffix: "łyśmy" }
-            ];
-            // this.$scope.$digest();
+            this.optionsLoaded = true;
+            this.blacklistedPrefixes = this.options.blacklistedPrefixes.map(prefix => ({ prefix: prefix}));
+            this.whitelistedSuffixes = this.options.whitelistedSuffixes.map(suffix => ({ suffix: suffix}));
+            this.$scope.$digest();
         });
         
         this.prefixColumns = [
@@ -30,6 +24,16 @@ class OptionsTabController
         this.suffixColumns = [
             { name: "suffix", label: "Suffix", searchable: false }
         ];
+    }
+
+    onClickAddPrefix()
+    {
+        console.log("Add prefix");
+    }
+
+    onClickAddSuffix()
+    {
+        console.log("Add suffix");
     }
 
     resetColorsToDefault()
