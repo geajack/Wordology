@@ -24,16 +24,53 @@ class OptionsTabController
         this.suffixColumns = [
             { name: "suffix", label: "Suffix", searchable: false }
         ];
+
+        this.onDeletePrefix = this.onDeletePrefix.bind(this);
+        this.onDeleteSuffix = this.onDeleteSuffix.bind(this);
     }
 
     onClickAddPrefix()
     {
-        console.log("Add prefix");
+        var backup = this.blacklistedPrefixes;
+        this.blacklistedPrefixes = null;
+        setTimeout(
+            () =>
+            {
+                this.blacklistedPrefixes = backup;
+                this.blacklistedPrefixes.push({ prefix: this.prefixInput });        
+                this.prefixInput = "";
+                this.OM.setOption("blacklistedPrefixes", this.blacklistedPrefixes.map(row => row.prefix));
+                this.$scope.$digest();
+            }
+        );
+    }
+
+    onDeletePrefix(deletedPrefix)
+    {
+        var newList = this.blacklistedPrefixes.map(row => row.prefix).filter(prefix => prefix !== deletedPrefix);
+        this.OM.setOption("blacklistedPrefixes", newList);
+    }
+
+    onDeleteSuffix(deletedSuffix)
+    {
+        var newList = this.whitelistedSuffixes.map(row => row.suffix).filter(suffix => suffix !== deletedSuffix);
+        this.OM.setOption("whitelistedSuffixes", newList);
     }
 
     onClickAddSuffix()
     {
-        console.log("Add suffix");
+        var backup = this.whitelistedSuffixes;
+        this.whitelistedSuffixes = null;
+        setTimeout(
+            () =>
+            {
+                this.whitelistedSuffixes = backup;
+                this.whitelistedSuffixes.push({ suffix: this.suffixInput });        
+                this.suffixInput = "";
+                this.OM.setOption("whitelistedSuffixes", this.whitelistedSuffixes.map(row => row.suffix));
+                this.$scope.$digest();
+            }
+        );
     }
 
     resetColorsToDefault()

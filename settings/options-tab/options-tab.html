@@ -9,7 +9,8 @@
         dataset="ctrl.blacklistedPrefixes"
         columns="ctrl.prefixColumns"
         primary-key="'prefix'"
-        paging="false">
+        paging="false"
+        delete-row-callback="ctrl.onDeletePrefix">
     </editable-table>
 </div>
 <div class="optionsBlock">
@@ -27,7 +28,8 @@
         dataset="ctrl.whitelistedSuffixes"
         columns="ctrl.suffixColumns"
         primary-key="'suffix'"
-        paging="false">
+        paging="false"
+        delete-row-callback="ctrl.onDeleteSuffix">
     </editable-table>
 </div>
 <div class="optionsBlock">

@@ -35,6 +35,7 @@ class EditableTableController
 
     $onChanges()
     {
+        console.log("Table noticed a change");
         this.tableParams = new this.NgTableParams({}, { dataset: this.dataset });
         this.ngTableColumns = this.columns.map(
             column => {
