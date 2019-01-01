@@ -4,6 +4,7 @@ class DictionaryTabController
     {
         this.$scope = $scope;
         this.wordList = null;
+        this.downloadUri = "";
         this.D = new Dictionary();
         this.D.getEverything().then(result => this.loadWordList(result));
         this.wordListColumns = [
@@ -19,6 +20,11 @@ class DictionaryTabController
         
         this.wordList = Object.values(dictOfEntries);
         this.dictionaryData = dictOfEntries;
+        var json = JSON.stringify(dictOfEntries);
+        
+        var downloadUri = `data:application/json,${json}`;
+        document.getElementById("downloadLink").setAttribute("href", downloadUri); // Firefox's security features prevent AngularJS from setting href
+        
         this.$scope.$apply();
     }
 
