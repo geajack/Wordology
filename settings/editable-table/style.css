@@ -34,7 +34,7 @@
     background-color: #eef5ff;
 }
 
-.editableTable tbody tr:nth-child(odd) td:last-child
+.editableTable tbody tr td:last-child
 {
     background-color: white !important;
     width: 25px;
