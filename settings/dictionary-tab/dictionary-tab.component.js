@@ -5,7 +5,7 @@ class DictionaryTabController
         this.$scope = $scope;
         this.wordList = null;
         this.downloadUri = "";
-        this.D = new Dictionary();
+        this.D = new Dictionary(0);
         this.D.getEverything().then(result => this.loadWordList(result));
         this.wordListColumns = [
             { name: "word", label: "Word", searchable: true },

@@ -1,4 +1,4 @@
-(function BackgroundScript()
+(async function BackgroundScript()
 {
 	var OM = new OptionsManager();
 	OM.initializeStorage();
@@ -12,5 +12,6 @@
 		}
 	);
 
-	var D = new DictionaryFetcherBackground("DictionaryFetcher", new Dictionary());
+	var profileId = await OM.getCurrentProfileId();
+	var D = new DictionaryFetcherBackground("DictionaryFetcher", new Dictionary(profileId));
 })();

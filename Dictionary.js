@@ -1,8 +1,8 @@
 class Dictionary
 {
-	constructor()
+	constructor(profileId)
 	{
-		var request = window.indexedDB.open("0/database", 1);
+		var request = window.indexedDB.open(profileId + "/database", 1);
 		var upgraded = false;
 		this.willOpen = new Promise(
 			function(resolve, reject)
@@ -117,4 +117,15 @@ class Dictionary
 		db.transaction(["words"], "readwrite").objectStore("words").clear();
 	}
 	
+}
+
+Dictionary.deleteDatabase = function deleteDatabase(profileId)
+{
+	var deleteRequest = window.indexedDB.delete(profileId + "/database");
+	
+	return new Promise(
+		resolve => {
+			deleteRequest.onsuccess = resolve;
+		}
+	);
 }
