@@ -10,6 +10,22 @@ class OptionsManager
 		var localData = await browser.storage.local.get();
 		var modificationsNecessary = false;
 
+		if (localData["version"] === undefined)
+		{
+			localData["version"] = "1.2";
+			modificationsNecessary = true;
+		}
+
+		if (localData["profile"] === undefined)
+		{
+			localData["profile"] = 0;
+		}
+
+		if (localData["profiles"] === undefined)
+		{
+			localData["profiles"] = [{id: 0, name: "Default Profile"}];
+		}
+
 		if (localData["0/options"] === undefined)
 		{
 			localData["0/options"] = OptionsManager.DefaultOptions;
@@ -29,27 +45,37 @@ class OptionsManager
 
 		if (modificationsNecessary)
 		{
-			browser.storage.local.set(localData);
+			return await this.safeLocalStorageSet(dataObject);
 		}
 	}
 
-	setCurrentProfile(id)
+	async setCurrentProfile(id)
 	{
-
+		return await this.safeLocalStorageSetKey("profile", id);
 	}
 	
 	async getCurrentProfileId()
 	{
-		return "0";
+		return await browser.storage.local.get("profile");
 	}
 
 	async getProfileName(id)
 	{
+		var profiles = await browser.storage.local.get("profiles");
+		var filteredProfiles = profiles.filter(profile => profile.id === id)
+		if (filteredProfiles.length === 0)
+		{
+			return null;
+		}
+		else
+		{
+			return filteredProfiles[0].name;
+		}
 	}
 
 	async getProfiles()
 	{
-		return [{id: "0", name: "Default Profile"}];
+		return await browser.storage.local.get("profiles");
 	}
 
 	async setOptions(valuesToSet)
@@ -64,14 +90,12 @@ class OptionsManager
 		}
 
 		var localData = await browser.storage.local.get();
-		var profileId = "0";
+		var profileId = 0;
 		var currentOptions = localData[profileId + "/options"];
 		var modifiedOptions = Object.assign({}, currentOptions, valuesToSet);
 		var dataToSet = {};
 		dataToSet[profileId + "/options"] = modifiedOptions;
-		this.dataSetPending = true;
-		var setDataPromise = browser.storage.local.set(dataToSet).then(() => {this.dataSetPending = false});
-		return setDataPromise;
+		return await this.safeLocalStorageSet(dataToSet);
 	}
 
 	async setOption(optionName, value)
@@ -86,34 +110,112 @@ class OptionsManager
 		}
 
 		var localData = await browser.storage.local.get();
-		var profileId = "0";
+		var profileId = localData["profile"];
 		var options = localData[profileId + "/options"]
 		options[optionName] = value;
 		var dataToSet = {}
 		dataToSet[profileId + "/options"] = options;
-		this.dataSetPending = true;
-		var setDataPromise = browser.storage.local.set(dataToSet).then(() => {this.dataSetPending = false});
-		return setDataPromise;
+		return await this.safeLocalStorageSet(dataToSet);
 	}
 
 	async getOptions()
 	{
 		var localData = await browser.storage.local.get();
-		var id = "0";
+		var id = 0;
 		var options = localData[id + "/options"];
 		return options;
 	}
 
-	deleteProfile(id)
+	async deleteProfile(id)
 	{
+		var profiles = await browser.storage.local.get("profiles");
+		var newProfiles = profiles.filter(profile => profile.id !== id);
+		var currentProfile = await this.getCurrentProfileId();
+		var newProfile;
+		if (currentProfile === id)
+		{
+			newProfile = null;
+		}
+		else
+		{
+			newProfile = currentProfile;
+		}
+
+		var dataToSet = {
+			profile: newProfile,
+			profiles: newProfiles
+		}
+
+		return await this.safeLocalStorageSet(dataToSet);
 	}
 
-	createProfile(name) // id
+	async createProfile(name)
 	{
+		var profiles = await browser.storage.local.get("profiles");
+		var maximum = 0;
+		for (let profile of profiles)
+		{
+			if (profile.id > maximum)
+			{
+				maximum = profile.id
+			}
+		}
+		var newId = maximum + 1;
+		var newProfile = { id: newId, name: name };
+		profiles.push(newProfile);
+
+		var dataToSet = {};
+		dataToSet["profiles"] = profiles;
+		dataToSet[newId + "/options"] = OptionsManager.DefaultOptions;
+
+		return await this.safeLocalStorageSet(dataToSet);
 	}
 
-	renameProfile(id, name)
+	async renameProfile(id, name)
 	{
+		var profiles = await browser.storage.local.get("profiles");
+		for (let profile of profiles)
+		{
+			if (profile.id === id)
+			{
+				profile.name = name;
+			}
+		}
+		return await this.safeLocalStorageSetKey("profiles", profiles);
+	}
+
+	async safeLocalStorageSet(dataObject)
+	{
+		if (this.dataSetPending)
+		{
+			throw new Error(
+				`Attempted to call OptionsManager.setOption() while data set was still pending.
+				Due to the way localStorage works, you must wait for the previous set to complete
+				before setting again.`
+			);
+		}
+		else
+		{
+			this.dataSetPending = true;
+			return browser.storage.local.set(dataObject).then(() => {this.dataSetPending = false});
+		}
+	}
+
+	async safeLocalStorageSetKey(key, value)
+	{
+		if (this.dataSetPending)
+		{
+			throw new Error(
+				`Attempted to call OptionsManager.setOption() while data set was still pending.
+				Due to the way localStorage works, you must wait for the previous set to complete
+				before setting again.`
+			);
+		}
+		else
+		{
+			this.dataSetPending = true;
+			return browser.storage.local.set(key, value).then(() => {this.dataSetPending = false});
+		}
 	}
 }
 
