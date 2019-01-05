@@ -26,42 +26,66 @@ class OptionsManager
 			localData["profiles"] = [{id: 0, name: "Default Profile"}];
 		}
 
-		if (localData["0/options"] === undefined)
-		{
-			localData["0/options"] = OptionsManager.DefaultOptions;
-			modificationsNecessary = true;
-		}
-		else
-		{
-			for (var optionName in OptionsManager.DefaultOptions)
-			{
-				if (localData["0/options"][optionName] === undefined)
-				{
-					localData["0/options"][optionName] = OptionsManager.DefaultOptions[optionName];
-					modificationsNecessary = true;
-				}
-			}
-		}
+        for (let profile of localData["profiles"])
+        {
+            var optionsKey = profile.id + "/options";
+            if (localData[optionsKey] === undefined)
+            {
+                localData[optionsKey] = OptionsManager.DefaultOptions;
+                modificationsNecessary = true;
+            }
+            else
+            {
+                for (var optionName in OptionsManager.DefaultOptions)
+                {
+                    if (localData[optionsKey][optionName] === undefined)
+                    {
+                        localData[optionsKey][optionName] = OptionsManager.DefaultOptions[optionName];
+                        modificationsNecessary = true;
+                    }
+                }
+            }
+        }
 
 		if (modificationsNecessary)
 		{
-			return await this.safeLocalStorageSet(dataObject);
+			return await this.safeLocalStorageSet(localData);
 		}
-	}
+    }
+    
+    addOnChangeProfileListener(listener)
+    {
+        browser.storage.onChanged.addListener(
+            (changes, storageAreaName) => {
+                if (storageAreaName === "local")
+                {
+                    if (changes.profile !== undefined)
+                    {
+                        listener(changes.profile.newValue);
+                    }
+                }
+            }
+        );
+    }
 
-	async setCurrentProfile(id)
+	async getOptions()
 	{
-		return await this.safeLocalStorageSetKey("profile", id);
+		var localData = await browser.storage.local.get();
+		var id = await this.getCurrentProfileId();
+		var options = localData[id + "/options"];
+		return options;
 	}
 	
 	async getCurrentProfileId()
 	{
-		return await browser.storage.local.get("profile");
+        var localData = await browser.storage.local.get();
+		return localData.profile;
 	}
 
 	async getProfileName(id)
 	{
-		var profiles = await browser.storage.local.get("profiles");
+        var localData = await browser.storage.local.get();
+		var profiles = localData.profiles;
 		var filteredProfiles = profiles.filter(profile => profile.id === id)
 		if (filteredProfiles.length === 0)
 		{
@@ -75,7 +99,8 @@ class OptionsManager
 
 	async getProfiles()
 	{
-		return await browser.storage.local.get("profiles");
+        var localData = await browser.storage.local.get();
+		return localData.profiles;
 	}
 
 	async setOptions(valuesToSet)
@@ -118,12 +143,9 @@ class OptionsManager
 		return await this.safeLocalStorageSet(dataToSet);
 	}
 
-	async getOptions()
+	async setCurrentProfile(id)
 	{
-		var localData = await browser.storage.local.get();
-		var id = 0;
-		var options = localData[id + "/options"];
-		return options;
+		return await this.safeLocalStorageSet({ profile: id });
 	}
 
 	async deleteProfile(id)
@@ -151,7 +173,7 @@ class OptionsManager
 
 	async createProfile(name)
 	{
-		var profiles = await browser.storage.local.get("profiles");
+		var profiles = await this.getProfiles();
 		var maximum = 0;
 		for (let profile of profiles)
 		{
@@ -173,7 +195,7 @@ class OptionsManager
 
 	async renameProfile(id, name)
 	{
-		var profiles = await browser.storage.local.get("profiles");
+		var profiles = await this.getProfiles();
 		for (let profile of profiles)
 		{
 			if (profile.id === id)
@@ -181,7 +203,7 @@ class OptionsManager
 				profile.name = name;
 			}
 		}
-		return await this.safeLocalStorageSetKey("profiles", profiles);
+		return await this.safeLocalStorageSet({ profiles: profiles });
 	}
 
 	async safeLocalStorageSet(dataObject)

@@ -1,7 +1,7 @@
 (async function BackgroundScript()
 {
 	var OM = new OptionsManager();
-	OM.initializeStorage();
+	await OM.initializeStorage();
 
 	var TM = new ToggleManagerBackground("ToggleManager",
 		{
@@ -13,5 +13,12 @@
 	);
 
 	var profileId = await OM.getCurrentProfileId();
-	var D = new DictionaryFetcherBackground("DictionaryFetcher", new Dictionary(profileId));
+    var DF = new DictionaryFetcherBackground("DictionaryFetcher", new Dictionary(profileId));
+    OM.addOnChangeProfileListener(onChangeProfile);
+
+    function onChangeProfile(profileId)
+    {
+        console.log("Profile changed to " + profileId);
+        DF.setDictionary(new Dictionary(profileId));
+    }
 })();

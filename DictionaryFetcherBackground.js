@@ -7,7 +7,12 @@ class DictionaryFetcherBackground
 		
 		this.requestDataSlot = new MessageSlot(name + "RequestData", this.onRequestDataMessage.bind(this));
 		this.setDataSlot     = new MessageSlot(name + "SetData", this.onSetDataMessage.bind(this));
-	}
+    }
+    
+    setDictionary(dictionary)
+    {
+        this.dictionary = dictionary;
+    }
 	
 	async onRequestDataMessage(message, sender)
 	{

@@ -29,30 +29,33 @@
 	<script src="app.js"></script>
 	<script src="editable-table/ng-table.min.js"></script>
 	<script src="editable-table/editable-table.component.js"></script>
+	<script src="root-controller.controller.js"></script>
 	<script src="options-tab/options-tab.component.js"></script>
 	<script src="dictionary-tab/dictionary-tab.component.js"></script>
 	<script src="help-tab/help-tab.component.js"></script>
 </head>
 
-<body ng-app="app" ng-init="tab='options'">
+<body ng-app="app" ng-controller="RootController as controller">
 	
 	<div id="contents">
 		<ul id="navBar">
-			<li ng-class="tab == 'options'? 'activeTab':''" ng-click="tab='options'">Options</li>
-			<li ng-class="tab == 'dictionary'? 'activeTab':''" ng-click="tab='dictionary'">Words</li>
-			<li ng-class="tab == 'help'? 'activeTab':''" ng-click="tab='help'">Help</li>
+			<li ng-class="controller.tab == 'options'? 'activeTab':''" ng-click="controller.tab='options'">Options</li>
+			<li ng-class="controller.tab == 'dictionary'? 'activeTab':''" ng-click="controller.tab='dictionary'">Words</li>
+			<li ng-class="controller.tab == 'help'? 'activeTab':''" ng-click="controller.tab='help'">Help</li>
 		</ul>
 		
-		<options-tab id="pageOptions" class="page" ng-class="tab == 'options'? 'activePage':''"></options-tab>
+		<options-tab id="pageOptions" class="page" ng-class="controller.tab == 'options'? 'activePage':''"></options-tab>
 		
-		<dictionary-tab id="pageDictionary" class="page" ng-class="tab == 'dictionary'? 'activePage':''"></dictionary-tab>
+		<dictionary-tab id="pageDictionary" class="page" ng-class="controller.tab == 'dictionary'? 'activePage':''"></dictionary-tab>
 		
-		<help-tab id="pageHelp" class="page" ng-class="tab == 'help'? 'activePage':''"></help-tab>
+		<help-tab id="pageHelp" class="page" ng-class="controller.tab == 'help'? 'activePage':''"></help-tab>
 	</div>
 
 	<div id="profileSelector">
-		<label>Profile</label>
+        <label>Profile</label>
+        {{controller.currentProfileId}}
 		<select>
+            <option ng-repeat="profile in controller.profiles">{{profile.name}}</option>
 		</select>
 	</div>
 

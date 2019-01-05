@@ -5,14 +5,22 @@ class DictionaryTabController
         this.$scope = $scope;
         this.wordList = null;
         this.downloadUri = "";
-        this.D = new Dictionary(0);
-        this.D.getEverything().then(result => this.loadWordList(result));
+        this.initialize();        
         this.wordListColumns = [
             { name: "word", label: "Word", searchable: true },
             { name: "definition", label: "Definition", searchable: true }
         ];
         this.onClickWord = this.onClickWord.bind(this);
         this.onDeleteWord = this.onDeleteWord.bind(this);
+    }
+
+    async initialize()
+    {
+        var OM = new OptionsManager();
+        var profileId = await OM.getCurrentProfileId();
+        this.D = new Dictionary(profileId);
+        var result = await this.D.getEverything();
+        this.loadWordList(result);
     }
 
     async onClickWord(word)
