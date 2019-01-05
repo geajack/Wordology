@@ -24,9 +24,10 @@ body
 	margin: 0px;	
 }
 
-h1
+h1, h2
 {
-	margin-top: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 #contents
@@ -86,6 +87,29 @@ h1
 .activePage
 {
 	display: block;
+}
+
+#profileSelector
+{
+	position: absolute;
+	top: 15px;
+	right: 25px;
+}
+#profileSelector label
+{
+	display: block;
+	width: 100%;
+	text-align: right;
+}
+#profileSelector select
+{
+	width: 150px;
+	font-size: 18px;
+}
+
+.page > *:first-child
+{
+	margin-top: 0px;
 }
 
 /***************************************************************
