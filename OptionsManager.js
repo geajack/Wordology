@@ -19,11 +19,13 @@ class OptionsManager
 		if (localData["profile"] === undefined)
 		{
 			localData["profile"] = 0;
+			modificationsNecessary = true;
 		}
 
 		if (localData["profiles"] === undefined)
 		{
 			localData["profiles"] = [{id: 0, name: "Default Profile"}];
+			modificationsNecessary = true;
 		}
 
         for (let profile of localData["profiles"])
