@@ -136,7 +136,7 @@ class OptionsManager
 
 		var localData = await browser.storage.local.get();
 		var profileId = localData["profile"];
-		var options = localData[profileId + "/options"]
+		var options = localData[profileId + "/options"];
 		options[optionName] = value;
 		var dataToSet = {}
 		dataToSet[profileId + "/options"] = options;
