@@ -54,7 +54,7 @@ class EditableTableController
                     show: true
                 }
             }
-        );        
+        );
         this.ngTableColumns.push({ dataType: "command" });
     }
 

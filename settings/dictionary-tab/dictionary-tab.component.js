@@ -5,7 +5,7 @@ class DictionaryTabController
         this.$scope = $scope;
         this.wordList = null;
         this.downloadUri = "";
-        this.initialize();        
+        this.initialize();
         this.wordListColumns = [
             { name: "word", label: "Word", searchable: true },
             { name: "definition", label: "Definition", searchable: true }
@@ -39,21 +39,21 @@ class DictionaryTabController
     }
 
     loadWordList(dictOfEntries)
-    {   
+    {
         this.wordList = null;
         try
         {
             this.$scope.$apply(); // Make AngularJS notice the change
         }
         catch {}
-        
+
         this.wordList = Object.values(dictOfEntries);
         this.dictionaryData = dictOfEntries;
         var json = JSON.stringify(dictOfEntries);
-        
+
         var downloadUri = `data:application/json,${json}`;
         document.getElementById("downloadLink").setAttribute("href", downloadUri); // Firefox's security features prevent AngularJS from setting href
-        
+
         try
         {
             this.$scope.$apply();
@@ -102,7 +102,7 @@ class DictionaryTabController
         {
             var fileReader = new FileReader()
             fileReader.onload = fileReadCallback;
-            fileReader.readAsText(event.target.files[0]);            
+            fileReader.readAsText(event.target.files[0]);
         }
 
         function fileReadCallback(event)

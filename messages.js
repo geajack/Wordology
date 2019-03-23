@@ -4,7 +4,7 @@ class MessageSlot
 	{
 		this.name = name;
 		this.handler = handler;
-		
+
 		browser.runtime.onMessage.addListener(
 			(message, sender, response) =>
 			{
@@ -15,12 +15,12 @@ class MessageSlot
 			}
 		);
 	}
-	
+
 	setName(name)
 	{
 		this.name = name;
 	}
-	
+
 	setHandler(handler)
 	{
 		this.handler = handler;
@@ -33,12 +33,12 @@ class MessageSender
 	{
 		this.slotName = name;
 	}
-	
+
 	setTargetSlot(name)
 	{
 		this.slotName = name;
 	}
-	
+
 	sendToRuntime(message)
 	{
 		browser.runtime.sendMessage(
@@ -48,7 +48,7 @@ class MessageSender
 			}
 		);
 	}
-	
+
 	sendToTab(tabId, message)
 	{
 		browser.tabs.sendMessage(

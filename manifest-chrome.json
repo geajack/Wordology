@@ -48,7 +48,7 @@
 	"browser_action": {
 		"default_icon": "./icons/icon_inactive_32.png"
 	},
-	
+
 	"options_ui": {
 		"open_in_tab": true,
 		"page": "./settings/index.html"

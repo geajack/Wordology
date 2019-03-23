@@ -5,17 +5,17 @@
 <head>
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	
+
 	<!----------------------
 		Stylesheets
 	----------------------->
-	
+
 	<link rel="stylesheet" href="style.css"/>
 	<link rel="stylesheet" href="editable-table/style.css" />
 	<link rel="stylesheet" href="../WordEditDialog.css"/>
 	<link rel="stylesheet" href="../vex/vex_custom.css"/>
-	<link rel="stylesheet" href="../vex/vex-theme-custom.css"/>     
-	
+	<link rel="stylesheet" href="../vex/vex-theme-custom.css"/>
+
 	<!----------------------
 		Scripts
 	----------------------->
@@ -36,18 +36,18 @@
 </head>
 
 <body ng-app="app" ng-controller="RootController as controller">
-	
+
 	<div id="contents">
 		<ul id="navBar">
 			<li ng-class="controller.tab == 'options'? 'activeTab':''" ng-click="controller.tab='options'">Options</li>
 			<li ng-class="controller.tab == 'dictionary'? 'activeTab':''" ng-click="controller.tab='dictionary'">Words</li>
 			<li ng-class="controller.tab == 'help'? 'activeTab':''" ng-click="controller.tab='help'">Help</li>
 		</ul>
-		
+
 		<options-tab id="pageOptions" class="page" ng-class="controller.tab == 'options'? 'activePage':''"></options-tab>
-		
+
 		<dictionary-tab id="pageDictionary" class="page" ng-class="controller.tab == 'dictionary'? 'activePage':''"></dictionary-tab>
-		
+
 		<help-tab id="pageHelp" class="page" ng-class="controller.tab == 'help'? 'activePage':''"></help-tab>
 	</div>
 

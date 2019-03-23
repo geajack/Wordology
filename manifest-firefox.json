@@ -58,7 +58,7 @@
 		"browser_style": true,
 		"default_icon": "./icons/icon_inactive_32.png"
 	},
-	
+
 	"options_ui": {
 		"browser_style": false,
 		"open_in_tab": true,

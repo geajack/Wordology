@@ -52,7 +52,7 @@ class OptionsManager
 			return await this.safeLocalStorageSet(localData);
 		}
     }
-    
+
     addOnChangeProfileListener(listener)
     {
         browser.storage.onChanged.addListener(
@@ -75,7 +75,7 @@ class OptionsManager
 		var options = localData[id + "/options"];
 		return options;
 	}
-	
+
 	async getCurrentProfileId()
 	{
         var localData = await browser.storage.local.get();

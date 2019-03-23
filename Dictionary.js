@@ -17,7 +17,7 @@ class Dictionary
 					};
 					upgraded = true;
 				};
-		
+
 				request.onsuccess = function(event)
 				{
 					var db = event.target.result;
@@ -29,7 +29,7 @@ class Dictionary
 			}
 		);
 	}
-	
+
 	async setData(listOfEntries)
 	{
 		var db = await this.willOpen;
@@ -39,14 +39,14 @@ class Dictionary
 			objectStore.put(entry);
 		}
 	}
-	
+
 	async getMatches(requestObject)
 	{
 		var requestedWords = requestObject.words;
 		var options        = requestObject.options;
-		
+
 		var db = await this.willOpen;
-		
+
 		return new Promise(
 			function(resolve, reject)
 			{
@@ -60,10 +60,10 @@ class Dictionary
 						requestedWords    : requestedWords,
 						options           : options
 					};
-					
+
 					var worker = new Worker("wordmatcher.worker.js");
 					worker.postMessage(variables);
-					worker.onmessage = 
+					worker.onmessage =
 					function(e)
 					{
 						var dictOfMatches = e.data;
@@ -73,7 +73,7 @@ class Dictionary
 			}
 		);
 	}
-	
+
 	async removeEntries(listOfWords)
 	{
 		var _this = this;
@@ -84,7 +84,7 @@ class Dictionary
 			objectStore.delete(word);
 		}
 	}
-	
+
 	async getEverything()
 	{
 		var db = await this.willOpen;
@@ -110,19 +110,19 @@ class Dictionary
 			}
 		);
 	}
-	
+
 	async clear()
 	{
 		var db = await this.willOpen;
 		db.transaction(["words"], "readwrite").objectStore("words").clear();
 	}
-	
+
 }
 
 Dictionary.deleteDatabase = function deleteDatabase(profileId)
 {
 	var deleteRequest = window.indexedDB.delete(profileId + "/database");
-	
+
 	return new Promise(
 		resolve => {
 			deleteRequest.onsuccess = resolve;

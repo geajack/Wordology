@@ -18,7 +18,7 @@ WordEditDialog =
 	open: async function(config)
 	{
 		var options = await (new OptionsManager()).getOptions();
-		
+
 		return new Promise(
 			resolve =>
 			{
@@ -46,17 +46,17 @@ WordEditDialog =
 			}
 		);
 	},
-	
+
 	generateDialogHTML: function(config)
 	{
 		var word = config.word;
 		var match = config.match;
 		var lookupURL = config.lookupURL;
-		
+
 		if (match)
 		{
 			var suggestion = match.entry.definition;
-			
+
 			if (!match.exact)
 			{
 				let matchingWord = match.entry.word;
@@ -74,7 +74,7 @@ WordEditDialog =
 			suggestion = "";
 			suggestionNote = "";
 		}
-		
+
 		if (lookupURL)
 		{
 			let url = lookupURL.replace("$", word);
@@ -84,7 +84,7 @@ WordEditDialog =
 		{
 			lookupLink = "";
 		}
-		
+
 		return `
 			<span class="word">${word}</span>
 			<label for="definition">Translation:</label>

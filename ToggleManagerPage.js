@@ -7,17 +7,17 @@ class ToggleManagerPage
 	 *     onToggleOff  : function
 	 * */
 	constructor(name, config)
-	{		
+	{
 		if (config.onFirstOn)
 			this.onFirstOn = config.onFirstOn;
 		if (config.onToggleOn)
 			this.onToggleOn = config.onToggleOn;
 		if (config.onToggleOff)
 			this.onToggleOff = config.onToggleOff;
-			
+
 		this.readyMessageSender = new MessageSender(name + "Ready");
 		this.doneRunningMessageSender = new MessageSender(name + "DoneRunning");
-		
+
 		new MessageSlot(name + "ToggleFirstOn",
 			async (message, sender) =>
 			{
@@ -25,7 +25,7 @@ class ToggleManagerPage
 				this.doneRunningMessageSender.sendToRuntime({});
 			}
 		);
-		
+
 		new MessageSlot(name + "ToggleOn",
 			async (message, sender) =>
 			{
@@ -33,15 +33,15 @@ class ToggleManagerPage
 				this.doneRunningMessageSender.sendToRuntime({});
 			}
 		);
-		
+
 		new MessageSlot(name + "ToggleOff",
 			(message, sender) => this.onToggleOff()
 		);
-		
+
 		this.readyMessageSender.sendToRuntime();
 	}
-	
-	onFirstOn()	{}	
-	onToggleOn() {}	
+
+	onFirstOn()	{}
+	onToggleOn() {}
 	onToggleOff() {}
 }

@@ -5,7 +5,7 @@
 	const GREEK = "\\u0370-\\u03FF";
 	const KOREAN = "\\u3131-\\uD79D";
 	const ALPHABET = LATIN_EXTENDED + CYRILLIC + GREEK + KOREAN;
-	
+
 	var DF = new DictionaryFetcherPage("DictionaryFetcher");
 	var WM = null;
 	var TM = new ToggleManagerPage("ToggleManager",
@@ -16,13 +16,13 @@
 		}
 	);
 	var options;
-	
+
 	async function init()
 	{
 		options = await (new OptionsManager()).getOptions();
 
 		WM = new WordManager(ALPHABET + options.separatorCharacters);
-		
+
 		document.querySelector(":root").style.setProperty(
 			"--wordology-not-defined-color",
 			cssStringFromHex(options.notDefinedColor, options.notDefinedOpacity/100)
@@ -35,10 +35,10 @@
 			"--wordology-similar-color",
 			cssStringFromHex(options.similarColor, options.similarOpacity/100)
 		);
-		
+
 		WM.processNode(document);
 		var listOfWordsOnPage = WM.getWords();
-		
+
 		var dictionaryFetcherRequest =
 			{
 				words   : listOfWordsOnPage,
@@ -46,7 +46,7 @@
 			};
 		var dictOfMatches = await DF.getMatches(dictionaryFetcherRequest);
 		WM.setData(dictOfMatches);
-		
+
 		for (var wordElement of WM.getWordElements())
 		{
 			wordElement.click.addListener(onClickWord);
@@ -54,7 +54,7 @@
 			wordElement.mouseOut.addListener(onMouseOutWord);
 		}
 	}
-	
+
 	function onMouseOverWord(e)
 	{
 		if (e.target.match)
@@ -62,28 +62,28 @@
 			e.target.showPopup();
 		}
 	}
-	
+
 	function onMouseOutWord(e)
 	{
 		e.target.hidePopup();
 	}
-	
+
 	async function onClickWord(e)
 	{
 		var wordElement = e.target;
-		
+
 		if (window.getSelection().toString().length === 0)
 		{
 			e.domEvent.preventDefault();
 			e.domEvent.stopPropagation();
-			
+
 			var userResponse = await WordEditDialog.open(
 				{
 					word: wordElement.getWord(),
 					match: wordElement.getMatch()
 				}
 			);
-			
+
 			if (userResponse.definition)
 			{
 				WM.updateDefinition(wordElement.getWord(), userResponse.definition, options);
@@ -92,7 +92,7 @@
 			}
 		}
 	}
-	
+
 	function cssStringFromHex(hexstring, opacity)
 	{
 		var red   = parseInt(hexstring.substring(1, 3), 16);
