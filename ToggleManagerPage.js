@@ -38,10 +38,20 @@ class ToggleManagerPage
 			(message, sender) => this.onToggleOff()
 		);
 
+		new MessageSlot(name + "LoggedOut",
+			(message, sender) => this.onLoggedOut()
+		);
+
+		new MessageSlot(name + "LoggedOutPress",
+			(message, sender) => this.onLoggedOutPress()
+		);
+
 		this.readyMessageSender.sendToRuntime();
 	}
 
 	onFirstOn()	{}
 	onToggleOn() {}
 	onToggleOff() {}
+	onLoggedOut() {}
+	onLoggedOutPress() {}
 }

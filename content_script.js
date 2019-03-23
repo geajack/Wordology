@@ -6,13 +6,17 @@
 	const KOREAN = "\\u3131-\\uD79D";
 	const ALPHABET = LATIN_EXTENDED + CYRILLIC + GREEK + KOREAN;
 
+	var loggedIn = true;
+
 	var DF = new DictionaryFetcherPage("DictionaryFetcher");
 	var WM = null;
 	var TM = new ToggleManagerPage("ToggleManager",
 		{
-			onFirstOn   : init,
-			onToggleOn  : () => WM.show(),
-			onToggleOff : () => WM.hide()
+			onFirstOn        : init,
+			onToggleOn       : () => WM.show(),
+			onToggleOff      : () => WM.hide(),
+			onLoggedOut      : () => { loggedIn = false; WM.hide(); },
+			onLoggedOutPress : () => { alert("You're logged out."); }
 		}
 	);
 	var options;
@@ -36,6 +40,11 @@
 			cssStringFromHex(options.similarColor, options.similarOpacity/100)
 		);
 
+		if (!this.loggedIn)
+		{
+			return;
+		}
+
 		WM.processNode(document);
 		var listOfWordsOnPage = WM.getWords();
 
@@ -45,6 +54,13 @@
 				options : options
 			};
 		var dictOfMatches = await DF.getMatches(dictionaryFetcherRequest);
+
+		if (!this.loggedIn)
+		{
+			WM.hide();
+			return;
+		}
+
 		WM.setData(dictOfMatches);
 
 		for (var wordElement of WM.getWordElements())
