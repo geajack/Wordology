@@ -15,10 +15,13 @@ class ToggleManagerBackground
 		this.notReadyIcon = config.notReadyIcon;
 
 		this.tabStateMap = new Map();
+		this.loggedIn = true;
 
-		this.firstOnMessageSender   = new MessageSender(name + "ToggleFirstOn");
-		this.toggleOnMessageSender  = new MessageSender(name + "ToggleOn");
-		this.toggleOffMessageSender = new MessageSender(name + "ToggleOff");
+		this.firstOnMessageSender        = new MessageSender(name + "ToggleFirstOn");
+		this.toggleOnMessageSender       = new MessageSender(name + "ToggleOn");
+		this.toggleOffMessageSender      = new MessageSender(name + "ToggleOff");
+		this.loggedOutMessageSender      = new MessageSender(name + "LoggedOut");
+		this.loggedOutPressMessageSender = new MessageSender(name + "LoggedOutPress");
 
 		new MessageSlot(name + "Ready",
 			(message, sender) => this.onReadyMessage(sender.tab.id)
@@ -47,31 +50,63 @@ class ToggleManagerBackground
 	{
 		var state = this.getTabState(tabId);
 
-		switch (state)
+		if (this.loggedIn)
 		{
-			case TabState.NeverOn:
-				this.firstOnMessageSender.sendToTab(tabId, {});
-				this.setTabState(tabId, TabState.Running);
-				browser.browserAction.setIcon({path: this.runningIcon, tabId: tabId});
-			break;
+			switch (state)
+			{
+				case TabState.NeverOn:
+					this.firstOnMessageSender.sendToTab(tabId, {});
+					this.setTabState(tabId, TabState.Running);
+					browser.browserAction.setIcon({path: this.runningIcon, tabId: tabId});
+				break;
 
-			case TabState.Off:
-				this.toggleOnMessageSender.sendToTab(tabId);
-				this.setTabState(tabId, TabState.Running);
-				browser.browserAction.setIcon({path: this.runningIcon, tabId: tabId});
-			break;
+				case TabState.Off:
+					this.toggleOnMessageSender.sendToTab(tabId);
+					this.setTabState(tabId, TabState.Running);
+					browser.browserAction.setIcon({path: this.runningIcon, tabId: tabId});
+				break;
 
-			case TabState.On:
-				this.toggleOffMessageSender.sendToTab(tabId);
-				this.setTabState(tabId, TabState.Off);
-				browser.browserAction.setIcon({path: this.offIcon, tabId: tabId});
-			break;
+				case TabState.On:
+					this.toggleOffMessageSender.sendToTab(tabId);
+					this.setTabState(tabId, TabState.Off);
+					browser.browserAction.setIcon({path: this.offIcon, tabId: tabId});
+				break;
 
-			case undefined:
-			case TabState.Running:
-				// Do nothing.
-			break;
+				case undefined:
+				case TabState.Running:
+					// Do nothing.
+				break;
+			}
 		}
+		else
+		{
+			switch (state)
+			{
+				case TabState.NeverOn:
+				case TabState.Off:
+				case TabState.On:
+					this.loggedOutPressMessageSender();
+				break;
+			}
+		}
+	}
+
+	loggedOut()
+	{
+		this.loggedIn = false;
+		for (let tabId of this.tabStateMap.keys())
+		{
+			if (this.tabStateMap[tabId] != TabState.NeverOn)
+			{
+				this.tabStateMap[tabId] = TabState.LoggedOut;
+				this.loggedOutMessageSender.sendToTab(tabId);
+			}
+		}
+	}
+
+	changedProfile()
+	{
+		this.loggedIn = true;
 	}
 
 	getTabState(tabId)
@@ -102,14 +137,28 @@ class ToggleManagerBackground
 
 	onReadyMessage(tabId)
 	{
-		this.setTabState(tabId, TabState.NeverOn);
+		if (this.loggedIn)
+		{
+			this.setTabState(tabId, TabState.NeverOn);
+		}
+		else
+		{
+			this.setTabState(tabId, TabState.LoggedOut);
+		}
 		browser.browserAction.setIcon({path: this.offIcon, tabId: tabId});
 	}
 
 	onDoneRunningMessage(tabId)
 	{
-		this.setTabState(tabId, TabState.On);
-		browser.browserAction.setIcon({path: this.onIcon, tabId: tabId});
+		if (this.loggedIn)
+		{
+			this.setTabState(tabId, TabState.On);
+			browser.browserAction.setIcon({path: this.onIcon, tabId: tabId});
+		}
+		else
+		{
+			this.setTabState(tabId, TabState.LoggedOut);
+		}
 	}
 
 }
