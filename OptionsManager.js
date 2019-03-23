@@ -125,22 +125,9 @@ class OptionsManager
 
 	async setOption(optionName, value)
 	{
-		if (this.dataSetPending)
-		{
-			throw new Error(
-				`Attempted to call OptionsManager.setOption() while data set was still pending.
-				Due to the way localStorage works, you must wait for the previous set to complete
-				before setting again.`
-			);
-		}
-
-		var localData = await browser.storage.local.get();
-		var profileId = localData["profile"];
-		var options = localData[profileId + "/options"];
-		options[optionName] = value;
-		var dataToSet = {}
-		dataToSet[profileId + "/options"] = options;
-		return await this.safeLocalStorageSet(dataToSet);
+		var valuesToSet = {};
+		valuesToSet[optionName] = value;
+		return await this.setOptions(valuesToSet);
 	}
 
 	async setCurrentProfile(id)
