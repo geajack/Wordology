@@ -116,6 +116,12 @@ class OptionsManager
 
 		var localData = await browser.storage.local.get();
 		var profileId = localData["profile"];
+
+		if (profileId)
+		{
+			throw new Error();
+		}
+
 		var currentOptions = localData[profileId + "/options"];
 		var modifiedOptions = Object.assign({}, currentOptions, valuesToSet);
 		var dataToSet = {};
