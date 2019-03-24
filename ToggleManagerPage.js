@@ -12,6 +12,10 @@ class ToggleManagerPage
 			this.onLoggedOut = config.onLoggedOut;
 		if (config.onLoggedOutPress)
 			this.onLoggedOutPress = config.onLoggedOutPress;
+		if (config.onChangedProfile)
+			this.onChangedProfile = config.onChangedProfile;
+		if (config.onChangedProfilePress)
+			this.onChangedProfilePress = config.onChangedProfilePress;
 
 		this.readyMessageSender = new MessageSender(name + "Ready");
 		this.doneRunningMessageSender = new MessageSender(name + "DoneRunning");
@@ -44,6 +48,14 @@ class ToggleManagerPage
 			(message, sender) => this.onLoggedOutPress()
 		);
 
+		new MessageSlot(name + "ChangedProfile",
+			(message, sender) => this.onChangedProfile()
+		);
+
+		new MessageSlot(name + "ChangedProfilePress",
+			(message, sender) => this.onChangedProfilePress()
+		);
+
 		this.readyMessageSender.sendToRuntime();
 	}
 
@@ -52,4 +64,6 @@ class ToggleManagerPage
 	onToggleOff() {}
 	onLoggedOut() {}
 	onLoggedOutPress() {}
+	onChangedProfile() {}
+	onChangedProfilePress() {}
 }

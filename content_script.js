@@ -12,11 +12,13 @@
 	var WM = null;
 	var TM = new ToggleManagerPage("ToggleManager",
 		{
-			onFirstOn        : init,
-			onToggleOn       : () => WM.show(),
-			onToggleOff      : () => WM.hide(),
-			onLoggedOut      : () => { loggedIn = false; WM.hide(); },
-			onLoggedOutPress : () => { alert("You're logged out."); }
+			onFirstOn             : init,
+			onToggleOn            : () => WM.show(),
+			onToggleOff           : () => WM.hide(),
+			onLoggedOut           : () => { loggedIn = false; WM.hide(); },
+			onLoggedOutPress      : () => { alert("You're logged out."); },
+			onChangedProfile      : () => { loggedIn = false; WM.hide(); },
+			onChangedProfilePress : () => { alert("You have changed profile."); }
 		}
 	);
 	var options;
