@@ -1,11 +1,5 @@
 class ToggleManagerPage
 {
-	/*
-	 * config
-	 *     onFirstOn    : function
-	 *     onToggleOn   : function
-	 *     onToggleOff  : function
-	 * */
 	constructor(name, config)
 	{
 		if (config.onFirstOn)
@@ -14,6 +8,10 @@ class ToggleManagerPage
 			this.onToggleOn = config.onToggleOn;
 		if (config.onToggleOff)
 			this.onToggleOff = config.onToggleOff;
+		if (config.onLoggedOut)
+			this.onLoggedOut = config.onLoggedOut;
+		if (config.onLoggedOutPress)
+			this.onLoggedOutPress = config.onLoggedOutPress;
 
 		this.readyMessageSender = new MessageSender(name + "Ready");
 		this.doneRunningMessageSender = new MessageSender(name + "DoneRunning");

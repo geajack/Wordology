@@ -119,9 +119,9 @@ class OptionsManager
 		var localData = await browser.storage.local.get();
 		var profileId = localData["profile"];
 
-		if (profileId)
+		if (profileId === null)
 		{
-			throw new Error();
+			throw new Error("Attempted to set options while not logged into a profile.");
 		}
 
 		var currentOptions = localData[profileId + "/options"];
@@ -145,7 +145,7 @@ class OptionsManager
 
 	async deleteProfile(id)
 	{
-		var profiles = await browser.storage.local.get("profiles");
+		var profiles = (await browser.storage.local.get("profiles")).profiles;
 		var newProfiles = profiles.filter(profile => profile.id !== id);
 		var currentProfile = await this.getCurrentProfileId();
 		var newProfile;
@@ -163,7 +163,9 @@ class OptionsManager
 			profiles: newProfiles
 		}
 
-		return await this.safeLocalStorageSet(dataToSet);
+		await this.safeLocalStorageSet(dataToSet);
+
+		return await browser.storage.local.remove(id + "/options");
 	}
 
 	async createProfile(name)

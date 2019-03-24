@@ -13,12 +13,29 @@
 	);
 
 	var profileId = await OM.getCurrentProfileId();
-    var DF = new DictionaryFetcherBackground("DictionaryFetcher", new Dictionary(profileId));
-    OM.addOnChangeProfileListener(onChangeProfile);
+    var DF = new DictionaryFetcherBackground("DictionaryFetcher");
+	OM.addOnChangeProfileListener(onChangeProfile);
+
+	if (profileId !== null)
+	{
+		DF.setDictionary(new Dictionary(profileId));
+	}
+	else
+	{
+		TM.loggedOut();
+	}
 
     function onChangeProfile(profileId)
     {
-        console.log("Profile changed to " + profileId);
-        DF.setDictionary(new Dictionary(profileId));
+		if (profileId !== null)
+		{
+			console.log("Profile changed to " + profileId);
+			DF.setDictionary(new Dictionary(profileId));
+			TM.loggedIn();
+		}
+		else
+		{
+			TM.loggedOut();
+		}
     }
 })();

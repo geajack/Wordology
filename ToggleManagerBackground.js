@@ -15,7 +15,7 @@ class ToggleManagerBackground
 		this.notReadyIcon = config.notReadyIcon;
 
 		this.tabStateMap = new Map();
-		this.loggedIn = true;
+		this.amLoggedIn = true;
 
 		this.firstOnMessageSender        = new MessageSender(name + "ToggleFirstOn");
 		this.toggleOnMessageSender       = new MessageSender(name + "ToggleOn");
@@ -50,7 +50,7 @@ class ToggleManagerBackground
 	{
 		var state = this.getTabState(tabId);
 
-		if (this.loggedIn)
+		if (this.amLoggedIn)
 		{
 			switch (state)
 			{
@@ -72,6 +72,10 @@ class ToggleManagerBackground
 					browser.browserAction.setIcon({path: this.offIcon, tabId: tabId});
 				break;
 
+				case TabState.LoggedOut:
+					this.loggedOutPressMessageSender.sendToTab(tabId);
+				break;
+
 				case undefined:
 				case TabState.Running:
 					// Do nothing.
@@ -85,7 +89,8 @@ class ToggleManagerBackground
 				case TabState.NeverOn:
 				case TabState.Off:
 				case TabState.On:
-					this.loggedOutPressMessageSender();
+				case TabState.LoggedOut:
+					this.loggedOutPressMessageSender.sendToTab(tabId);
 				break;
 			}
 		}
@@ -93,20 +98,21 @@ class ToggleManagerBackground
 
 	loggedOut()
 	{
-		this.loggedIn = false;
+		this.amLoggedIn = false;
 		for (let tabId of this.tabStateMap.keys())
 		{
 			if (this.tabStateMap[tabId] != TabState.NeverOn)
 			{
-				this.tabStateMap[tabId] = TabState.LoggedOut;
+				this.setTabState(tabId, TabState.LoggedOut);
+				browser.browserAction.setIcon({path: this.offIcon, tabId: tabId});
 				this.loggedOutMessageSender.sendToTab(tabId);
 			}
 		}
 	}
 
-	changedProfile()
+	loggedIn()
 	{
-		this.loggedIn = true;
+		this.amLoggedIn = true;
 	}
 
 	getTabState(tabId)
@@ -137,7 +143,7 @@ class ToggleManagerBackground
 
 	onReadyMessage(tabId)
 	{
-		if (this.loggedIn)
+		if (this.amLoggedIn)
 		{
 			this.setTabState(tabId, TabState.NeverOn);
 		}
@@ -150,7 +156,7 @@ class ToggleManagerBackground
 
 	onDoneRunningMessage(tabId)
 	{
-		if (this.loggedIn)
+		if (this.amLoggedIn)
 		{
 			this.setTabState(tabId, TabState.On);
 			browser.browserAction.setIcon({path: this.onIcon, tabId: tabId});

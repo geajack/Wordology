@@ -1,5 +1,5 @@
-class WordManager {
-
+class WordManager
+{
 	constructor(alphabet) {
 		this.wordElements = [];
 		this.regexp = new RegExp("([^" + alphabet + "]+)");

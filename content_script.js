@@ -40,7 +40,7 @@
 			cssStringFromHex(options.similarColor, options.similarOpacity/100)
 		);
 
-		if (!this.loggedIn)
+		if (!loggedIn)
 		{
 			return;
 		}
@@ -55,7 +55,7 @@
 			};
 		var dictOfMatches = await DF.getMatches(dictionaryFetcherRequest);
 
-		if (!this.loggedIn)
+		if (!loggedIn)
 		{
 			WM.hide();
 			return;
