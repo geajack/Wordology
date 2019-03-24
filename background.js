@@ -1,4 +1,5 @@
-(async function BackgroundScript() {
+(async function BackgroundScript()
+{
 		var OM = new OptionsManager();
 		await OM.initializeStorage();
 
@@ -15,10 +16,12 @@
 		var DF = new DictionaryFetcherBackground("DictionaryFetcher");
 		OM.addOnChangeProfileListener(onChangeProfile);
 
-		if (profileId !== null) {
+		if (profileId !== null)
+		{
 			DF.setDictionary(new Dictionary(profileId));
 		}
-		else {
+		else
+		{
 			TM.loggedOut();
 		}
 
