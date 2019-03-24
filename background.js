@@ -25,7 +25,6 @@
 		function onChangeProfile(profileId) {
 			if (profileId !== null)
 			{
-				console.log("Profile changed to " + profileId);
 				DF.setDictionary(new Dictionary(profileId));
 				TM.loggedIn();
 			}
