@@ -17,11 +17,13 @@ class ToggleManagerBackground
 		this.tabStateMap = new Map();
 		this.amLoggedIn = true;
 
-		this.firstOnMessageSender        = new MessageSender(name + "ToggleFirstOn");
-		this.toggleOnMessageSender       = new MessageSender(name + "ToggleOn");
-		this.toggleOffMessageSender      = new MessageSender(name + "ToggleOff");
-		this.loggedOutMessageSender      = new MessageSender(name + "LoggedOut");
-		this.loggedOutPressMessageSender = new MessageSender(name + "LoggedOutPress");
+		this.firstOnMessageSender             = new MessageSender(name + "ToggleFirstOn");
+		this.toggleOnMessageSender            = new MessageSender(name + "ToggleOn");
+		this.toggleOffMessageSender           = new MessageSender(name + "ToggleOff");
+		this.loggedOutMessageSender           = new MessageSender(name + "LoggedOut");
+		this.loggedOutPressMessageSender      = new MessageSender(name + "LoggedOutPress");
+		this.changedProfileMessageSender      = new MessageSender(name + "ChangedProfile");
+		this.changedProfilePressMessageSender = new MessageSender(name + "ChangedProfilePress");
 
 		new MessageSlot(name + "Ready",
 			(message, sender) => this.onReadyMessage(sender.tab.id)
@@ -76,6 +78,10 @@ class ToggleManagerBackground
 					this.loggedOutPressMessageSender.sendToTab(tabId);
 				break;
 
+				case TabState.ChangedProfile:
+					this.changedProfilePressMessageSender.sendToTab(tabId);
+				break;
+
 				case undefined:
 				case TabState.Running:
 					// Do nothing.
@@ -90,6 +96,7 @@ class ToggleManagerBackground
 				case TabState.Off:
 				case TabState.On:
 				case TabState.LoggedOut:
+				case TabState.ChangedProfile:
 					this.loggedOutPressMessageSender.sendToTab(tabId);
 				break;
 			}
@@ -113,6 +120,15 @@ class ToggleManagerBackground
 	loggedIn()
 	{
 		this.amLoggedIn = true;
+		for (let tabId of this.tabStateMap.keys())
+		{
+			if (this.tabStateMap[tabId] != TabState.NeverOn)
+			{
+				this.setTabState(tabId, TabState.ChangedProfile);
+				browser.browserAction.setIcon({path: this.offIcon, tabId: tabId});
+				this.changedProfileMessageSender.sendToTab(tabId);
+			}
+		}
 	}
 
 	getTabState(tabId)
@@ -158,12 +174,20 @@ class ToggleManagerBackground
 	{
 		if (this.amLoggedIn)
 		{
-			this.setTabState(tabId, TabState.On);
-			browser.browserAction.setIcon({path: this.onIcon, tabId: tabId});
+			if (this.getTabState(tabId) === TabState.ChangedProfile)
+			{
+				browser.browserAction.setIcon({path: this.offIcon, tabId: tabId});
+			}
+			else
+			{
+				this.setTabState(tabId, TabState.On);
+				browser.browserAction.setIcon({path: this.onIcon, tabId: tabId});
+			}
 		}
 		else
 		{
 			this.setTabState(tabId, TabState.LoggedOut);
+			browser.browserAction.setIcon({path: this.offIcon, tabId: tabId});
 		}
 	}
 
