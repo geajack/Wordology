@@ -30,9 +30,12 @@ class DictionaryTabController
         var definition = this.dictionaryData[word].definition;
         var match = { entry: { word: word, definition: definition }, exact: true };
         var result = await WordEditDialog.open({ word: word, match: match });
-        this.dictionaryData[word].definition = result.definition;
-        this.D.setData([{ word: word, definition: result.definition }]);
-        this.loadWordList(this.dictionaryData);
+        if (result.definition)
+        {
+            this.dictionaryData[word].definition = result.definition;
+            this.D.setData([{ word: word, definition: result.definition }]);
+            this.loadWordList(this.dictionaryData);
+        }
     }
 
     onDeleteWord(word)
