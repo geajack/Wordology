@@ -46,6 +46,7 @@ h1, h2
 	box-sizing: border-box;
 	position: relative;
 	top: 1px;
+	z-index: 2;
 }
 #navBar li
 {
