@@ -38,21 +38,29 @@ class RootController
     async onClickAddProfile()
     {
         var name = prompt("Enter new profile name:");
-        await this.OM.createProfile(name);
-        this.reloadProfiles();
+        if (name)
+        {
+            await this.OM.createProfile(name);
+            this.reloadProfiles();
+        }
     }
 
     async onClickRenameProfile()
     {
         var name = prompt(`Enter new profile name for "${this.selectedProfile.name}":`);
-        await this.OM.renameProfile(this.selectedProfile.id, name);
-        this.reloadProfiles();
+        if (name)
+        {
+            await this.OM.renameProfile(this.selectedProfile.id, name);
+            this.reloadProfiles();
+        }
     }
 
     async onClickDeleteProfile()
     {
-        var response = confirm("Definitely delete profile?");
-        if (response === true)
+        var response = prompt(
+            `Definitely delete profile "${this.selectedProfile.name}"? Your wordlist and settings will be gone forever.\nType DELETE (all-caps) to delete.`
+        );
+        if (response === "DELETE")
         {
             await this.OM.deleteProfile(this.selectedProfile.id);
             this.reloadProfiles();
