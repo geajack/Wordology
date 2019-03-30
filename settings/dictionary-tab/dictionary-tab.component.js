@@ -5,16 +5,18 @@ class DictionaryTabController
         this.$scope = $scope;
         this.wordList = null;
         this.downloadUri = "";
-        this.initialize();
+        this.reloadWords();
         this.wordListColumns = [
             { name: "word", label: "Word", searchable: true },
             { name: "definition", label: "Definition", searchable: true }
         ];
         this.onClickWord = this.onClickWord.bind(this);
         this.onDeleteWord = this.onDeleteWord.bind(this);
+
+        this.$scope.$on("reload", () => this.reloadWords());
     }
 
-    async initialize()
+    async reloadWords()
     {
         var OM = new OptionsManager();
         var profileId = await OM.getCurrentProfileId();

@@ -13,10 +13,17 @@ class RootController
         );
         this.OM.getCurrentProfileId().then(
             profileId => {
-                this.currentProfileId = profileId;
+                this.selectedProfile = this.profiles.filter(profile => profile.id === profileId)[0];
                 this.$scope.$digest();
             }
         );
+        this.selectedProfile = null;
+    }
+
+    async profileChanged()
+    {
+        this.OM.setCurrentProfile(this.selectedProfile.id);
+        this.$scope.$broadcast("reload");
     }
 }
 

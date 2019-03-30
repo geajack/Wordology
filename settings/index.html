@@ -53,10 +53,13 @@
 
 	<div id="profileSelector">
         <label>Profile</label>
-        {{controller.currentProfileId}}
-		<select>
-            <option ng-repeat="profile in controller.profiles">{{profile.name}}</option>
+		<select
+			ng-model="controller.selectedProfile"
+			ng-change="controller.profileChanged()"
+			ng-options="profile.name for profile in controller.profiles track by profile.id"
+		>
 		</select>
+
 	</div>
 
 </body>

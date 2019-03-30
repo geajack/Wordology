@@ -9,15 +9,8 @@ class OptionsTabController
         this.prefixInput = "";
         this.suffixInput = "";
         this.$scope = $scope;
-        this.OM.getOptions().then(options => {
-            this.options = options;
-            this.oldOptions = Object.assign({}, options);
-            this.optionsLoaded = true;
-            this.blacklistedPrefixes = this.options.blacklistedPrefixes.map(prefix => ({ prefix: prefix}));
-            this.whitelistedSuffixes = this.options.whitelistedSuffixes.map(suffix => ({ suffix: suffix}));
-            this.$scope.$digest();
-        });
-        
+        this.reloadOptions();
+
         this.prefixColumns = [
             { name: "prefix", label: "Prefix", searchable: false }
         ];
@@ -27,6 +20,8 @@ class OptionsTabController
 
         this.onDeletePrefix = this.onDeletePrefix.bind(this);
         this.onDeleteSuffix = this.onDeleteSuffix.bind(this);
+
+        this.$scope.$on("reload", () => this.reloadOptions());
     }
 
     addPrefix()
@@ -37,12 +32,23 @@ class OptionsTabController
             () =>
             {
                 this.blacklistedPrefixes = backup;
-                this.blacklistedPrefixes.push({ prefix: this.prefixInput });        
+                this.blacklistedPrefixes.push({ prefix: this.prefixInput });
                 this.prefixInput = "";
                 this.OM.setOption("blacklistedPrefixes", this.blacklistedPrefixes.map(row => row.prefix));
                 this.$scope.$digest();
             }
         );
+    }
+
+    async reloadOptions()
+    {
+        var options = await this.OM.getOptions();
+        this.options = options;
+        this.oldOptions = Object.assign({}, options);
+        this.optionsLoaded = true;
+        this.blacklistedPrefixes = this.options.blacklistedPrefixes.map(prefix => ({ prefix: prefix}));
+        this.whitelistedSuffixes = this.options.whitelistedSuffixes.map(suffix => ({ suffix: suffix}));
+        this.$scope.$digest();
     }
 
     onDeletePrefix(deletedPrefix)
@@ -65,7 +71,7 @@ class OptionsTabController
             () =>
             {
                 this.whitelistedSuffixes = backup;
-                this.whitelistedSuffixes.push({ suffix: this.suffixInput });        
+                this.whitelistedSuffixes.push({ suffix: this.suffixInput });
                 this.suffixInput = "";
                 this.OM.setOption("whitelistedSuffixes", this.whitelistedSuffixes.map(row => row.suffix));
                 this.$scope.$digest();
@@ -103,7 +109,7 @@ class OptionsTabController
                 if (this.options[key] !== this.oldOptions[key])
                 {
                     this.oldOptions[key] = this.options[key];
-                    this.onUserChangeOption(key, this.options[key]);                    
+                    this.onUserChangeOption(key, this.options[key]);
                 }
             }
         }
