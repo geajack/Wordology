@@ -42,13 +42,23 @@ class OptionsTabController
 
     async reloadOptions()
     {
-        var options = await this.OM.getOptions();
-        this.options = options;
-        this.oldOptions = Object.assign({}, options);
-        this.optionsLoaded = true;
-        this.blacklistedPrefixes = this.options.blacklistedPrefixes.map(prefix => ({ prefix: prefix}));
-        this.whitelistedSuffixes = this.options.whitelistedSuffixes.map(suffix => ({ suffix: suffix}));
-        this.$scope.$digest();
+        try
+        {
+            var options = await this.OM.getOptions();
+            this.options = options;
+            this.oldOptions = Object.assign({}, options);
+            this.optionsLoaded = true;
+            this.blacklistedPrefixes = this.options.blacklistedPrefixes.map(prefix => ({ prefix: prefix}));
+            this.whitelistedSuffixes = this.options.whitelistedSuffixes.map(suffix => ({ suffix: suffix}));
+            this.$scope.$digest();
+        }
+        catch
+        {
+            this.options = null;
+            this.blacklistedPrefixes = [];
+            this.whitelistedSuffixes = [];
+            this.$scope.$digest();
+        }
     }
 
     onDeletePrefix(deletedPrefix)
