@@ -5,19 +5,18 @@ class RootController
         this.$scope = $scope;
         this.OM = new OptionsManager();
         this.tab = "options";
-        this.OM.getProfiles().then(
-            listOfProfiles => {
-                this.profiles = listOfProfiles;
-                this.$scope.$digest();
-            }
-        );
-        this.OM.getCurrentProfileId().then(
-            profileId => {
-                this.selectedProfile = this.profiles.filter(profile => profile.id === profileId)[0];
-                this.$scope.$digest();
-            }
-        );
         this.selectedProfile = null;
+        this.reloadProfiles();
+    }
+
+    async reloadProfiles()
+    {
+        var listOfProfiles = await this.OM.getProfiles();
+        this.profiles = listOfProfiles;
+        var profileId = await this.OM.getCurrentProfileId();
+        this.selectedProfile = this.profiles.filter(profile => profile.id === profileId)[0];
+        this.$scope.$digest();
+        this.$scope.$broadcast("reload");
     }
 
     async profileChanged()
@@ -26,19 +25,28 @@ class RootController
         this.$scope.$broadcast("reload");
     }
 
-    onClickAddProfile()
+    async onClickAddProfile()
     {
-
+        var name = prompt("Enter new profile name:");
+        await this.OM.createProfile(name);
+        this.reloadProfiles();
     }
 
-    onClickRenameProfile()
+    async onClickRenameProfile()
     {
-
+        var name = prompt(`Enter new profile name for "${this.selectedProfile.name}":`);
+        await this.OM.renameProfile(this.selectedProfile.id, name);
+        this.reloadProfiles();
     }
 
-    onClickDeleteProfile()
+    async onClickDeleteProfile()
     {
-
+        var response = confirm("Definitely delete profile?");
+        if (response === true)
+        {
+            await this.OM.deleteProfile(this.selectedProfile.id);
+            this.reloadProfiles();
+        }
     }
 }
 
