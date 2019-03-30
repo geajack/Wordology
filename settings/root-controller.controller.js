@@ -40,7 +40,8 @@ class RootController
         var name = prompt("Enter new profile name:");
         if (name)
         {
-            await this.OM.createProfile(name);
+            var newId = await this.OM.createProfile(name);
+            await this.OM.setCurrentProfile(newId);
             this.reloadProfiles();
         }
     }

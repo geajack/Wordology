@@ -187,7 +187,8 @@ class OptionsManager
 		dataToSet["profiles"] = profiles;
 		dataToSet[newId + "/options"] = OptionsManager.DefaultOptions;
 
-		return await this.safeLocalStorageSet(dataToSet);
+		await this.safeLocalStorageSet(dataToSet);
+		return newId;
 	}
 
 	async renameProfile(id, name)
