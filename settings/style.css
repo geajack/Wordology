@@ -34,6 +34,7 @@ h1, h2
 {
 	max-width: 1000px;
 	margin: auto;
+	margin-top: 10px;
 }
 
 #navBar
@@ -104,7 +105,7 @@ h1, h2
 #profileSelector select
 {
 	width: 150px;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .page > *:first-child
