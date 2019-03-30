@@ -136,6 +136,11 @@ h1, h2
 	margin-top: 0px;
 }
 
+.page.disabled
+{
+	background-color: pink;
+}
+
 /***************************************************************
  *
  *     OPTIONS TAB

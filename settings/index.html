@@ -44,11 +44,17 @@
 			<li ng-class="controller.tab == 'help'? 'activeTab':''" ng-click="controller.tab='help'">Help</li>
 		</ul>
 
-		<options-tab id="pageOptions" class="page" ng-class="controller.tab == 'options'? 'activePage':''"></options-tab>
+		<options-tab id="pageOptions" class="page"
+			ng-class="{activePage: controller.tab == 'options', disabled: controller.selectedProfile === null}"
+		></options-tab>
 
-		<dictionary-tab id="pageDictionary" class="page" ng-class="controller.tab == 'dictionary'? 'activePage':''"></dictionary-tab>
+		<dictionary-tab id="pageDictionary" class="page"
+			ng-class="{activePage: controller.tab == 'dictionary', disabled: controller.selectedProfile === null}"
+		></dictionary-tab>
 
-		<help-tab id="pageHelp" class="page" ng-class="controller.tab == 'help'? 'activePage':''"></help-tab>
+		<help-tab id="pageHelp" class="page"
+			ng-class="{activePage: controller.tab == 'help'}"
+		></help-tab>
 	</div>
 
 	<div id="profileSelector">

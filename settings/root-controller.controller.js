@@ -14,14 +14,24 @@ class RootController
         var listOfProfiles = await this.OM.getProfiles();
         this.profiles = listOfProfiles;
         var profileId = await this.OM.getCurrentProfileId();
-        this.selectedProfile = this.profiles.filter(profile => profile.id === profileId)[0];
+        if (profileId !== null)
+        {
+            this.selectedProfile = this.profiles.filter(profile => profile.id === profileId)[0];
+        }
+        else
+        {
+            this.selectedProfile = null;
+        }
         this.$scope.$digest();
         this.$scope.$broadcast("reload");
     }
 
     async profileChanged()
     {
-        this.OM.setCurrentProfile(this.selectedProfile.id);
+        if (this.selectedProfile)
+        {
+            this.OM.setCurrentProfile(this.selectedProfile.id);
+        }
         this.$scope.$broadcast("reload");
     }
 
