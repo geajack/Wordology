@@ -67,8 +67,9 @@
 		<select
 			ng-model="controller.selectedProfile"
 			ng-change="controller.profileChanged()"
-			ng-options="profile.name for profile in controller.profiles track by profile.id"
 		>
+			<option ng-value="null" ng-if="controller.selectedProfile === null">&lt;None&gt;</option>
+			<option ng-repeat="profile in controller.profiles" ng-value="profile">{{profile.name}}</option>
 		</select>
 
 	</div>
