@@ -25,6 +25,21 @@ class RootController
         this.OM.setCurrentProfile(this.selectedProfile.id);
         this.$scope.$broadcast("reload");
     }
+
+    onClickAddProfile()
+    {
+
+    }
+
+    onClickRenameProfile()
+    {
+
+    }
+
+    onClickDeleteProfile()
+    {
+
+    }
 }
 
 app.controller("RootController", RootController);

@@ -52,7 +52,12 @@
 	</div>
 
 	<div id="profileSelector">
-        <label>Profile</label>
+        <div>
+			Profile
+			<button ng-click="controller.onClickAddProfile()" title="Add profile">+</button>
+			<button ng-click="controller.onClickRenameProfile()" title="Rename profile">R</button>
+			<button ng-click="controller.onClickDeleteProfile()" title="Delete profile">-</button>
+		</div>
 		<select
 			ng-model="controller.selectedProfile"
 			ng-change="controller.profileChanged()"
