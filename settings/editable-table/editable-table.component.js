@@ -19,11 +19,11 @@ class EditableTableController
         if (confirm(`Delete "${row[this.primaryKey]}"?`))
         {
             this.dataset = this.dataset.filter(r => r[this.primaryKey] !== row[this.primaryKey]);
+            this.updateView();
             if (this.deleteRowCallback)
             {
-                this.deleteRowCallback(row[this.primaryKey]);
+                setTimeout(() => this.deleteRowCallback(row[this.primaryKey]));
             }
-            this.updateView();
         }
     }
 

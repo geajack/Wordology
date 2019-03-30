@@ -41,6 +41,14 @@ class DictionaryTabController
     onDeleteWord(word)
     {
         this.D.removeEntries([word]);
+        var dictOfEntries = {}
+        for (let entry of this.wordList)
+        {
+            dictOfEntries[entry.word] = entry;
+        }
+        var json = JSON.stringify(dictOfEntries);
+        var downloadUri = `data:application/json,${json}`;
+        document.getElementById("downloadLink").setAttribute("href", downloadUri); // Firefox's security features prevent AngularJS from setting href
     }
 
     loadWordList(dictOfEntries)
