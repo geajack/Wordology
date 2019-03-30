@@ -1,4 +1,5 @@
-<div>
+<div class="cover">Log in to a profile to access options.</div>
+<main>
     <section id="wordListSection">
         <editable-table ng-if="ctrl.wordList.length > 0" id="wordTable"
             dataset="ctrl.wordList"
@@ -17,4 +18,4 @@
         <button id="importButton" ng-click="ctrl.requestImportFile()">Import from file</button>
         <button id="clearButton" ng-click="ctrl.clearData()">Clear Data</button>
     </section>
-</div>
+</main>
