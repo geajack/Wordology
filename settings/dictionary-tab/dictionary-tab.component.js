@@ -87,13 +87,14 @@ class DictionaryTabController
         }
     }
 
-    importFile(data)
+    async importFile(data)
     {
         try
         {
             var dictOfEntries = JSON.parse(data);
+            await this.D.setData(Object.values(dictOfEntries));
+            var dictOfEntries = await this.D.getEverything();
             this.loadWordList(dictOfEntries);
-            this.D.setData(Object.values(dictOfEntries));
         }
         catch
         {
