@@ -121,7 +121,7 @@ class Dictionary
 
 Dictionary.deleteDatabase = function deleteDatabase(profileId)
 {
-	var deleteRequest = window.indexedDB.delete(profileId + "/database");
+	var deleteRequest = window.indexedDB.deleteDatabase(profileId + "/database");
 
 	return new Promise(
 		resolve => {

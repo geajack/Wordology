@@ -63,6 +63,7 @@ class RootController
         if (response === "DELETE")
         {
             await this.OM.deleteProfile(this.selectedProfile.id);
+            Dictionary.deleteDatabase(this.selectedProfile.id);
             this.reloadProfiles();
         }
     }
