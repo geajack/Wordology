@@ -29,7 +29,7 @@ class EditableTableController
 
     updateView()
     {
-        this.tableParams.settings().dataset = this.dataset;
+        this.tableParams.settings().dataset = angular.copy(this.dataset);
         this.tableParams.reload();
     }
 
@@ -41,7 +41,7 @@ class EditableTableController
             tableParameters.count = Infinity;
         }
 
-        this.tableParams = new this.NgTableParams(tableParameters, { dataset: this.dataset, filterOptions: { filterComparator: this.filterComparator } });
+        this.tableParams = new this.NgTableParams(tableParameters, { dataset: angular.copy(this.dataset), filterOptions: { filterComparator: this.filterComparator } });
         this.ngTableColumns = this.columns.map(
             column => {
                 let filter = {};
