@@ -48,8 +48,16 @@ class OptionsTabController
             this.options = options;
             this.oldOptions = Object.assign({}, options);
             this.optionsLoaded = true;
-            this.blacklistedPrefixes = this.options.blacklistedPrefixes.map(prefix => ({ prefix: prefix}));
-            this.whitelistedSuffixes = this.options.whitelistedSuffixes.map(suffix => ({ suffix: suffix}));
+            this.blacklistedPrefixes = null;
+            this.whitelistedSuffixes = null;
+            setTimeout(
+                () =>
+                {
+                    this.blacklistedPrefixes = this.options.blacklistedPrefixes.map(prefix => ({ prefix: prefix}));
+                    this.whitelistedSuffixes = this.options.whitelistedSuffixes.map(suffix => ({ suffix: suffix}));
+                    this.$scope.$digest();
+                }
+            );
             this.$scope.$digest();
         }
         catch
