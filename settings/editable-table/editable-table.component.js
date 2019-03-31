@@ -16,15 +16,23 @@ class EditableTableController
 
     deleteRow(row)
     {
-        if (confirm(`Delete "${row[this.primaryKey]}"?`))
-        {
-            this.dataset = this.dataset.filter(r => r[this.primaryKey] !== row[this.primaryKey]);
-            this.updateView();
-            if (this.deleteRowCallback)
+        vex.dialog.buttons.YES.text = "Yes";
+        vex.dialog.buttons.NO.text = "No";
+        vex.dialog.confirm({
+            message: `Delete "${row[this.primaryKey]}"?`,
+            callback: response =>
             {
-                setTimeout(() => this.deleteRowCallback(row[this.primaryKey]));
+                if (response === true)
+                {
+                    this.dataset = this.dataset.filter(r => r[this.primaryKey] !== row[this.primaryKey]);
+                    this.updateView();
+                    if (this.deleteRowCallback)
+                    {
+                        setTimeout(() => this.deleteRowCallback(row[this.primaryKey]));
+                    }
+                }
             }
-        }
+        });
     }
 
     updateView()

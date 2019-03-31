@@ -37,7 +37,7 @@ class RootController
 
     async onClickAddProfile()
     {
-        var name = prompt("Enter new profile name:");
+        var name = await this.showPrompt("Enter new profile name:");
         if (name)
         {
             var newId = await this.OM.createProfile(name);
@@ -48,7 +48,7 @@ class RootController
 
     async onClickRenameProfile()
     {
-        var name = prompt(`Enter new profile name for "${this.selectedProfile.name}":`);
+        var name = await this.showPrompt(`Enter new profile name for "${this.selectedProfile.name}":`);
         if (name)
         {
             await this.OM.renameProfile(this.selectedProfile.id, name);
@@ -58,7 +58,7 @@ class RootController
 
     async onClickDeleteProfile()
     {
-        var response = prompt(
+        var response = await this.showPrompt(
             `Definitely delete profile "${this.selectedProfile.name}"? Your wordlist and settings will be gone forever.\nType DELETE (all-caps) to delete.`
         );
         if (response === "DELETE")
@@ -67,6 +67,17 @@ class RootController
             Dictionary.deleteDatabase(this.selectedProfile.id);
             this.reloadProfiles();
         }
+    }
+
+    async showPrompt(message)
+    {
+        vex.dialog.buttons.YES.text = "OK";
+        vex.dialog.buttons.NO.text = "Cancel";
+        return new Promise(
+            resolve => {
+                vex.dialog.prompt({message: message, callback: resolve});
+            }
+        );
     }
 }
 

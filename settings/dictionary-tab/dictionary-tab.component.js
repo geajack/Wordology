@@ -79,15 +79,21 @@ class DictionaryTabController
 
     clearData()
     {
-        var result = prompt(
-            "To delete your entire wordlist for this profile permanently,\n" +
-            "type DELETE below in all-capital letters, and click OK."
-        );
-        if (result === "DELETE")
-        {
-            this.loadWordList({});
-            this.D.clear();
-        }
+        vex.dialog.buttons.YES.text = "OK";
+        vex.dialog.buttons.NO.text = "Cancel";
+        vex.dialog.prompt({
+            message:
+                "To delete your entire wordlist for this profile permanently,\n" +
+                "type DELETE below in all-capital letters, and click OK.",
+            callback: response =>
+            {
+                if (response === "DELETE")
+                {
+                    this.loadWordList({});
+                    this.D.clear();
+                }
+            }
+        });
     }
 
     async importFile(data)
