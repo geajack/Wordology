@@ -16,9 +16,9 @@
 			onToggleOn            : () => WM.show(),
 			onToggleOff           : () => WM.hide(),
 			onLoggedOut           : () => { loggedIn = false; WM.hide(); },
-			onLoggedOutPress      : () => { alert("You're logged out."); },
+			onLoggedOutPress      : showLoggedOutPopup,
 			onChangedProfile      : () => { loggedIn = false; WM.hide(); },
-			onChangedProfilePress : () => { alert("You have changed profile."); }
+			onChangedProfilePress : showChangedProfilePopup
 		}
 	);
 	var options;
@@ -109,6 +109,22 @@
 				DF.setData([entry]);
 			}
 		}
+	}
+
+	function showLoggedOutPopup()
+	{
+		message = `You don't seem to be logged into a Wordology profile right now. Go to your settings page to log in, and then <a href="/">reload</a> this page.`;
+		vex.dialog.open({
+			input: message
+		});
+	}
+
+	function showChangedProfilePopup()
+	{
+		message = `You seem to have changed Wordology profiles since the last time this page was loaded. <a href="/">Reload</a> this page to keep using Wordology.`;
+		vex.dialog.open({
+			input: message
+		});
 	}
 
 	function cssStringFromHex(hexstring, opacity)
