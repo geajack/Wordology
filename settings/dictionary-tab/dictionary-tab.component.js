@@ -20,6 +20,9 @@ class DictionaryTabController
     {
         var OM = new OptionsManager();
         var profileId = await OM.getCurrentProfileId();
+        var profileName = await OM.getProfileName(profileId);
+        var date = (new Date()).toLocaleDateString().replace(/\//g, "-");
+        this.fileName = `${profileName} (${date}).json`;
         this.D = new Dictionary(profileId);
         var result = await this.D.getEverything();
         this.loadWordList(result);
