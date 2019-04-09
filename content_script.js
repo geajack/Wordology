@@ -121,7 +121,7 @@
 
 	function showChangedProfilePopup()
 	{
-		message = `You seem to have changed Wordology profiles since the last time this page was loaded. <a href="/">Reload</a> this page to keep using Wordology.`;
+		message = `You seem to have changed Wordology profiles since the last time this page was loaded. <a href="javascript:window.location.reload();">Reload</a> this page to keep using Wordology.`;
 		vex.dialog.open({
 			input: message
 		});
