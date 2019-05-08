@@ -113,7 +113,7 @@
 
 	function showLoggedOutPopup()
 	{
-		message = `You don't seem to be logged into a Wordology profile right now. Go to your settings page to log in, and then <a href="/">reload</a> this page.`;
+		message = `You don't seem to be logged into a Wordology profile right now. Go to your settings page to log in, and then <a href="javascript:window.location.reload();">reload</a> this page.`;
 		vex.dialog.open({
 			input: message
 		});
