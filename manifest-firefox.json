@@ -3,7 +3,7 @@
 
 	"name": "Wordology",
 	"description": "Adds a calque to foreign-language web-pages to aid language learning.",
-	"version": "1.1.1",
+	"version": "1.2",
 
 	"icons":
 	{
@@ -58,11 +58,11 @@
 		"browser_style": true,
 		"default_icon": "./icons/icon_inactive_32.png"
 	},
-	
+
 	"options_ui": {
 		"browser_style": false,
 		"open_in_tab": true,
-		"page": "./settings/settings.html"
+		"page": "./settings/index.html"
 	},
 
 	"permissions": [

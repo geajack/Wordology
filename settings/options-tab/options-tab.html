@@ -1,0 +1,98 @@
+<div class="cover"><span>Log in to a profile to access options.</span></div>
+<main>
+    <h1>Smart Matching</h1>
+    <div class="optionsBlock">
+        <label for="rootLength">Minimum length of a root: </label>
+        <input id="rootLength" name="rootLength" type="number" min="1" ng-model="ctrl.options.minPrefixLength" />
+    </div>
+    <div class="optionsBlock" ng-if="ctrl.blacklistedPrefixes.length > 0">
+        <label>Blacklisted prefixes:</label>
+        <editable-table id="blacklistedPrefixes" style="width: 200px; display: block;"
+            dataset="ctrl.blacklistedPrefixes"
+            columns="ctrl.prefixColumns"
+            primary-key="'prefix'"
+            paging="false"
+            delete-row-callback="ctrl.onDeletePrefix">
+        </editable-table>
+    </div>
+    <p class="noAffixesNotice" ng-if="ctrl.blacklistedPrefixes.length == 0">
+        Add prefixes to your blacklist below.
+    </p>
+    <div class="optionsBlock">
+        <label for="addPrefixInput">Blacklist prefix:</label>
+        <input id="addPrefixInput" name="addPrefixInput" type="text" ng-model="ctrl.prefixInput" ng-keyup="$event.keyCode == 13 && ctrl.addPrefix()" />
+        <button id="addPrefixButton" ng-click="ctrl.addPrefix()">Add</button>
+    </div>
+    <div class="optionsBlock">
+        <label for="suffixLength">Maximum length of a suffix:</label>
+        <input id="suffixLength" name="suffixLength" type="number" min="1" ng-model="ctrl.options.maxSuffixLength" />
+    </div>
+    <div class="optionsBlock" ng-if="ctrl.whitelistedSuffixes.length > 0">
+        <label>Whitelisted suffixes:</label>
+        <editable-table id="whiteslitedSuffixes" style="width: 200px; display: block;"
+            dataset="ctrl.whitelistedSuffixes"
+            columns="ctrl.suffixColumns"
+            primary-key="'suffix'"
+            paging="false"
+            delete-row-callback="ctrl.onDeleteSuffix">
+        </editable-table>
+    </div>
+    <p class="noAffixesNotice" ng-if="ctrl.whitelistedSuffixes.length == 0">
+        Add suffixes to your whitelist below.
+    </p>
+    <div class="optionsBlock">
+        <label for="addSuffixInput">Whitelist suffix:</label>
+        <input id="addSuffixInput" name="addSuffixInput" type="text" ng-model="ctrl.suffixInput" ng-keyup="$event.keyCode == 13 && ctrl.addSuffix()"/>
+        <button id="addSuffixButton" ng-click="ctrl.addSuffix()">Add</button>
+    </div>
+    <div class="optionsBlock">
+        <strong><label for="useInflection">Use Smart Matching</label></strong>
+        <input id="useInflection" name="useInflection" type="checkbox" ng-model="ctrl.options.useInflection" />
+    </div>
+
+    <h1>Lookup</h1>
+    <div class="optionsBlock">
+        <p>Enter the URL of your preferred online dictionary, typing a dollar sign ($) where the word should be, eg.: <em>http://en.wiktionary.org/wiki/$</em>.</p>
+        <label for="urlInput">Lookup URL:</label>
+        <input id="urlInput" name="urlInput" type="text" ng-model="ctrl.options.lookupURL" />
+    </div>
+
+    <h1>Colors</h1>
+    <div class="optionsBlock colors">
+        <div class="optionsBlock">
+            <label for="undefinedColorInput">Undefined words:</label>
+            <input id="undefinedColorInput" name="undefinedColorInput" type="color" ng-model="ctrl.options.notDefinedColor" />
+            <br />
+            <label for="undefinedOpacityInput">Opacity:</label>
+            <input id="undefinedOpacityInput" name="undefinedOpacityInput" type="range" min="0" max="100" ng-model="ctrl.options.notDefinedOpacity" />
+        </div>
+
+        <div class="optionsBlock">
+            <label for="definedColorInput">Defined words:</label>
+            <input id="definedColorInput" name="definedColorInput" type="color" ng-model="ctrl.options.definedColor" />
+            <br />
+            <label for="definedOpacityInput">Opacity:</label>
+            <input id="definedOpacityInput" name="definedOpacityInput" type="range" min="0" max="100" ng-model="ctrl.options.definedOpacity" />
+        </div>
+
+        <div class="optionsBlock">
+            <label for="similarColorInput">Smart matched words:</label>
+            <input id="similarColorInput" name="similarColorInput" type="color" ng-model="ctrl.options.similarColor" />
+            <br />
+            <label for="similarOpacityInput">Opacity:</label>
+            <input id="similarOpacityInput" name="similarOpacityInput" type="range" min="0" max="100" ng-model="ctrl.options.similarOpacity" />
+        </div>
+    </div>
+    <div class="optionsBlock">
+        <button id="resetColorButton" ng-click="ctrl.resetColorsToDefault()">Reset to default colors</button>
+    </div>
+
+    <h1>Extended Alphabet</h1>
+    <div class="optionsBlock">
+        <p>Add extra characters to the alphabet recognized by Wordology. For example, if you add the hyphen ("-"), then Wordology will consider "flower-pot"
+            as one word rather than "flower" and "pot". Just type all extra characters together, with no spaces, eg <em>'-</em> to add ' and -.
+        </p>
+        <label for="separatorsInput">Extended alphabet:</label>
+        <input type="text" id="separatorsInput" style="font-family: monospace" name="separatorsInput" ng-model="ctrl.options.separatorCharacters" />
+    </div>
+</main>

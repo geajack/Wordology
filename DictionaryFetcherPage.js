@@ -4,18 +4,18 @@ class DictionaryFetcherPage
 	{
 		this.name = name;
 		this.dataRequestCallback = function() {};
-		
+
 		this.responseDataMessageSlot = new MessageSlot(
 			name + "ResponseData",
 			this.onResponseDataMessage.bind(this)
 		);
 	}
-	
+
 	onResponseDataMessage(message, sender)
 	{
 		this.dataRequestCallback(message.entries);
 	}
-	
+
 	getMatches(requestObject)
 	{
 		var messageSender = new MessageSender(this.name + "RequestData");
@@ -27,7 +27,7 @@ class DictionaryFetcherPage
 			}
 		);
 	}
-	
+
 	getEverything()
 	{
 		var messageSender = new MessageSender(this.name + "RequestData");
@@ -39,7 +39,7 @@ class DictionaryFetcherPage
 			}
 		);
 	}
-	
+
 	setData(listOfEntries)
 	{
 		var message = { entries: listOfEntries };

@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 
-	"name": "Wordology",
+	"name": "Wordology Dev",
 	"description": "Adds a calque to foreign-language web-pages to aid language learning.",
 	"version": "1.2",
 
@@ -9,6 +9,15 @@
 	{
 		"48": "./icons/icon48.png",
 		"96": "./icons/icon96.png"
+	},
+
+	"applications":
+	{
+		"gecko":
+		{
+			"id": "wordology-dev@wordology.com",
+			"strict_min_version": "42.0"
+		}
 	},
 
 	"background": {
@@ -46,10 +55,12 @@
 	],
 
 	"browser_action": {
+		"browser_style": true,
 		"default_icon": "./icons/icon_inactive_32.png"
 	},
 
 	"options_ui": {
+		"browser_style": false,
 		"open_in_tab": true,
 		"page": "./settings/index.html"
 	},

@@ -1,0 +1,297 @@
+/***************************************************************
+ *
+ *     GENERAL
+ *
+ * *************************************************************/
+
+@font-face
+{
+	font-family: "Source Sans Pro";
+	src: url("latin.woff2") format("woff2");
+}
+
+:root
+{
+	--border-color: #555;
+}
+
+body
+{
+	font-size: 12pt;
+	font-family: Source Sans Pro, sans-serif;
+	background: #F5F5F5;
+	padding: 25px;
+	margin: 0px;
+}
+
+h1, h2
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#contents
+{
+	max-width: 1000px;
+	margin: auto;
+	margin-top: 15px;
+}
+
+#navBar
+{
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	height: 40px;
+	box-sizing: border-box;
+	position: relative;
+	top: 1px;
+	z-index: 2;
+}
+#navBar li
+{
+	display: inline-block;
+	background-color: white;
+	border: 1px solid var(--border-color);
+	padding: 10px;
+	height: 40px;
+	box-sizing: border-box;
+	border-bottom: 1px solid var(--border-color);
+	margin-right: 1px;
+	box-shadow: rgba(0,0,0,0.5) 2px 0px 0px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	cursor: pointer;
+}
+#navBar li:hover
+{
+	text-decoration: underline;
+}
+#navBar li.activeTab
+{
+	border-bottom: none;
+	font-weight: bold;
+}
+#navBar li.activeTab:hover
+{
+	text-decoration: none;
+}
+
+.page
+{
+	background: white;
+	border: 1px solid var(--border-color);
+	padding: 25px;
+	width: 100%;
+	display: none;
+	box-sizing: border-box;
+	position: relative;
+}
+.activePage
+{
+	display: block;
+}
+
+#profileSelector
+{
+	position: absolute;
+	top: 15px;
+	right: 25px;
+}
+#profileSelector div
+{
+	display: block;
+	width: 100%;
+	text-align: right;
+	margin-bottom: 5px;
+	padding-right: 4px;
+	box-sizing: border-box;
+}
+#profileSelector button
+{
+	all: unset;
+	cursor: pointer;
+	height: 18px;
+	width: 18px;
+	font-size: 12px;
+	font-family: monospace;
+	font-variant: small-caps;
+	text-align: center;
+	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 2px;
+	position: relative;
+}
+#profileSelector button:active
+{
+	left: 2px;
+	top: 2px;
+	box-shadow: none;
+}
+#profileSelector select
+{
+	width: 150px;
+	font-size: 16px;
+}
+
+.page > *:first-child
+{
+	margin-top: 0px;
+}
+
+.page.disabled main
+{
+	opacity: 0.15;
+}
+
+.cover
+{
+	display: none;
+}
+
+.disabled .cover
+{
+	font-size: 25pt;
+	text-shadow: rgba(0,0,0,0.3) 3px 3px 3px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	box-sizing: border-box;
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	z-index: 2;
+}
+
+.cover span
+{
+	margin: auto;
+}
+
+/***************************************************************
+ *
+ *     OPTIONS TAB
+ *
+ * *************************************************************/
+
+.optionsBlock
+{
+	margin-bottom: 10px;
+	padding: 0px;
+}
+
+#blacklistedPrefixes
+{
+	margin-top: 10px;
+}
+
+input[type="number"]
+{
+	width: 40px;
+}
+
+#addPrefixInput
+{
+	width: 100px;
+}
+
+#urlInput
+{
+	width: 400px;
+}
+
+#pageOptions > *:first-child
+{
+	margin-top: 0px;
+}
+
+input[type="range"]
+{
+	vertical-align: middle;
+}
+
+.colors div
+{
+	width: 300px;
+	position: relative;
+}
+.colors input
+{
+	position: absolute;
+	right: 0px;
+}
+
+.noAffixesNotice
+{
+	font-style: italic;
+	margin-left: 20px;
+}
+
+/***************************************************************
+ *
+ *     DICTIONARY TAB
+ *
+ * *************************************************************/
+#pageDictionary > main
+{
+	display: flex;
+	flex-flow: row;
+}
+#pageDictionary #wordListSection
+{
+	flex-grow: 1;
+}
+#pageDictionary #controls
+{
+	margin-left: 20px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 200px;
+}
+
+#pageDictionary #noWordsNotice
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	height: 100%;
+	text-shadow: rgba(0,0,0,0.3) 2px 2px 2px;
+}
+
+#pageDictionary #controls > *
+{
+	display: block;
+	width: 100%;
+
+	height: 80px;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	line-height: 80px;
+	color: black;
+	text-decoration: none;
+	font-size: 12pt;
+	cursor: pointer;
+	box-shadow: rgba(0, 0, 0, 0.6) 2px 4px 5px;
+}
+#pageDictionary #controls > *:active
+{
+	position: relative;
+	left: 2px;
+	top: 4px;
+	box-shadow: none;
+}
+#downloadLink, #importButton
+{
+	background-color: #77AAEE;
+}
+#clearButton
+{
+	background-color: #FF6666;
+}

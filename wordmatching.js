@@ -1,4 +1,4 @@
-const WordMatching = 
+const WordMatching =
 {
 	UpdateUndefinedWords: function UpdateUndefinedWords(undefinedWords, newEntry, options)
 	{
@@ -16,7 +16,7 @@ const WordMatching =
 		}
 		return dictOfMatches;
 	},
-	
+
 	UpdateMatchedWords: function UpdateMatchedWords(taggedMatches, newEntry, options)
 	{
 		options.useInflection = true;
@@ -34,7 +34,7 @@ const WordMatching =
 		}
 		return dictOfMatches;
 	},
-	
+
 	MatchWords: function MatchWords(listOfWords, listOfEntries, options)
 	{
 		var dictionaryTree = WordMatching.BuildTree(listOfEntries);
@@ -54,13 +54,13 @@ const WordMatching =
 				{
 					dictOfMatches[word] = bestMatch;
 				}
-				
+
 				alreadyEncounteredWords.push(word);
 			}
 		}
 		return dictOfMatches;
 	},
-	
+
 	FindBestMatch: function FindBestMatch(wordToMatch, tree, options)
 	{
 		var minPrefixLength     = options.minPrefixLength;
@@ -72,17 +72,17 @@ const WordMatching =
 		var currentBranch = tree;
 		var truePrefixLength = 0;
 		var currentWord = "";
-		
+
 		for (var i = 0; i < wordToMatch.length; i++)
 		{
 			let c = wordToMatch[i];
 			currentWord += c;
-			
+
 			if (blacklistedPrefixes.includes(currentWord))
 			{
 				truePrefixLength = 0;
 			}
-			
+
 			if (currentBranch[c] !== undefined)
 			{
 				currentBranch = currentBranch[c];
@@ -93,9 +93,9 @@ const WordMatching =
 				break;
 			}
 		}
-		
+
 		var nCharactersTraversed = i;
-		
+
 		if (nCharactersTraversed == wordToMatch.length && currentBranch.entry)
 		{
 			return { entry: currentBranch.entry, exact: true };
@@ -125,7 +125,7 @@ const WordMatching =
 			return null;
 		}
 	},
-	
+
 	FindBestMatchFromSuffixTree: function FindBestMatchFromSuffixTree(tree, prefixLength, options)
 	{
 		var whitelistedSuffixes = options.whitelistedSuffixes;
@@ -168,7 +168,7 @@ const WordMatching =
 		else
 			return null;
 	},
-	
+
 	LongestTrueSuffixLength: function LongestTrueSuffixLength(word, whitelist)
 	{
 		var suffix = "";
@@ -184,16 +184,16 @@ const WordMatching =
 		}
 		return length;
 	},
-	
+
 	BuildTree: function BuildTree(listOfEntries)
 	{
 		var tree = {};
-	
+
 		for (let entry of listOfEntries)
 		{
 			let currentBranch = tree;
 			let word = entry.word;
-			
+
 			for (let i = 0; i < word.length; i++)
 			{
 				let c = word[i];

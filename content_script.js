@@ -5,24 +5,30 @@
 	const GREEK = "\\u0370-\\u03FF";
 	const KOREAN = "\\u3131-\\uD79D";
 	const ALPHABET = LATIN_EXTENDED + CYRILLIC + GREEK + KOREAN;
-	
+
+	var loggedIn = true;
+
 	var DF = new DictionaryFetcherPage("DictionaryFetcher");
 	var WM = null;
 	var TM = new ToggleManagerPage("ToggleManager",
 		{
-			onFirstOn   : init,
-			onToggleOn  : () => WM.show(),
-			onToggleOff : () => WM.hide()
+			onFirstOn             : init,
+			onToggleOn            : () => WM.show(),
+			onToggleOff           : () => WM.hide(),
+			onLoggedOut           : () => { loggedIn = false; WM.hide(); },
+			onLoggedOutPress      : showLoggedOutPopup,
+			onChangedProfile      : () => { loggedIn = false; WM.hide(); },
+			onChangedProfilePress : showChangedProfilePopup
 		}
 	);
 	var options;
-	
+
 	async function init()
 	{
 		options = await (new OptionsManager()).getOptions();
 
 		WM = new WordManager(ALPHABET + options.separatorCharacters);
-		
+
 		document.querySelector(":root").style.setProperty(
 			"--wordology-not-defined-color",
 			cssStringFromHex(options.notDefinedColor, options.notDefinedOpacity/100)
@@ -35,18 +41,30 @@
 			"--wordology-similar-color",
 			cssStringFromHex(options.similarColor, options.similarOpacity/100)
 		);
-		
+
+		if (!loggedIn)
+		{
+			return;
+		}
+
 		WM.processNode(document);
 		var listOfWordsOnPage = WM.getWords();
-		
+
 		var dictionaryFetcherRequest =
 			{
 				words   : listOfWordsOnPage,
 				options : options
 			};
 		var dictOfMatches = await DF.getMatches(dictionaryFetcherRequest);
+
+		if (!loggedIn)
+		{
+			WM.hide();
+			return;
+		}
+
 		WM.setData(dictOfMatches);
-		
+
 		for (var wordElement of WM.getWordElements())
 		{
 			wordElement.click.addListener(onClickWord);
@@ -54,7 +72,7 @@
 			wordElement.mouseOut.addListener(onMouseOutWord);
 		}
 	}
-	
+
 	function onMouseOverWord(e)
 	{
 		if (e.target.match)
@@ -62,28 +80,28 @@
 			e.target.showPopup();
 		}
 	}
-	
+
 	function onMouseOutWord(e)
 	{
 		e.target.hidePopup();
 	}
-	
+
 	async function onClickWord(e)
 	{
 		var wordElement = e.target;
-		
+
 		if (window.getSelection().toString().length === 0)
 		{
 			e.domEvent.preventDefault();
 			e.domEvent.stopPropagation();
-			
+
 			var userResponse = await WordEditDialog.open(
 				{
 					word: wordElement.getWord(),
 					match: wordElement.getMatch()
 				}
 			);
-			
+
 			if (userResponse.definition)
 			{
 				WM.updateDefinition(wordElement.getWord(), userResponse.definition, options);
@@ -92,7 +110,23 @@
 			}
 		}
 	}
-	
+
+	function showLoggedOutPopup()
+	{
+		message = `You don't seem to be logged into a Wordology profile right now. Go to your settings page to log in, and then <a href="javascript:window.location.reload();">reload</a> this page.`;
+		vex.dialog.open({
+			input: message
+		});
+	}
+
+	function showChangedProfilePopup()
+	{
+		message = `You seem to have changed Wordology profiles since the last time this page was loaded. <a href="javascript:window.location.reload();">Reload</a> this page to keep using Wordology.`;
+		vex.dialog.open({
+			input: message
+		});
+	}
+
 	function cssStringFromHex(hexstring, opacity)
 	{
 		var red   = parseInt(hexstring.substring(1, 3), 16);

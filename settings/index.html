@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+	<!----------------------
+		Stylesheets
+	----------------------->
+
+	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="editable-table/style.css" />
+	<link rel="stylesheet" href="../WordEditDialog.css"/>
+	<link rel="stylesheet" href="../vex/vex_custom.css"/>
+	<link rel="stylesheet" href="../vex/vex-theme-custom.css"/>
+
+	<!----------------------
+		Scripts
+	----------------------->
+
+	<script type="text/javascript" src="../browser-polyfill.min.js"></script>
+	<script type="text/javascript" src="../vex/vex.combined.min.js"></script>
+	<script src="../OptionsManager.js"></script>
+	<script src="../Dictionary.js"></script>
+	<script src="../WordEditDialog.js"></script>
+	<script src="angular.min.js"></script>
+	<script src="app.js"></script>
+	<script src="editable-table/ng-table.min.js"></script>
+	<script src="editable-table/editable-table.component.js"></script>
+	<script src="root-controller.controller.js"></script>
+	<script src="options-tab/options-tab.component.js"></script>
+	<script src="dictionary-tab/dictionary-tab.component.js"></script>
+	<script src="help-tab/help-tab.component.js"></script>
+</head>
+
+<body ng-app="app" ng-controller="RootController as controller">
+
+	<div id="contents">
+		<ul id="navBar">
+			<li ng-class="controller.tab == 'options'? 'activeTab':''" ng-click="controller.tab='options'">Options</li>
+			<li ng-class="controller.tab == 'dictionary'? 'activeTab':''" ng-click="controller.tab='dictionary'">Words</li>
+			<li ng-class="controller.tab == 'help'? 'activeTab':''" ng-click="controller.tab='help'">Help</li>
+		</ul>
+
+		<options-tab id="pageOptions" class="page"
+			ng-class="{activePage: controller.tab == 'options', disabled: controller.selectedProfile === null}"
+		></options-tab>
+
+		<dictionary-tab id="pageDictionary" class="page"
+			ng-class="{activePage: controller.tab == 'dictionary', disabled: controller.selectedProfile === null}"
+		></dictionary-tab>
+
+		<help-tab id="pageHelp" class="page"
+			ng-class="{activePage: controller.tab == 'help'}"
+		></help-tab>
+	</div>
+
+	<div id="profileSelector">
+        <div>
+			Profile
+			<button ng-click="controller.onClickAddProfile()" title="Add profile">+</button>
+			<button ng-click="controller.onClickRenameProfile()" title="Rename profile">R</button>
+			<button ng-click="controller.onClickDeleteProfile()" title="Delete profile">-</button>
+		</div>
+		<select
+			ng-model="controller.selectedProfile"
+			ng-change="controller.profileChanged()"
+		>
+			<option ng-value="null" ng-if="controller.selectedProfile === null">&lt;None&gt;</option>
+			<option ng-repeat="profile in controller.profiles" ng-value="profile">{{profile.name}}</option>
+		</select>
+
+	</div>
+
+</body>
+
+</html>
