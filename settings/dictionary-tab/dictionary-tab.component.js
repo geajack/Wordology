@@ -65,9 +65,10 @@ class DictionaryTabController
 
         this.wordList = Object.values(dictOfEntries);
         this.dictionaryData = dictOfEntries;
-        var json = JSON.stringify(dictOfEntries);
 
-        var downloadUri = `data:application/json,${json}`;
+        var json = JSON.stringify(dictOfEntries);
+        var blob = new Blob([json], { "type": "application/json" });
+        var downloadUri = URL.createObjectURL(blob);
         document.getElementById("downloadLink").setAttribute("href", downloadUri); // Firefox's security features prevent AngularJS from setting href
 
         try
