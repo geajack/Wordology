@@ -138,15 +138,13 @@ class WordElement
 		{
 			// Create popup
 			this.popup = document.createElement("span");
+			this.popup.className = "wordology-popup";
 			document.body.prepend(this.popup);
 			this.popup.style.display = "none";
 			this.popupBubble = this.popup.appendChild(document.createElement("span"));
+			this.popupBubble.className = "wordology-popup-bubble"
 			this.popupTail = this.popup.appendChild(document.createElement("span"));
-
-			// Style popup
-			Object.assign(this.popup.style, WordElement.Styles.POPUP);
-			Object.assign(this.popupBubble.style, WordElement.Styles.BUBBLE);
-			Object.assign(this.popupTail.style, WordElement.Styles.TAIL);
+			this.popupTail.className = "wordology-popup-tail";
 		}
 
 		// Set display text
@@ -201,38 +199,6 @@ Object.assign(WordElement,
 
 WordElement.Styles =
 {
-	POPUP: {
-		position: "absolute",
-		zIndex: "999999999"
-	},
-
-	BUBBLE: {
-		backgroundColor: "hsla(0, 0%, 20%, 1.0)",
-		color: "white",
-		padding: "7px",
-		fontSize: "12pt",
-		minHeight: "0px",
-		verticalAlign: "baseline",
-		fontFamily: "sans-serif",
-		fontWeight: "normal",
-		fontStyle: "normal",
-		textTransform: "none",
-		whiteSpace : "nowrap",
-		position: "absolute",
-		top : "0px",
-		left : "0px",
-		lineHeight: "1.0em",
-		height: "auto",
-		display: "block",
-		textStyle: "none"
-	},
-
-	TAIL: {
-		width: "0px",
-		display: "block",
-		position: "absolute"
-	},
-
 	TAIL_TOP: {
 		width: "0px",
 		borderTop: "5px solid hsla(0, 0%, 20%, 1.0)",

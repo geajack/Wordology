@@ -25,3 +25,37 @@ span[wordology_word="similar"]
 	--default-color: rgba(100, 150, 255, 0.35);
 	background-color: var(--wordology-similar-color, var(--default-color));
 }
+
+span.wordology-popup
+{
+	position: absolute;
+	z-index: 999999999;
+}
+
+span.wordology-popup span.wordology-popup-bubble
+{
+	background-color: hsla(0, 0%, 20%, 1.0);
+	color: white;
+	padding: 7px;
+	font-size: 12pt;
+	min-height: 0px;
+	vertical-align: baseline;
+	font-family: sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	text-transform: none;
+	white-space : nowrap;
+	position: absolute;
+	top : 0px;
+	left : 0px;
+	line-height: 1.0em;
+	height: auto;
+	display: block;
+}
+
+span.wordology-popup span.wordology-popup-tail
+{
+	width: 0px;
+	display: block;
+	position: absolute;
+}
