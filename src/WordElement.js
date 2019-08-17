@@ -201,26 +201,6 @@ Object.assign(WordElement,
 
 WordElement.Styles =
 {
-	WORD: {
-		display: "inline-block",
-		padding: "0px",
-		borderRadius: "0px",
-		position: "relative"
-	},
-
-	WORD_HIDDEN: {
-		backgroundColor: "transparent"
-	},
-
-	WORD_UNDEFINED: {
-		backgroundColor: "rgba(255, 100, 100, 0.33)"
-	},
-
-	WORD_DEFINED:
-	{
-		backgroundColor: "rgba(100, 255, 100, 0.5)"
-	},
-
 	POPUP: {
 		position: "absolute",
 		zIndex: "999999999"
