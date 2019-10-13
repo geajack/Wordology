@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Test</title>
+    <link rel="stylesheet" href="../src/WordElement.css" />
+    <script src="../src/WordManager.js"></script>
+    <script src="../src/WordElement.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body, html {
+            padding: 0px;
+            margin: 0px;
+        }
+        #northeast {
+            position: absolute;
+            right: 0px;
+        }
+        #southeast {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+        }
+        #southwest {
+            position: absolute;
+            bottom: 0px;
+        }
+        #northwest {
+        }
+    </style>
+</head>
+<body>
+    <div id="northeast">test</div>
+    <div id="northwest">test</div>
+    <div id="southeast">test</div>
+    <div id="southwest">test</div>
+    <script>
+        (async function () {
+            const definition = "test test test test test test test test test test test test test test test test test test test test test test test test test test test";
+            const WM = new WordManager("test");
+            WM.processNode(document.body);
+            WM.setData({
+                test: {
+                    exact: true,
+                    word: "test",
+                    entry: {
+                        word: "test",
+                        definition: definition
+                    }
+                }
+            });
+            WM.show();
+            for (let word of WM.getWordElements())
+            {
+                word.showPopup();
+            }
+        })();
+    </script>
+</body>
+</html>
