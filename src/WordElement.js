@@ -98,18 +98,6 @@ class WordElement
 		return this.word;
 	}
 
-	getDefinition()
-	{
-		if (this.match)
-		{
-			return this.match.definition;
-		}
-		else
-		{
-			return null;
-		}
-	}
-
 	getMatch()
 	{
 		return this.match;
@@ -139,8 +127,8 @@ class WordElement
 			// Create popup
 			this.popup = document.createElement("span");
 			this.popup.className = "wordology-popup";
-			document.body.prepend(this.popup);
 			this.popup.style.display = "none";
+			document.body.prepend(this.popup);
 			this.popupBubble = this.popup.appendChild(document.createElement("span"));
 			this.popupBubble.className = "wordology-popup-bubble"
 			this.popupTail = this.popup.appendChild(document.createElement("span"));
