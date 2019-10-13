@@ -147,7 +147,20 @@ class WordElement
 		var popupHeight = this.popup.scrollHeight;
 		var popupWidth = this.popup.scrollWidth;
 
-		this.popup.style.left = (wordLeft + (wordWidth - popupWidth)/2) + "px";
+		// Popup is near left of page
+		if (wordLeft + (wordWidth / 2) - (popupWidth/2) < 0)
+		{
+			this.popup.style.left = (wordLeft + wordWidth) + "px";
+		}
+		// Popup is near right of page
+		else if (wordLeft + (wordWidth/2) + (popupWidth/2) > window.innerWidth)
+		{
+			this.popup.style.left = (wordLeft - popupWidth) + "px";
+		}
+		else
+		{
+			this.popup.style.left = (wordLeft + (wordWidth - popupWidth)/2) + "px";
+		}
 
 		// Popup is near top of page
 		if (wordTop - this.popupBubble.scrollHeight - 5 < 0)
