@@ -13,28 +13,38 @@
             padding: 0px;
             margin: 0px;
         }
-        #northeast {
+        body > span {
             position: absolute;
-            right: 0px;
         }
-        #southeast {
-            position: absolute;
-            right: 0px;
-            bottom: 0px;
+        .east, .northeast, .southeast {
+            right: 0;
         }
-        #southwest {
-            position: absolute;
-            bottom: 0px;
+        .south, .southeast, .southwest {
+            bottom: 0;
         }
-        #northwest {
+        .north, .northeast, .northwest {
+            top: 0;
+        }
+        .west, .northwest, .southwest {
+            left: 0;
+        }
+        .east, .west {
+            top: 50%;
+        }
+        .north, .south {
+            left: 50%;
         }
     </style>
 </head>
 <body>
-    <div id="northeast">test</div>
-    <div id="northwest">test</div>
-    <div id="southeast">test</div>
-    <div id="southwest">test</div>
+    <span class="north">test</span>
+    <span class="northeast">test</span>
+    <span class="east">test</span>
+    <span class="southeast">test</span>
+    <span class="south">test</span>
+    <span class="southwest">test</span>
+    <span class="west">test</span>
+    <span class="northwest">test</span>
     <script>
         (async function () {
             const definition = "test test test test test test test test test test test test test test test test test test test test test test test test test test test";
