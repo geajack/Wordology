@@ -39,18 +39,19 @@ span.wordology-popup span.wordology-popup-bubble
 	padding: 7px;
 	font-size: 12pt;
 	min-height: 0px;
-	vertical-align: baseline;
 	font-family: sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	text-transform: none;
-	white-space : nowrap;
-	position: absolute;
+	white-space : normal;
 	top : 0px;
 	left : 0px;
 	line-height: 1.0em;
 	height: auto;
 	display: block;
+	max-width: 400px;
+	width: max-content;
+	position: absolute;
 }
 
 span.wordology-popup span.wordology-popup-tail
