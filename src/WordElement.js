@@ -147,37 +147,69 @@ class WordElement
 		var popupHeight = this.popup.scrollHeight;
 		var popupWidth = this.popup.scrollWidth;
 
-		// Popup is near left of page
-		if (wordLeft + (wordWidth / 2) - (popupWidth/2) < 0)
+		const left = wordLeft + (wordWidth / 2) - (popupWidth/2) < 0;
+		const right = wordLeft + (wordWidth/2) + (popupWidth/2) > window.innerWidth;
+		const top = wordTop - this.popupBubble.scrollHeight - 5 < 0
+
+		if (left)
 		{
 			this.popup.style.left = (wordLeft + wordWidth) + "px";
+			this.popupTail.style.left = "0px";
 		}
-		// Popup is near right of page
-		else if (wordLeft + (wordWidth/2) + (popupWidth/2) > window.innerWidth)
+		else if (right)
 		{
 			this.popup.style.left = (wordLeft - popupWidth) + "px";
+			this.popupTail.style.left = (this.popupBubble.scrollWidth - 5) + "px";
 		}
 		else
 		{
 			this.popup.style.left = (wordLeft + (wordWidth - popupWidth)/2) + "px";
+			this.popupTail.style.left = (this.popupBubble.scrollWidth - 10)/2 + "px";
 		}
 
-		// Popup is near top of page
-		if (wordTop - this.popupBubble.scrollHeight - 5 < 0)
+		if (top)
 		{
-			Object.assign(this.popupTail.style, WordElement.Styles.TAIL_BOTTOM);
 			this.popup.style.top = (wordTop + wordHeight + 5) + "px";
-			this.popupTail.style.top = "-5px";
-			this.popupTail.style.left = (this.popupBubble.scrollWidth - 10)/2 + "px";
+			this.popupTail.style.top = "-4px";
 		}
-		// Popup is not near top of page
 		else
 		{
-			Object.assign(this.popupTail.style, WordElement.Styles.TAIL_TOP);
 			this.popup.style.top = (wordTop - this.popupBubble.scrollHeight - 5) + "px";
 			this.popupTail.style.top = this.popupBubble.scrollHeight + "px";
-			this.popupTail.style.left = (this.popupBubble.scrollWidth - 10)/2 + "px";
 		}
+
+		let tailStyle;
+		if (top)
+		{
+			if (left)
+			{
+				tailStyle = WordElement.Styles.TAIL_BOTTOM_LEFT;
+			}
+			else if (right)
+			{
+				tailStyle = WordElement.Styles.TAIL_BOTTOM_RIGHT;
+			}
+			else
+			{
+				tailStyle = WordElement.Styles.TAIL_BOTTOM;
+			}
+		}
+		else
+		{
+			if (left)
+			{
+				tailStyle = WordElement.Styles.TAIL_TOP_LEFT;
+			}
+			else if (right)
+			{
+				tailStyle = WordElement.Styles.TAIL_TOP_RIGHT;
+			}
+			else
+			{
+				tailStyle =  WordElement.Styles.TAIL_TOP;
+			}
+		}
+		Object.assign(this.popupTail.style, tailStyle);
 	}
 
 	hidePopup()
@@ -212,7 +244,31 @@ WordElement.Styles =
 		borderBottom: "5px solid hsla(0, 0%, 20%, 1.0)",
 		borderRight: "5px solid transparent",
 		borderLeft: "5px solid transparent"
-	}
+	},
+
+	TAIL_BOTTOM_LEFT: {
+		width: "0px",
+		borderBottom: "5px solid hsla(0, 0%, 20%, 1.0)",
+		borderRight: "5px solid transparent"
+	},
+
+	TAIL_BOTTOM_RIGHT: {
+		width: "0px",
+		borderBottom: "5px solid hsla(0, 0%, 20%, 1.0)",
+		borderLeft: "5px solid transparent"
+	},
+
+	TAIL_TOP_LEFT: {
+		width: "0px",
+		borderTop: "5px solid hsla(0, 0%, 20%, 1.0)",
+		borderRight: "5px solid transparent"
+	},
+
+	TAIL_TOP_RIGHT: {
+		width: "0px",
+		borderTop: "5px solid hsla(0, 0%, 20%, 1.0)",
+		borderLeft: "5px solid transparent"
+	},
 };
 
 class WordElementEvent
