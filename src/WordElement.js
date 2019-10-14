@@ -79,10 +79,8 @@ class WordElement
 
 	setData(match)
 	{
-		// Assign data
 		this.match = match;
 
-		// Style word
 		if (match.exact)
 		{
 			this.span.setAttribute(WordElement.ATTRIBUTE_NAME, WordElement.ATTRIBUTE_DEFINED);
@@ -124,7 +122,6 @@ class WordElement
 	{
 		if (!this.popup)
 		{
-			// Create popup
 			this.popup = document.createElement("span");
 			this.popup.className = "wordology-popup";
 			this.popup.style.display = "none";
@@ -135,7 +132,6 @@ class WordElement
 			this.popupTail.className = "wordology-popup-tail";
 		}
 
-		// Set display text
 		this.popupBubble.innerHTML = this.match.entry.definition;
 
 		this.popup.style.display = "block";
@@ -178,38 +174,38 @@ class WordElement
 			this.popupTail.style.top = this.popupBubble.scrollHeight + "px";
 		}
 
-		let tailStyle;
+		let tailClass;
 		if (top)
 		{
 			if (left)
 			{
-				tailStyle = WordElement.Styles.TAIL_BOTTOM_LEFT;
+				tailClass = WordElement.CSSClasses.TAIL_TOP_LEFT;
 			}
 			else if (right)
 			{
-				tailStyle = WordElement.Styles.TAIL_BOTTOM_RIGHT;
+				tailClass = WordElement.CSSClasses.TAIL_TOP_RIGHT;
 			}
 			else
 			{
-				tailStyle = WordElement.Styles.TAIL_BOTTOM;
+				tailClass = WordElement.CSSClasses.TAIL_TOP;
 			}
 		}
 		else
 		{
 			if (left)
 			{
-				tailStyle = WordElement.Styles.TAIL_TOP_LEFT;
+				tailClass = WordElement.CSSClasses.TAIL_BOTTOM_LEFT;
 			}
 			else if (right)
 			{
-				tailStyle = WordElement.Styles.TAIL_TOP_RIGHT;
+				tailClass = WordElement.CSSClasses.TAIL_BOTTOM_RIGHT;
 			}
 			else
 			{
-				tailStyle =  WordElement.Styles.TAIL_TOP;
+				tailClass =  WordElement.CSSClasses.TAIL_BOTTOM;
 			}
 		}
-		Object.assign(this.popupTail.style, tailStyle);
+		this.popupTail.classList.add(tailClass);
 	}
 
 	hidePopup()
@@ -230,45 +226,14 @@ Object.assign(WordElement,
 	}
 );
 
-WordElement.Styles =
+WordElement.CSSClasses =
 {
-	TAIL_TOP: {
-		width: "0px",
-		borderTop: "5px solid hsla(0, 0%, 20%, 1.0)",
-		borderRight: "5px solid transparent",
-		borderLeft: "5px solid transparent"
-	},
-
-	TAIL_BOTTOM: {
-		width: "0px",
-		borderBottom: "5px solid hsla(0, 0%, 20%, 1.0)",
-		borderRight: "5px solid transparent",
-		borderLeft: "5px solid transparent"
-	},
-
-	TAIL_BOTTOM_LEFT: {
-		width: "0px",
-		borderBottom: "5px solid hsla(0, 0%, 20%, 1.0)",
-		borderRight: "5px solid transparent"
-	},
-
-	TAIL_BOTTOM_RIGHT: {
-		width: "0px",
-		borderBottom: "5px solid hsla(0, 0%, 20%, 1.0)",
-		borderLeft: "5px solid transparent"
-	},
-
-	TAIL_TOP_LEFT: {
-		width: "0px",
-		borderTop: "5px solid hsla(0, 0%, 20%, 1.0)",
-		borderRight: "5px solid transparent"
-	},
-
-	TAIL_TOP_RIGHT: {
-		width: "0px",
-		borderTop: "5px solid hsla(0, 0%, 20%, 1.0)",
-		borderLeft: "5px solid transparent"
-	},
+	TAIL_BOTTOM: "bottom",
+	TAIL_TOP: "top",
+	TAIL_TOP_LEFT: "top-left",
+	TAIL_TOP_RIGHT: "top-right",
+	TAIL_BOTTOM_LEFT: "bottom-left",
+	TAIL_BOTTOM_RIGHT: "bottom-right"
 };
 
 class WordElementEvent
