@@ -22,6 +22,10 @@ def get_target_directory():
     return Path(argv[1])
 
 
+def get_manifest():
+    return argv[2]
+
+
 def copy_files(files, destination_root):
     for file in files:
         destination = destination_root / file.parent.relative_to(SRC)
@@ -38,6 +42,7 @@ def copy_file(file, new_name, destination):
 
 if __name__ == "__main__":
     target = get_target_directory()
+    manifest = get_manifest()
     shutil.rmtree(target)
     copy_files(get_common_files(), target)
-    copy_file(SRC / "manifest-firefox-dev.json", "manifest.json", target)
+    copy_file(SRC / manifest, "manifest.json", target)
