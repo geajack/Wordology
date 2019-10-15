@@ -205,6 +205,11 @@ class WordElement
 				tailClass =  WordElement.CSSClasses.TAIL_BOTTOM;
 			}
 		}
+
+		for (let cssClass of Object.entries(WordElement.CSSClasses))
+		{
+			this.popupTail.classList.remove(cssClass);
+		}
 		this.popupTail.classList.add(tailClass);
 	}
 
