@@ -18,14 +18,6 @@ def get_common_files():
             yield Path(directory) / file_name
 
 
-def get_target_directory():
-    return Path(argv[1])
-
-
-def get_manifest():
-    return argv[2]
-
-
 def copy_files(files, destination_root):
     for file in files:
         destination = destination_root / file.parent.relative_to(SRC)
@@ -40,9 +32,11 @@ def copy_file(file, new_name, destination):
     shutil.copyfile(file, destination / new_name)
 
 
-if __name__ == "__main__":
-    target = get_target_directory()
-    manifest = get_manifest()
-    shutil.rmtree(target)
+def copy(manifest_file_name, target_directory):
+    target = Path(target_directory)
+    try:
+        shutil.rmtree(target)
+    except FileNotFoundError:
+        pass
     copy_files(get_common_files(), target)
-    copy_file(SRC / manifest, "manifest.json", target)
+    copy_file(SRC / manifest_file_name, "manifest.json", target)
