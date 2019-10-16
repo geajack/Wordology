@@ -51,7 +51,7 @@ span.wordology-popup span.wordology-popup-bubble
 	display: block;
 	max-width: 400px;
 	width: max-content;
-	text-align: justify;
+	text-align: center;
 }
 
 span.wordology-popup span.wordology-popup-tail
