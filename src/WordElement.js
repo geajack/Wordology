@@ -135,7 +135,7 @@ class WordElement
 		this.popup.appendChild(this.popupBubble);
 		this.popup.appendChild(this.popupTail);
 
-		this.popupBubble.innerHTML = this.match.entry.definition;
+		this.popupBubble.textContent = this.match.entry.definition;
 
 		this.popup.style.display = "block";
 
