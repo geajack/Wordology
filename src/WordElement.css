@@ -51,7 +51,6 @@ span.wordology-popup span.wordology-popup-bubble
 	display: block;
 	max-width: 400px;
 	width: max-content;
-	position: absolute;
 	text-align: justify;
 }
 
@@ -59,43 +58,54 @@ span.wordology-popup span.wordology-popup-tail
 {
 	width: 0px;
 	display: block;
-	position: absolute;
 }
 
 .wordology-popup-tail.bottom {
 	width: 0px;
 	border-top: 5px solid hsla(0, 0%, 20%, 1.0);
 	border-right: 5px solid transparent;
-	border-left: 5px solid transparent
+	border-left: 5px solid transparent;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .wordology-popup-tail.top {
 	width: 0px;
 	border-bottom: 5px solid hsla(0, 0%, 20%, 1.0);
 	border-right: 5px solid transparent;
-	border-left: 5px solid transparent
+	border-left: 5px solid transparent;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .wordology-popup-tail.top-left {
 	width: 0px;
 	border-bottom: 5px solid hsla(0, 0%, 20%, 1.0);
-	border-right: 5px solid transparent
+	border-right: 5px solid transparent;
+	margin-left: 0px;
+	margin-right: auto;
 }
 
 .wordology-popup-tail.top-right {
 	width: 0px;
 	border-bottom: 5px solid hsla(0, 0%, 20%, 1.0);
-	border-left: 5px solid transparent
+	border-left: 5px solid transparent;
+	margin-left: auto;
+	margin-right: 0px;
 }
 
 .wordology-popup-tail.bottom-left {
 	width: 0px;
 	border-top: 5px solid hsla(0, 0%, 20%, 1.0);
-	border-right: 5px solid transparent
+	border-right: 5px solid transparent;
+	margin-left: 0px;
+	margin-right: auto;
 }
 
 .wordology-popup-tail.bottom-right {
 	width: 0px;
 	border-top: 5px solid hsla(0, 0%, 20%, 1.0);
-	border-left: 5px solid transparent
+	border-left: 5px solid transparent;
+	margin-left: auto;
+	margin-right: 0px;
 }

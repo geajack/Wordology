@@ -126,11 +126,14 @@ class WordElement
 			this.popup.className = "wordology-popup";
 			this.popup.style.display = "none";
 			document.body.prepend(this.popup);
-			this.popupBubble = this.popup.appendChild(document.createElement("span"));
+			this.popupBubble = document.createElement("span");
+			this.popupTail = document.createElement("span");
 			this.popupBubble.className = "wordology-popup-bubble"
-			this.popupTail = this.popup.appendChild(document.createElement("span"));
 			this.popupTail.className = "wordology-popup-tail";
 		}
+
+		this.popup.appendChild(this.popupBubble);
+		this.popup.appendChild(this.popupTail);
 
 		this.popupBubble.innerHTML = this.match.entry.definition;
 
@@ -140,8 +143,8 @@ class WordElement
 		var wordTop  = this.span.getBoundingClientRect().top + pageYOffset;
 		var wordWidth = this.span.getBoundingClientRect().width;
 		var wordHeight = this.span.getBoundingClientRect().height;
-		var popupHeight = this.popup.scrollHeight;
-		var popupWidth = this.popup.scrollWidth;
+		var popupHeight = this.popupBubble.scrollHeight + 5;
+		var popupWidth = this.popupBubble.scrollWidth;
 
 		const left = wordLeft + (wordWidth / 2) - (popupWidth/2) < 0;
 		const right = wordLeft + (wordWidth/2) + (popupWidth/2) > window.innerWidth;
@@ -150,28 +153,25 @@ class WordElement
 		if (left)
 		{
 			this.popup.style.left = (wordLeft + wordWidth) + "px";
-			this.popupTail.style.left = "0px";
 		}
 		else if (right)
 		{
 			this.popup.style.left = (wordLeft - popupWidth) + "px";
-			this.popupTail.style.left = (this.popupBubble.scrollWidth - 5) + "px";
 		}
 		else
 		{
 			this.popup.style.left = (wordLeft + (wordWidth - popupWidth)/2) + "px";
-			this.popupTail.style.left = (this.popupBubble.scrollWidth - 10)/2 + "px";
 		}
 
 		if (top)
 		{
 			this.popup.style.top = (wordTop + wordHeight + 5) + "px";
-			this.popupTail.style.top = "-4px";
+			this.popup.removeChild(this.popupBubble);
+			this.popup.appendChild(this.popupBubble);
 		}
 		else
 		{
 			this.popup.style.top = (wordTop - this.popupBubble.scrollHeight - 5) + "px";
-			this.popupTail.style.top = this.popupBubble.scrollHeight + "px";
 		}
 
 		let tailClass;
@@ -206,7 +206,7 @@ class WordElement
 			}
 		}
 
-		for (let cssClass of Object.entries(WordElement.CSSClasses))
+		for (let [key, cssClass] of Object.entries(WordElement.CSSClasses))
 		{
 			this.popupTail.classList.remove(cssClass);
 		}
