@@ -1,9 +1,9 @@
 {
 	"manifest_version": 2,
 
-	"name": "Wordology",
+	"name": "Wordology Dev",
 	"description": "Adds a calque to foreign-language web-pages to aid language learning.",
-	"version": "1.2.2",
+	"version": "1.2.3",
 
 	"icons":
 	{
@@ -15,8 +15,8 @@
 	{
 		"gecko":
 		{
-			"id": "wordology@wordology.com",
-			"strict_min_version": "42.0"
+			"id": "wordology-dev@wordology.com",
+			"strict_min_version": "55.0"
 		}
 	},
 

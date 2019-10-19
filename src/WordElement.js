@@ -79,10 +79,8 @@ class WordElement
 
 	setData(match)
 	{
-		// Assign data
 		this.match = match;
 
-		// Style word
 		if (match.exact)
 		{
 			this.span.setAttribute(WordElement.ATTRIBUTE_NAME, WordElement.ATTRIBUTE_DEFINED);
@@ -96,18 +94,6 @@ class WordElement
 	getWord()
 	{
 		return this.word;
-	}
-
-	getDefinition()
-	{
-		if (this.match)
-		{
-			return this.match.definition;
-		}
-		else
-		{
-			return null;
-		}
 	}
 
 	getMatch()
@@ -136,21 +122,20 @@ class WordElement
 	{
 		if (!this.popup)
 		{
-			// Create popup
 			this.popup = document.createElement("span");
-			document.body.prepend(this.popup);
+			this.popup.className = "wordology-popup";
 			this.popup.style.display = "none";
-			this.popupBubble = this.popup.appendChild(document.createElement("span"));
-			this.popupTail = this.popup.appendChild(document.createElement("span"));
-
-			// Style popup
-			Object.assign(this.popup.style, WordElement.Styles.POPUP);
-			Object.assign(this.popupBubble.style, WordElement.Styles.BUBBLE);
-			Object.assign(this.popupTail.style, WordElement.Styles.TAIL);
+			document.body.prepend(this.popup);
+			this.popupBubble = document.createElement("span");
+			this.popupTail = document.createElement("span");
+			this.popupBubble.className = "wordology-popup-bubble"
+			this.popupTail.className = "wordology-popup-tail";
 		}
 
-		// Set display text
-		this.popupBubble.innerHTML = this.match.entry.definition;
+		this.popup.appendChild(this.popupBubble);
+		this.popup.appendChild(this.popupTail);
+
+		this.popupBubble.textContent = this.match.entry.definition;
 
 		this.popup.style.display = "block";
 
@@ -158,27 +143,74 @@ class WordElement
 		var wordTop  = this.span.getBoundingClientRect().top + pageYOffset;
 		var wordWidth = this.span.getBoundingClientRect().width;
 		var wordHeight = this.span.getBoundingClientRect().height;
-		var popupHeight = this.popup.scrollHeight;
-		var popupWidth = this.popup.scrollWidth;
+		var popupHeight = this.popupBubble.scrollHeight + 5;
+		var popupWidth = this.popupBubble.scrollWidth;
 
-		this.popup.style.left = (wordLeft + (wordWidth - popupWidth)/2) + "px";
+		const left = wordLeft + (wordWidth / 2) - (popupWidth/2) < 0;
+		const right = wordLeft + (wordWidth/2) + (popupWidth/2) > window.innerWidth;
+		const top = wordTop - this.popupBubble.scrollHeight - 5 < 0
 
-		// Popup is near top of page
-		if (wordTop - this.popupBubble.scrollHeight - 5 < 0)
+		if (left)
 		{
-			Object.assign(this.popupTail.style, WordElement.Styles.TAIL_BOTTOM);
-			this.popup.style.top = (wordTop + wordHeight + 5) + "px";
-			this.popupTail.style.top = "-5px";
-			this.popupTail.style.left = (this.popupBubble.scrollWidth - 10)/2 + "px";
+			this.popup.style.left = (wordLeft + wordWidth) + "px";
 		}
-		// Popup is not near top of page
+		else if (right)
+		{
+			this.popup.style.left = (wordLeft - popupWidth) + "px";
+		}
 		else
 		{
-			Object.assign(this.popupTail.style, WordElement.Styles.TAIL_TOP);
-			this.popup.style.top = (wordTop - this.popupBubble.scrollHeight - 5) + "px";
-			this.popupTail.style.top = this.popupBubble.scrollHeight + "px";
-			this.popupTail.style.left = (this.popupBubble.scrollWidth - 10)/2 + "px";
+			this.popup.style.left = (wordLeft + (wordWidth - popupWidth)/2) + "px";
 		}
+
+		if (top)
+		{
+			this.popup.style.top = (wordTop + wordHeight + 5) + "px";
+			this.popup.removeChild(this.popupBubble);
+			this.popup.appendChild(this.popupBubble);
+		}
+		else
+		{
+			this.popup.style.top = (wordTop - this.popupBubble.scrollHeight - 5) + "px";
+		}
+
+		let tailClass;
+		if (top)
+		{
+			if (left)
+			{
+				tailClass = WordElement.CSSClasses.TAIL_TOP_LEFT;
+			}
+			else if (right)
+			{
+				tailClass = WordElement.CSSClasses.TAIL_TOP_RIGHT;
+			}
+			else
+			{
+				tailClass = WordElement.CSSClasses.TAIL_TOP;
+			}
+		}
+		else
+		{
+			if (left)
+			{
+				tailClass = WordElement.CSSClasses.TAIL_BOTTOM_LEFT;
+			}
+			else if (right)
+			{
+				tailClass = WordElement.CSSClasses.TAIL_BOTTOM_RIGHT;
+			}
+			else
+			{
+				tailClass =  WordElement.CSSClasses.TAIL_BOTTOM;
+			}
+		}
+
+		for (let [key, cssClass] of Object.entries(WordElement.CSSClasses))
+		{
+			this.popupTail.classList.remove(cssClass);
+		}
+		this.popupTail.classList.add(tailClass);
 	}
 
 	hidePopup()
@@ -199,73 +231,14 @@ Object.assign(WordElement,
 	}
 );
 
-WordElement.Styles =
+WordElement.CSSClasses =
 {
-	WORD: {
-		display: "inline-block",
-		padding: "0px",
-		borderRadius: "0px",
-		position: "relative"
-	},
-
-	WORD_HIDDEN: {
-		backgroundColor: "transparent"
-	},
-
-	WORD_UNDEFINED: {
-		backgroundColor: "rgba(255, 100, 100, 0.33)"
-	},
-
-	WORD_DEFINED:
-	{
-		backgroundColor: "rgba(100, 255, 100, 0.5)"
-	},
-
-	POPUP: {
-		position: "absolute",
-		zIndex: "999999999"
-	},
-
-	BUBBLE: {
-		backgroundColor: "hsla(0, 0%, 20%, 1.0)",
-		color: "white",
-		padding: "7px",
-		fontSize: "12pt",
-		minHeight: "0px",
-		verticalAlign: "baseline",
-		fontFamily: "sans-serif",
-		fontWeight: "normal",
-		fontStyle: "normal",
-		textTransform: "none",
-		whiteSpace : "nowrap",
-		position: "absolute",
-		top : "0px",
-		left : "0px",
-		lineHeight: "1.0em",
-		height: "auto",
-		display: "block",
-		textStyle: "none"
-	},
-
-	TAIL: {
-		width: "0px",
-		display: "block",
-		position: "absolute"
-	},
-
-	TAIL_TOP: {
-		width: "0px",
-		borderTop: "5px solid hsla(0, 0%, 20%, 1.0)",
-		borderRight: "5px solid transparent",
-		borderLeft: "5px solid transparent"
-	},
-
-	TAIL_BOTTOM: {
-		width: "0px",
-		borderBottom: "5px solid hsla(0, 0%, 20%, 1.0)",
-		borderRight: "5px solid transparent",
-		borderLeft: "5px solid transparent"
-	}
+	TAIL_BOTTOM: "bottom",
+	TAIL_TOP: "top",
+	TAIL_TOP_LEFT: "top-left",
+	TAIL_TOP_RIGHT: "top-right",
+	TAIL_BOTTOM_LEFT: "bottom-left",
+	TAIL_BOTTOM_RIGHT: "bottom-right"
 };
 
 class WordElementEvent
