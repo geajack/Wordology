@@ -41,7 +41,6 @@
 		<ul id="navBar">
 			<li ng-class="controller.tab == 'options'? 'activeTab':''" ng-click="controller.tab='options'">Options</li>
 			<li ng-class="controller.tab == 'dictionary'? 'activeTab':''" ng-click="controller.tab='dictionary'">Words</li>
-			<li ng-class="controller.tab == 'help'? 'activeTab':''" ng-click="controller.tab='help'">Help</li>
 		</ul>
 
 		<options-tab id="pageOptions" class="page"
@@ -51,10 +50,6 @@
 		<dictionary-tab id="pageDictionary" class="page"
 			ng-class="{activePage: controller.tab == 'dictionary', disabled: controller.selectedProfile === null}"
 		></dictionary-tab>
-
-		<help-tab id="pageHelp" class="page"
-			ng-class="{activePage: controller.tab == 'help'}"
-		></help-tab>
 	</div>
 
 	<div id="profileSelector">
@@ -73,6 +68,10 @@
 		</select>
 
 	</div>
+
+	<footer>
+		<a href="https://geajack.github.io/Wordology/" target="_blank">Help</a>
+	</footer>
 
 </body>
 

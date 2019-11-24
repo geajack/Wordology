@@ -171,6 +171,16 @@ h1, h2
 	margin: auto;
 }
 
+footer
+{
+	font-size: 20px;
+	display: block;
+	margin: auto;
+	width: 200px;
+	margin-top: 15px;
+	text-align: center;
+}
+
 /***************************************************************
  *
  *     OPTIONS TAB
