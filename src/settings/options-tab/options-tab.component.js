@@ -24,6 +24,18 @@ class OptionsTabController
         this.$scope.$on("reload", () => this.reloadOptions());
     }
 
+    getPrefixColumns()
+    {
+        this.prefixColumns[0].label = this.strings.PREFIX;
+        return this.prefixColumns;
+    }
+
+    getSuffixColumns()
+    {
+        this.suffixColumns[0].label = this.strings.SUFFIX;
+        return this.suffixColumns;
+    }
+
     addPrefix()
     {
         var backup = this.blacklistedPrefixes;

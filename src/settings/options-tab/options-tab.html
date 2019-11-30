@@ -9,7 +9,7 @@
         <label>{{ctrl.strings.BLACKLISTED_PREFIXES}}</label>
         <editable-table id="blacklistedPrefixes" style="width: 200px; display: block;"
             dataset="ctrl.blacklistedPrefixes"
-            columns="ctrl.prefixColumns"
+            columns="ctrl.getPrefixColumns()"
             primary-key="'prefix'"
             paging="false"
             delete-row-callback="ctrl.onDeletePrefix">
@@ -31,7 +31,7 @@
         <label>{{ctrl.strings.WHITELISTED_SUFFIXES}}</label>
         <editable-table id="whiteslitedSuffixes" style="width: 200px; display: block;"
             dataset="ctrl.whitelistedSuffixes"
-            columns="ctrl.suffixColumns"
+            columns="ctrl.getSuffixColumns()"
             primary-key="'suffix'"
             paging="false"
             delete-row-callback="ctrl.onDeleteSuffix">

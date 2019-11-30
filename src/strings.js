@@ -88,6 +88,16 @@ const WordologyStrings = {
             ru: word => `Удалить "${word}"?`,
             pl: word => `Usunąć "${word}"?`
         },
+        PREFIX: {
+            en: "Prefix",
+            fr: "Préfixe",
+            pl: "Przedrostek"
+        },
+        SUFFIX: {
+            en: "Suffix",
+            fr: "Suffixe",
+            pl: "Przyrostek"
+        },
         MINIMUM_LENGTH_OF_ROOT: {
             en: "Minimum length of a root:",
             fr: "Longueur minimale d'une racine:",
