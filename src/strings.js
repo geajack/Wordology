@@ -1,7 +1,16 @@
 const WordologyStrings = {
     strings: {
+        TRANSLATION: {
+            en: "Translation",
+            fr: "Traduction"
+        },
+        LOOK_UP: {
+            en: "Look up",
+            fr: "Rechercher"
+        },
         TRANSLATION_SUGGESTED: {
-            en: word => `Translation suggested based on similarity to <em>${word}</em>.`
+            en: word => `Translation suggested based on similarity to <em>${word}</em>.`,
+            fr: word => `Traduction suggérée dû à la similarité avec <em>${word}</em>.`
         }
     },
 

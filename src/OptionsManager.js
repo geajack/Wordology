@@ -143,6 +143,22 @@ class OptionsManager
 		return await this.setOptions(valuesToSet);
 	}
 
+	async setGlobalOption(optionName, value)
+	{
+		if (this.dataSetPending)
+		{
+			throw new Error(
+				`Attempted to call OptionsManager.setGlobalOption() while data set was still pending.
+				Due to the way localStorage works, you must wait for the previous set to complete
+				before setting again.`
+			);
+		}
+
+		var localData = await browser.storage.local.get();
+		localData[optionName] = value;
+		return await this.safeLocalStorageSet(localData);
+	}
+
 	async setCurrentProfile(id)
 	{
 		return await this.safeLocalStorageSet({ profile: id });

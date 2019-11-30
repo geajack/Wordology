@@ -83,7 +83,7 @@ WordEditDialog =
 		if (lookupURL)
 		{
 			let url = lookupURL.replace("$", word);
-			var lookupLink = `<a class="lookup" target="_blank" href="${url}">Look up</a>`;
+			var lookupLink = `<a class="lookup" target="_blank" href="${url}">${strings.LOOK_UP}</a>`;
 		}
 		else
 		{
@@ -92,7 +92,7 @@ WordEditDialog =
 
 		return `
 			<span class="word">${word}</span>
-			<label for="definition">Translation:</label>
+			<label for="definition">${strings.TRANSLATION}:</label>
 			<input type="text" name="definition" autocomplete="off" value="${suggestion}" />
 			${suggestionNote}
 			${suggestionNote && lookupLink ? "<br />" : ""}
