@@ -2,11 +2,11 @@
 <main>
     <h1>{{ctrl.strings.SMART_MATCHING}}</h1>
     <div class="optionsBlock">
-        <label for="rootLength">Minimum length of a root: </label>
+        <label for="rootLength">{{ctrl.strings.MINIMUM_LENGTH_OF_ROOT}} </label>
         <input id="rootLength" name="rootLength" type="number" min="1" ng-model="ctrl.options.minPrefixLength" />
     </div>
     <div class="optionsBlock" ng-if="ctrl.blacklistedPrefixes.length > 0">
-        <label>Blacklisted prefixes:</label>
+        <label>{{ctrl.strings.BLACKLISTED_PREFIXES}}</label>
         <editable-table id="blacklistedPrefixes" style="width: 200px; display: block;"
             dataset="ctrl.blacklistedPrefixes"
             columns="ctrl.prefixColumns"
@@ -16,19 +16,19 @@
         </editable-table>
     </div>
     <p class="noAffixesNotice" ng-if="ctrl.blacklistedPrefixes.length == 0">
-        Add prefixes to your blacklist below.
+        {{ctrl.strings.ADD_PREFIXES}}
     </p>
     <div class="optionsBlock">
-        <label for="addPrefixInput">Blacklist prefix:</label>
+        <label for="addPrefixInput">{{ctrl.strings.BLACKLIST_PROMPT}}</label>
         <input id="addPrefixInput" name="addPrefixInput" type="text" ng-model="ctrl.prefixInput" ng-keyup="$event.keyCode == 13 && ctrl.addPrefix()" />
-        <button id="addPrefixButton" ng-click="ctrl.addPrefix()">Add</button>
+        <button id="addPrefixButton" ng-click="ctrl.addPrefix()">{{ctrl.strings.ADD_BUTTON}}</button>
     </div>
     <div class="optionsBlock">
-        <label for="suffixLength">Maximum length of a suffix:</label>
+        <label for="suffixLength">{{ctrl.strings.MAXIMUM_LENGTH_OF_SUFFIX}} </label>
         <input id="suffixLength" name="suffixLength" type="number" min="1" ng-model="ctrl.options.maxSuffixLength" />
     </div>
     <div class="optionsBlock" ng-if="ctrl.whitelistedSuffixes.length > 0">
-        <label>Whitelisted suffixes:</label>
+        <label>{{ctrl.strings.WHITELISTED_SUFFIXES}}</label>
         <editable-table id="whiteslitedSuffixes" style="width: 200px; display: block;"
             dataset="ctrl.whitelistedSuffixes"
             columns="ctrl.suffixColumns"
@@ -38,61 +38,59 @@
         </editable-table>
     </div>
     <p class="noAffixesNotice" ng-if="ctrl.whitelistedSuffixes.length == 0">
-        Add suffixes to your whitelist below.
+        {{ctrl.strings.ADD_SUFFIXES}}
     </p>
     <div class="optionsBlock">
-        <label for="addSuffixInput">Whitelist suffix:</label>
+        <label for="addSuffixInput">{{ctrl.strings.WHITELIST_PROMPT}}</label>
         <input id="addSuffixInput" name="addSuffixInput" type="text" ng-model="ctrl.suffixInput" ng-keyup="$event.keyCode == 13 && ctrl.addSuffix()"/>
-        <button id="addSuffixButton" ng-click="ctrl.addSuffix()">Add</button>
+        <button id="addSuffixButton" ng-click="ctrl.addSuffix()">{{ctrl.strings.ADD_BUTTON}}</button>
     </div>
     <div class="optionsBlock">
-        <strong><label for="useInflection">Use Smart Matching</label></strong>
+        <strong><label for="useInflection">{{ctrl.strings.USE_SMART_MATCHING}}</label></strong>
         <input id="useInflection" name="useInflection" type="checkbox" ng-model="ctrl.options.useInflection" />
     </div>
 
-    <h1>Lookup</h1>
+    <h1>{{ctrl.strings.LOOKUP_HEADER}}</h1>
     <div class="optionsBlock">
-        <p>Enter the URL of your preferred online dictionary, typing a dollar sign ($) where the word should be, eg.: <em>http://en.wiktionary.org/wiki/$</em>.</p>
-        <label for="urlInput">Lookup URL:</label>
+        <p>{{ctrl.strings.LOOKUP_DESCRIPTION}}</p>
+        <label for="urlInput">{{ctrl.strings.LOOKUP_URL}}</label>
         <input id="urlInput" name="urlInput" type="text" ng-model="ctrl.options.lookupURL" />
     </div>
 
-    <h1>Colors</h1>
+    <h1>{{ctrl.strings.COLORS}}</h1>
     <div class="optionsBlock colors">
         <div class="optionsBlock">
-            <label for="undefinedColorInput">Undefined words:</label>
+            <label for="undefinedColorInput">{{ctrl.strings.UNDEFINED_WORDS}}</label>
             <input id="undefinedColorInput" name="undefinedColorInput" type="color" ng-model="ctrl.options.notDefinedColor" />
             <br />
-            <label for="undefinedOpacityInput">Opacity:</label>
+            <label for="undefinedOpacityInput">{{ctrl.strings.OPACITY}}</label>
             <input id="undefinedOpacityInput" name="undefinedOpacityInput" type="range" min="0" max="100" ng-model="ctrl.options.notDefinedOpacity" />
         </div>
 
         <div class="optionsBlock">
-            <label for="definedColorInput">Defined words:</label>
+            <label for="definedColorInput">{{ctrl.strings.DEFINED_WORDS}}</label>
             <input id="definedColorInput" name="definedColorInput" type="color" ng-model="ctrl.options.definedColor" />
             <br />
-            <label for="definedOpacityInput">Opacity:</label>
+            <label for="definedOpacityInput">{{ctrl.strings.OPACITY}}</label>
             <input id="definedOpacityInput" name="definedOpacityInput" type="range" min="0" max="100" ng-model="ctrl.options.definedOpacity" />
         </div>
 
         <div class="optionsBlock">
-            <label for="similarColorInput">Smart matched words:</label>
+            <label for="similarColorInput">{{ctrl.strings.SMART_MATCHED_WORDS}}</label>
             <input id="similarColorInput" name="similarColorInput" type="color" ng-model="ctrl.options.similarColor" />
             <br />
-            <label for="similarOpacityInput">Opacity:</label>
+            <label for="similarOpacityInput">{{ctrl.strings.OPACITY}}</label>
             <input id="similarOpacityInput" name="similarOpacityInput" type="range" min="0" max="100" ng-model="ctrl.options.similarOpacity" />
         </div>
     </div>
     <div class="optionsBlock">
-        <button id="resetColorButton" ng-click="ctrl.resetColorsToDefault()">Reset to default colors</button>
+        <button id="resetColorButton" ng-click="ctrl.resetColorsToDefault()">{{ctrl.strings.RESET_COLORS}}</button>
     </div>
 
-    <h1>Extended Alphabet</h1>
+    <h1>{{ctrl.strings.EXTENDED_ALPHABET_HEADER}}</h1>
     <div class="optionsBlock">
-        <p>Add extra characters to the alphabet recognized by Wordology. For example, if you add the hyphen ("-"), then Wordology will consider "flower-pot"
-            as one word rather than "flower" and "pot". Just type all extra characters together, with no spaces, eg <em>'-</em> to add ' and -.
-        </p>
-        <label for="separatorsInput">Extended alphabet:</label>
+        <p>{{ctrl.strings.EXTENDED_ALPHABET_DESCRIPTION}}</p>
+        <label for="separatorsInput">{{ctrl.strings.EXTENDED_ALPHABET_PROMPT}}</label>
         <input type="text" id="separatorsInput" style="font-family: monospace" name="separatorsInput" ng-model="ctrl.options.separatorCharacters" />
     </div>
 </main>

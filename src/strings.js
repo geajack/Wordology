@@ -46,7 +46,7 @@ const WordologyStrings = {
         },
         SMART_MATCHING: {
             en: "Smart Matching",
-            fr: "Détection d'inflection"
+            fr: "Détection de flexion"
         },
         NO_WORDS: {
             en: "You have no words added!",
@@ -55,6 +55,96 @@ const WordologyStrings = {
         DELETE_WORD: {
             en: word => `Delete "${word}"?`,
             fr: word => `Supprimer "${word}"?`
+        },
+        MINIMUM_LENGTH_OF_ROOT: {
+            en: "Minimum length of a root:",
+            fr: "Longueur minimale d'une racine:"
+        },
+        BLACKLISTED_PREFIXES: {
+            en: "Blacklisted prefixes:",
+            fr: "Liste noire de préfixes:"
+        },
+        ADD_PREFIXES: {
+            en: "Add prefixes to your blacklist below.",
+            fr: "Ajoutez des préfixes à votre liste noire ci-dessous."
+        },
+        BLACKLIST_PROMPT: {
+            en: "Blacklist prefix:",
+            fr: "Ajouter préfixe:"
+        },
+        MAXIMUM_LENGTH_OF_SUFFIX: {
+            en: "Maximum length of a suffix:",
+            fr: "Longueur maximale d'un suffixe:"
+        },
+        WHITELISTED_SUFFIXES: {
+            en: "Whitelisted suffixes:",
+            fr: "Liste blanche de suffixes:"
+        },
+        ADD_SUFFIXES: {
+            en: "Add suffixes to your whitelist below.",
+            fr: "Ajoutez des suffixes à votre liste blanche ci-dessous."
+        },
+        WHITELIST_PROMPT: {
+            en: "Whitelist suffix:",
+            fr: "Ajouter suffixe:"
+        },
+        ADD_BUTTON: {
+            en: "Add",
+            fr: "Ajouter"
+        },
+        USE_SMART_MATCHING: {
+            en: "Use Smart Matching",
+            fr: "Utiliser la détéction d'infléction"
+        },
+        LOOKUP_HEADER: {
+            en: "Lookup",
+            fr: "Recherche"
+        },
+        LOOKUP_DESCRIPTION: {
+            en: `Enter the URL of your preferred online dictionary, typing a dollar sign ($) where the word should be, e.g.: <em>http://en.wiktionary.org/wiki/$</em>.`,
+            fr: `Entrez l'URL de votre dictionnaire en-ligne préferé, tapant un signe dollar ($) là où devrait figurer le mot, e.g.: <em>http://fr.wiktionary.org/wiki/$</em>.`
+        },
+        LOOKUP_URL: {
+            en: "Lookup URL:",
+            fr: "URL de recherche:"
+        },
+        COLORS: {
+            en: "Colors",
+            fr: "Couleurs"
+        },
+        UNDEFINED_WORDS: {
+            en: "Undefined words:",
+            fr: "Mots non-définis:"
+        },
+        DEFINED_WORDS: {
+            en: "Defined words:",
+            fr: "Mots définis:"
+        },
+        SMART_MATCHED_WORDS: {
+            en: "Smart matched words:",
+            fr: "Mots définis par la detéction de flexion:"
+        },
+        OPACITY: {
+            en: "Opacity:",
+            fr: "Opacité"
+        },
+        RESET_COLORS: {
+            en: "Reset to default colors",
+            fr: "Revenir aux couleurs par défaut"
+        },
+        EXTENDED_ALPHABET_HEADER: {
+            en: "Extended Alphabet",
+            fr: "Alphabet étendu"
+        },
+        EXTENDED_ALPHABET_DESCRIPTION: {
+            en: `Add extra characters to the alphabet recognized by Wordology. For example, if you add the hyphen ("-"), then Wordology will consider "flower-pot"
+            as one word rather than "flower" and "pot". Just type all extra characters together, with no spaces, e.g. <em>'-</em> to add ' and -.`,
+            fr: `Ajoutez des caractères supplémentaires à l'alphabet reconnu par Wordology. Par exemple, en ajoutant le tiret ("-"), Wordology considérera "tire-bouchon"
+            comme un seul mot plutôt que "tire" et "bouchon". Ecrivez simplement tous les caractères à la suite, sans éspaces, e.g. <em>'-</em> pour ajouter ' et -.`
+        },
+        EXTENDED_ALPHABET_PROMPT: {
+            en: "Extended alphabet:",
+            fr: "Alphabet étendu:"
         }
     },
 
