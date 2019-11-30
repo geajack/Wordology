@@ -46,7 +46,7 @@ const WordologyStrings = {
         },
         SMART_MATCHING: {
             en: "Smart Matching",
-            fr: "Détection de flexion"
+            fr: "Detéction de flexion"
         },
         NO_WORDS: {
             en: "You have no words added!",
