@@ -23,6 +23,26 @@ const WordologyStrings = {
         WORDS: {
             en: "Words",
             fr: "Mots"
+        },
+        OPTIONS: {
+            en: "Options",
+            fr: "Options"
+        },
+        PROFILE: {
+            en: "Profile",
+            fr: "Profil"
+        },
+        NO_PROFILE: {
+            en: "None",
+            fr: "Aucun"
+        },
+        HELP: {
+            en: "Help",
+            fr: "Aide (Anglais)"
+        },
+        FEEDBACK: {
+            en: "Feedback",
+            fr: "Contact"
         }
     },
 

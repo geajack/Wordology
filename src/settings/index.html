@@ -40,7 +40,7 @@
 
 	<div id="contents">
 		<ul id="navBar">
-			<li ng-class="controller.tab == 'options'? 'activeTab':''" ng-click="controller.tab='options'">Options</li>
+			<li ng-class="controller.tab == 'options'? 'activeTab':''" ng-click="controller.tab='options'">{{controller.strings.OPTIONS}}</li>
 			<li ng-class="controller.tab == 'dictionary'? 'activeTab':''" ng-click="controller.tab='dictionary'">{{controller.strings.WORDS}}</li>
 		</ul>
 
@@ -55,7 +55,7 @@
 
 	<div id="profileSelector">
         <div>
-			Profile
+			{{controller.strings.PROFILE}}
 			<button ng-click="controller.onClickAddProfile()" title="Add profile">+</button>
 			<button ng-click="controller.onClickRenameProfile()" title="Rename profile">R</button>
 			<button ng-click="controller.onClickDeleteProfile()" title="Delete profile">-</button>
@@ -64,7 +64,7 @@
 			ng-model="controller.selectedProfile"
 			ng-change="controller.profileChanged()"
 		>
-			<option ng-value="null" ng-if="controller.selectedProfile === null">&lt;None&gt;</option>
+			<option ng-value="null" ng-if="controller.selectedProfile === null">&lt;{{controller.strings.NO_PROFILE}}&gt;</option>
 			<option ng-repeat="profile in controller.profiles" ng-value="profile">{{profile.name}}</option>
 		</select>
 
@@ -75,8 +75,8 @@
 			<option ng-value="'en'">English</option>
 			<option ng-value="'fr'">Français</option>
 		</select> |
-		<a href="https://geajack.github.io/Wordology/" target="_blank">Help</a> |
-		<a href="mailto:wordologyaddon@gmail.com">Feedback</a>
+		<a href="https://geajack.github.io/Wordology/" target="_blank">{{controller.strings.HELP}}</a> |
+		<a href="mailto:wordologyaddon@gmail.com">{{controller.strings.FEEDBACK}}</a>
 	</footer>
 
 </body>
