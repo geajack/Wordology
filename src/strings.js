@@ -44,6 +44,10 @@ const WordologyStrings = {
             en: "Feedback",
             fr: "Contact"
         },
+        DONATE: {
+            en: "Donate",
+            fr: "Soutenir"
+        },
         SMART_MATCHING: {
             en: "Smart Matching",
             fr: "Detéction de flexion"
