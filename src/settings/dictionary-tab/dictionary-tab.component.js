@@ -5,15 +5,21 @@ class DictionaryTabController
         this.$scope = $scope;
         this.wordList = null;
         this.downloadUri = "";
-        this.reloadWords();
-        this.wordListColumns = [
-            { name: "word", label: "Word", searchable: true },
-            { name: "definition", label: "Definition", searchable: true }
+        this.columns = [
+            { name: "word", label: "", searchable: true },
+            { name: "definition", label: "", searchable: true }
         ];
+        this.reloadWords();
         this.onClickWord = this.onClickWord.bind(this);
         this.onDeleteWord = this.onDeleteWord.bind(this);
-
         this.$scope.$on("reload", () => this.reloadWords());
+    }
+
+    getTableColumns()
+    {
+        this.columns[0].label = this.strings.WORD;
+        this.columns[1].label = this.strings.DEFINITION;
+        return this.columns;
     }
 
     async reloadWords()

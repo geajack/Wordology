@@ -3,7 +3,7 @@
     <section id="wordListSection">
         <editable-table ng-if="ctrl.wordList.length > 0" id="wordTable"
             dataset="ctrl.wordList"
-            columns="ctrl.wordListColumns"
+            columns="ctrl.getTableColumns()"
             primary-key="'word'"
             paging="true"
             click-row-callback="ctrl.onClickWord"

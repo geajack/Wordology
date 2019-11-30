@@ -181,6 +181,14 @@ const WordologyStrings = {
         CANCEL: {
             en: "Cancel",
             fr: "Annuler"
+        },
+        WORD: {
+            en: "Word",
+            fr: "Mot"
+        },
+        DEFINITION: {
+            en: "Definition",
+            fr: "Définition"
         }
     },
 
