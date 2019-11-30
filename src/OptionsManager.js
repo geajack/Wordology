@@ -10,22 +10,13 @@ class OptionsManager
 		var localData = await browser.storage.local.get();
 		var modificationsNecessary = false;
 
-		if (localData["version"] === undefined)
+		for (let optionName in OptionsManager.DefaultOptions)
 		{
-			localData["version"] = "1.2";
-			modificationsNecessary = true;
-		}
-
-		if (localData["profile"] === undefined)
-		{
-			localData["profile"] = 0;
-			modificationsNecessary = true;
-		}
-
-		if (localData["profiles"] === undefined)
-		{
-			localData["profiles"] = [{id: 0, name: "Default Profile"}];
-			modificationsNecessary = true;
+			if (localData[optionName] === undefined)
+			{
+				localData[optionName] = OptionsManager.DefaultOptions[optionName];
+				modificationsNecessary = true;
+			}
 		}
 
         for (let profile of localData["profiles"])
@@ -33,16 +24,16 @@ class OptionsManager
             var optionsKey = profile.id + "/options";
             if (localData[optionsKey] === undefined)
             {
-                localData[optionsKey] = OptionsManager.DefaultOptions;
+                localData[optionsKey] = OptionsManager.DefaultProfileOptions;
                 modificationsNecessary = true;
             }
             else
             {
-                for (var optionName in OptionsManager.DefaultOptions)
+                for (var optionName in OptionsManager.DefaultProfileOptions)
                 {
                     if (localData[optionsKey][optionName] === undefined)
                     {
-                        localData[optionsKey][optionName] = OptionsManager.DefaultOptions[optionName];
+                        localData[optionsKey][optionName] = OptionsManager.DefaultProfileOptions[optionName];
                         modificationsNecessary = true;
                     }
                 }
@@ -185,7 +176,7 @@ class OptionsManager
 
 		var dataToSet = {};
 		dataToSet["profiles"] = profiles;
-		dataToSet[newId + "/options"] = OptionsManager.DefaultOptions;
+		dataToSet[newId + "/options"] = OptionsManager.DefaultProfileOptions;
 
 		await this.safeLocalStorageSet(dataToSet);
 		return newId;
@@ -240,6 +231,13 @@ class OptionsManager
 }
 
 OptionsManager.DefaultOptions =
+{
+	version  : "1.2",
+	profile  : 0,
+	profiles : [{id: 0, name: "Default Profile"}]
+}
+
+OptionsManager.DefaultProfileOptions =
 {
 	blacklistedPrefixes : [],
 	whitelistedSuffixes : [],

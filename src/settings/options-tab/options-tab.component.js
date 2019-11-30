@@ -100,12 +100,12 @@ class OptionsTabController
     resetColorsToDefault()
     {
         var defaultColors = {
-            notDefinedColor     : OptionsManager.DefaultOptions.notDefinedColor,
-            definedColor        : OptionsManager.DefaultOptions.definedColor,
-            similarColor        : OptionsManager.DefaultOptions.similarColor,
-            notDefinedOpacity   : OptionsManager.DefaultOptions.notDefinedOpacity,
-            definedOpacity      : OptionsManager.DefaultOptions.definedOpacity,
-            similarOpacity      : OptionsManager.DefaultOptions.similarOpacity
+            notDefinedColor     : OptionsManager.DefaultProfileOptions.notDefinedColor,
+            definedColor        : OptionsManager.DefaultProfileOptions.definedColor,
+            similarColor        : OptionsManager.DefaultProfileOptions.similarColor,
+            notDefinedOpacity   : OptionsManager.DefaultProfileOptions.notDefinedOpacity,
+            definedOpacity      : OptionsManager.DefaultProfileOptions.definedOpacity,
+            similarOpacity      : OptionsManager.DefaultProfileOptions.similarOpacity
         };
         this.OM.setOptions(defaultColors);
         Object.assign(this.options, defaultColors);
