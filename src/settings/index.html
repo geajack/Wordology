@@ -58,9 +58,9 @@
 	<div id="profileSelector">
         <div>
 			{{controller.strings.PROFILE}}
-			<button ng-click="controller.onClickAddProfile()" title="Add profile">+</button>
-			<button ng-click="controller.onClickRenameProfile()" title="Rename profile">R</button>
-			<button ng-click="controller.onClickDeleteProfile()" title="Delete profile">-</button>
+			<button ng-click="controller.onClickAddProfile()" title="{{controller.strings.ADD_PROFILE_TOOLTIP}}">+</button>
+			<button ng-click="controller.onClickRenameProfile()" title="{{controller.strings.RENAME_PROFILE_TOOLTIP}}">R</button>
+			<button ng-click="controller.onClickDeleteProfile()" title="{{controller.strings.DELETE_PROFILE_TOOLTIP}}">-</button>
 		</div>
 		<select
 			ng-model="controller.selectedProfile"

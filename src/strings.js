@@ -209,6 +209,18 @@ const WordologyStrings = {
         ADD_PROFILE: {
             en: "Enter name for new profile:",
             fr: "Entrez un nom pour le nouveau profil:"
+        },
+        ADD_PROFILE_TOOLTIP: {
+            en: "Add profile",
+            fr: "Ajouter profil"
+        },
+        RENAME_PROFILE_TOOLTIP: {
+            en: "Rename profile",
+            fr: "Renommer profil"
+        },
+        DELETE_PROFILE_TOOLTIP: {
+            en: "Delete profile",
+            fr: "Supprimer profil"
         }
     },
 
