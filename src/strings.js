@@ -189,6 +189,22 @@ const WordologyStrings = {
         DEFINITION: {
             en: "Definition",
             fr: "Définition"
+        },
+        RENAME_PROFILE: {
+            en: name => `Enter new profile name for "${name}":`,
+            fr: name => `Entrez un nouveau nom pour le profil "${name}":`
+        },
+        DELETE_PROFILE_WARNING: {
+            en: name =>
+                `Definitely delete profile "${name}"? Your wordlist and settings will be gone forever.
+                Type DELETE (all-caps) to delete.`,
+            fr: name =>
+                `Vraiment supprimer le profil "${name}"? Vos mots et paramètres seront supprimés à jamais.
+                Ecrivez SUPPRIMER (en majuscules) pour supprimer.`
+        },
+        ADD_PROFILE: {
+            en: "Enter name for new profile:",
+            fr: "Entrez un nom pour le nouveau profil:"
         }
     },
 
