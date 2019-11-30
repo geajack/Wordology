@@ -12,7 +12,8 @@
             columns="ctrl.getPrefixColumns()"
             primary-key="'prefix'"
             paging="false"
-            delete-row-callback="ctrl.onDeletePrefix">
+            delete-row-callback="ctrl.onDeletePrefix"
+            strings="ctrl.strings">
         </editable-table>
     </div>
     <p class="noAffixesNotice" ng-if="ctrl.blacklistedPrefixes.length == 0">
@@ -34,7 +35,8 @@
             columns="ctrl.getSuffixColumns()"
             primary-key="'suffix'"
             paging="false"
-            delete-row-callback="ctrl.onDeleteSuffix">
+            delete-row-callback="ctrl.onDeleteSuffix"
+            strings="ctrl.strings">
         </editable-table>
     </div>
     <p class="noAffixesNotice" ng-if="ctrl.whitelistedSuffixes.length == 0">
