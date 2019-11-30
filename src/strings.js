@@ -19,6 +19,10 @@ const WordologyStrings = {
         CHANGED_PROFILE: {
             en: `You seem to have changed Wordology profiles since the last time this page was loaded. <a href="javascript:window.location.reload();">Reload</a> this page to keep using Wordology.`,
             fr: `Vous semblez avoir changé de profil Wordology depuis que cette page ait été chargée. <a href="javascript:window.location.reload();">Rechargez</a> cette page pour continuer à utiliser Wordology.`
+        },
+        WORDS: {
+            en: "Words",
+            fr: "Mots"
         }
     },
 

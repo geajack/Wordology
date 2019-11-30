@@ -22,6 +22,7 @@
 
 	<script type="text/javascript" src="../browser-polyfill.min.js"></script>
 	<script type="text/javascript" src="../vex/vex.combined.min.js"></script>
+	<script src="../strings.js"></script>
 	<script src="../OptionsManager.js"></script>
 	<script src="../Dictionary.js"></script>
 	<script src="../WordEditDialog.js"></script>
@@ -40,7 +41,7 @@
 	<div id="contents">
 		<ul id="navBar">
 			<li ng-class="controller.tab == 'options'? 'activeTab':''" ng-click="controller.tab='options'">Options</li>
-			<li ng-class="controller.tab == 'dictionary'? 'activeTab':''" ng-click="controller.tab='dictionary'">Words</li>
+			<li ng-class="controller.tab == 'dictionary'? 'activeTab':''" ng-click="controller.tab='dictionary'">{{controller.strings.WORDS}}</li>
 		</ul>
 
 		<options-tab id="pageOptions" class="page"

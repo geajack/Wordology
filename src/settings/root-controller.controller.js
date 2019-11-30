@@ -6,7 +6,12 @@ class RootController
         this.OM = new OptionsManager();
         this.tab = "options";
         this.selectedProfile = null;
-        this.OM.getGlobalOptions().then(options => this.selectedLanguage = options.language);
+        this.OM.getGlobalOptions().then(
+            options => {
+                this.selectedLanguage = options.language;
+                this.strings = WordologyStrings.getStrings(options.language);
+            }
+        );
         this.reloadProfiles();
     }
 
@@ -30,6 +35,7 @@ class RootController
     async languageChanged()
     {
         await this.OM.setGlobalOption("language", this.selectedLanguage);
+        this.strings = WordologyStrings.getStrings(this.selectedLanguage);
         this.$scope.$broadcast("reload");
     }
 
