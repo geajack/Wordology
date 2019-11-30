@@ -70,6 +70,10 @@
 	</div>
 
 	<footer>
+		<select ng-model="controller.selectedLanguage" ng-change="controller.languageChanged()">
+			<option ng-value="'en'">English</option>
+			<option ng-value="'fr'">Français</option>
+		</select> |
 		<a href="https://geajack.github.io/Wordology/" target="_blank">Help</a> |
 		<a href="mailto:wordologyaddon@gmail.com">Feedback</a>
 	</footer>
