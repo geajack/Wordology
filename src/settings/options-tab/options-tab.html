@@ -52,7 +52,7 @@
 
     <h1>{{ctrl.strings.LOOKUP_HEADER}}</h1>
     <div class="optionsBlock">
-        <p>{{ctrl.strings.LOOKUP_DESCRIPTION}}</p>
+        <p ng-bind-html="ctrl.strings.LOOKUP_DESCRIPTION | trust"></p>
         <label for="urlInput">{{ctrl.strings.LOOKUP_URL}}</label>
         <input id="urlInput" name="urlInput" type="text" ng-model="ctrl.options.lookupURL" />
     </div>
@@ -89,7 +89,7 @@
 
     <h1>{{ctrl.strings.EXTENDED_ALPHABET_HEADER}}</h1>
     <div class="optionsBlock">
-        <p>{{ctrl.strings.EXTENDED_ALPHABET_DESCRIPTION}}</p>
+        <p ng-bind-html="ctrl.strings.EXTENDED_ALPHABET_DESCRIPTION | trust"></p>
         <label for="separatorsInput">{{ctrl.strings.EXTENDED_ALPHABET_PROMPT}}</label>
         <input type="text" id="separatorsInput" style="font-family: monospace" name="separatorsInput" ng-model="ctrl.options.separatorCharacters" />
     </div>
