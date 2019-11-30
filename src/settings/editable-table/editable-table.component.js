@@ -19,7 +19,7 @@ class EditableTableController
         vex.dialog.buttons.YES.text = "Yes";
         vex.dialog.buttons.NO.text = "No";
         vex.dialog.confirm({
-            message: this.strings.DELETE_WORD(this.primaryKey),
+            message: this.strings.DELETE_WORD(row[this.primaryKey]),
             callback: response =>
             {
                 if (response === true)
