@@ -6,6 +6,7 @@ class RootController
         this.OM = new OptionsManager();
         this.tab = "options";
         this.selectedProfile = null;
+        this.OM.getGlobalOptions().then(options => this.selectedLanguage = options.language);
         this.reloadProfiles();
     }
 
@@ -23,6 +24,12 @@ class RootController
             this.selectedProfile = null;
         }
         this.$scope.$digest();
+        this.$scope.$broadcast("reload");
+    }
+
+    async languageChanged()
+    {
+        await this.OM.setGlobalOption("language", this.selectedLanguage);
         this.$scope.$broadcast("reload");
     }
 

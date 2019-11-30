@@ -52,10 +52,13 @@ class OptionsManager
             (changes, storageAreaName) => {
                 if (storageAreaName === "local")
                 {
-                    if (changes.profile.newValue !== changes.profile.oldValue)
-                    {
-                        listener(changes.profile.newValue);
-                    }
+					if (changes.profile !== undefined)
+					{
+						if (changes.profile.newValue !== changes.profile.oldValue)
+						{
+							listener(changes.profile.newValue);
+						}
+					}
                 }
             }
         );
