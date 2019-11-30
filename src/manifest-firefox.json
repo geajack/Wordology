@@ -40,6 +40,7 @@
 			"js": [
 				"browser-polyfill.min.js",
 				"vex/vex.combined.min.js",
+				"strings.js",
 				"OptionsManager.js",
 				"messages.js",
 				"wordmatching.js",

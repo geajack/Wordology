@@ -18,6 +18,7 @@ WordEditDialog =
 	open: async function(config)
 	{
 		var options = await (new OptionsManager()).getOptions();
+		var globalOptions = await (new OptionsManager()).getGlobalOptions();
 
 		return new Promise(
 			resolve =>
@@ -27,7 +28,8 @@ WordEditDialog =
 						{
 							word: config.word,
 							match: config.match,
-							lookupURL: options.lookupURL
+							lookupURL: options.lookupURL,
+							language: globalOptions.language
 						}
 					),
 					callback: resolve
@@ -49,9 +51,12 @@ WordEditDialog =
 
 	generateDialogHTML: function(config)
 	{
-		var word = config.word;
-		var match = config.match;
+		var word      = config.word;
+		var match     = config.match;
 		var lookupURL = config.lookupURL;
+		var language  = config.language;
+
+		const strings = WordologyStrings.getStrings(language);
 
 		if (match)
 		{
@@ -61,7 +66,7 @@ WordEditDialog =
 			{
 				let matchingWord = match.entry.word;
 				var suggestionNote = `
-					<span class=\"suggestionNote\">Translation suggested based on similarity to <em>${matchingWord}</em>.</span>
+					<span class=\"suggestionNote\">${strings.TRANSLATION_SUGGESTED(matchingWord)}</span>
 				`;
 			}
 			else

@@ -69,6 +69,20 @@ class OptionsManager
 		return options;
 	}
 
+	async getGlobalOptions()
+	{
+		var localData = await browser.storage.local.get();
+		var publicOptions = {};
+		for (let optionName in localData)
+		{
+			if (OptionsManager.PublicGlobalOptions.includes(optionName))
+			{
+				publicOptions[optionName] = localData[optionName];
+			}
+		}
+		return publicOptions;
+	}
+
 	async getCurrentProfileId()
 	{
         var localData = await browser.storage.local.get();
@@ -230,12 +244,17 @@ class OptionsManager
 	}
 }
 
+OptionsManager.PublicGlobalOptions = [
+	"language"
+]
+
 OptionsManager.DefaultOptions =
 {
 	version  : "1.2",
 	profile  : 0,
+	language : "en",
 	profiles : [{id: 0, name: "Default Profile"}]
-}
+};
 
 OptionsManager.DefaultProfileOptions =
 {
