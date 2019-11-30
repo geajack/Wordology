@@ -145,6 +145,42 @@ const WordologyStrings = {
         EXTENDED_ALPHABET_PROMPT: {
             en: "Extended alphabet:",
             fr: "Alphabet étendu:"
+        },
+        LOGIN_FOR_OPTIONS: {
+            en: "Log in to a profile to access options.",
+            fr: "Connectez-vous à un profil pour accéder aux options."
+        },
+        EXPORT: {
+            en: "Export as file",
+            fr: "Exporter comme fichier"
+        },
+        IMPORT: {
+            en: "Import from file",
+            fr: "Importer un fichier"
+        },
+        CLEAR: {
+            en: "Clear data",
+            fr: "Effacer données"
+        },
+        IMPORT_ERROR: {
+            en: "There was an error reading your file. Was that the right file?",
+            fr: "Une erreur est survenue en lisant votre fichier. Etait-ce le bon fichier?"
+        },
+        DELETE_WORDLIST_WARNING: {
+            en: "To delete your entire wordlist for this profile permanently, type DELETE below in all-capital letters, and click OK.",
+            fr: "Pour supprimer tous les mots de ce profil de façon permanante, tapez SUPPRIMER ci-dessous en lettre majuscules, et appuyez sur OK."
+        },
+        DELETE_PASSWORD: {
+            en: "DELETE",
+            fr: "SUPPRIMER"
+        },
+        OK: {
+            en: "OK",
+            fr: "OK"
+        },
+        CANCEL: {
+            en: "Cancel",
+            fr: "Annuler"
         }
     },
 

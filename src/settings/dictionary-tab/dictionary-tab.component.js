@@ -80,15 +80,13 @@ class DictionaryTabController
 
     clearData()
     {
-        vex.dialog.buttons.YES.text = "OK";
-        vex.dialog.buttons.NO.text = "Cancel";
+        vex.dialog.buttons.YES.text = this.strings.OK;
+        vex.dialog.buttons.NO.text = this.strings.CANCEL;
         vex.dialog.prompt({
-            message:
-                "To delete your entire wordlist for this profile permanently,\n" +
-                "type DELETE below in all-capital letters, and click OK.",
+            message: this.strings.DELETE_WORDLIST_WARNING,
             callback: response =>
             {
-                if (response === "DELETE")
+                if (response === this.strings.DELETE_PASSWORD)
                 {
                     this.loadWordList({});
                     this.D.clear();
@@ -108,7 +106,7 @@ class DictionaryTabController
         }
         catch
         {
-            alert("There was an error reading your file. Was that the right file?");
+            alert(this.strings.IMPORT_ERROR);
         }
     }
 
