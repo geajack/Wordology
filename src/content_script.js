@@ -111,17 +111,19 @@
 		}
 	}
 
-	function showLoggedOutPopup()
+	async function showLoggedOutPopup()
 	{
-		message = `You don't seem to be logged into a Wordology profile right now. Go to your settings page to log in, and then <a href="javascript:window.location.reload();">reload</a> this page.`;
+		let options = await (new OptionsManager()).getGlobalOptions();
+		message = WordologyStrings.getStrings(options.language).LOGGED_OUT;
 		vex.dialog.open({
 			input: message
 		});
 	}
 
-	function showChangedProfilePopup()
+	async function showChangedProfilePopup()
 	{
-		message = `You seem to have changed Wordology profiles since the last time this page was loaded. <a href="javascript:window.location.reload();">Reload</a> this page to keep using Wordology.`;
+		let options = await (new OptionsManager()).getGlobalOptions();
+		message = WordologyStrings.getStrings(options.language).CHANGED_PROFILE;
 		vex.dialog.open({
 			input: message
 		});
