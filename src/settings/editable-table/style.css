@@ -53,14 +53,6 @@
     position: relative;
 }
 
-.editableTable .ng-table-counts:before
-{
-    content: "Items per page:";
-    display: block;
-    font-size: 11px;
-    color: rgba(0,0,0,0.4);
-    margin-bottom: 5px;
-}
 .editableTable .ng-table-counts button
 {
     padding: 8px;
