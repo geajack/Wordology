@@ -36,7 +36,7 @@ class RootController
     {
         await this.OM.setGlobalOption("language", this.selectedLanguage);
         this.strings = WordologyStrings.getStrings(this.selectedLanguage);
-        this.$scope.$broadcast("reload");
+        this.$scope.$digest();
     }
 
     async profileChanged()

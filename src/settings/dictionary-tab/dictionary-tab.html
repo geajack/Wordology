@@ -7,10 +7,11 @@
             primary-key="'word'"
             paging="true"
             click-row-callback="ctrl.onClickWord"
-            delete-row-callback="ctrl.onDeleteWord">
+            delete-row-callback="ctrl.onDeleteWord"
+            strings="ctrl.strings">
         </editable-table>
         <div id="noWordsNotice" ng-if="ctrl.wordList.length === 0">
-            <span>You have no words added!</span>
+            <span>{{ctrl.strings.NO_WORDS}}</span>
         </div>
     </section>
     <section id="controls">

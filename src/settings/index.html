@@ -46,10 +46,12 @@
 
 		<options-tab id="pageOptions" class="page"
 			ng-class="{activePage: controller.tab == 'options', disabled: controller.selectedProfile === null}"
+			strings="controller.strings"
 		></options-tab>
 
 		<dictionary-tab id="pageDictionary" class="page"
 			ng-class="{activePage: controller.tab == 'dictionary', disabled: controller.selectedProfile === null}"
+			strings="controller.strings"
 		></dictionary-tab>
 	</div>
 

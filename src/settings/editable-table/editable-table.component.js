@@ -19,7 +19,7 @@ class EditableTableController
         vex.dialog.buttons.YES.text = "Yes";
         vex.dialog.buttons.NO.text = "No";
         vex.dialog.confirm({
-            message: `Delete "${row[this.primaryKey]}"?`,
+            message: this.strings.DELETE_WORD(this.primaryKey),
             callback: response =>
             {
                 if (response === true)
@@ -84,7 +84,8 @@ app.component(
             primaryKey: "<",
             clickRowCallback: "<",
             deleteRowCallback: "<",
-            paging: "<"
+            paging: "<",
+            strings: "<"
         },
         transclude: true
     }

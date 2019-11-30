@@ -140,6 +140,9 @@ app.component("dictionaryTab",
     {
         controller: DictionaryTabController,
         templateUrl: "dictionary-tab/dictionary-tab.html",
-        controllerAs: "ctrl"
+        controllerAs: "ctrl",
+        bindings: {
+            strings: "<"
+        }
     }
 );

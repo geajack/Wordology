@@ -43,6 +43,18 @@ const WordologyStrings = {
         FEEDBACK: {
             en: "Feedback",
             fr: "Contact"
+        },
+        SMART_MATCHING: {
+            en: "Smart Matching",
+            fr: "Détection d'inflection"
+        },
+        NO_WORDS: {
+            en: "You have no words added!",
+            fr: "Vous n'avez pas de mots!"
+        },
+        DELETE_WORD: {
+            en: word => `Delete "${word}"?`,
+            fr: word => `Supprimer "${word}"?`
         }
     },
 
