@@ -23,6 +23,8 @@ WordEditDialog =
 		return new Promise(
 			resolve =>
 			{
+				vex.dialog.buttons.YES.text = WordologyStrings.getStrings(globalOptions.language).OK;
+				vex.dialog.buttons.NO.text = WordologyStrings.getStrings(globalOptions.language).CANCEL;
 				vex.dialog.open({
 					input: WordEditDialog.generateDialogHTML(
 						{
