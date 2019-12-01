@@ -57,8 +57,8 @@ const WordologyStrings = {
         HELP: {
             en: "Help",
             fr: "Aide (Anglais)",
-            ru: "Помощь",
-            pl: "Pomoc"
+            ru: "Помощь (Angielski)",
+            pl: "Pomoc (Английский)"
         },
         FEEDBACK: {
             en: "Feedback",
@@ -70,17 +70,19 @@ const WordologyStrings = {
             en: "Donate",
             fr: "Soutenir",
             ru: "Дарить",
-            pl: "Ofiarować"
+            pl: "Wspomóż"
         },
         SMART_MATCHING: {
             en: "Smart Matching",
             fr: "Detéction de flexion",
-            pl: "Inteligentne dopasowanie"
+            pl: "Inteligentne dopasowanie",
+            ru: "Обнаружение словоизменение"
         },
         NO_WORDS: {
             en: "You have no words added!",
             fr: "Vous n'avez pas de mots!",
-            pl: "Nie masz słów dodanych!"
+            pl: "Nie masz słów dodanych!",
+            ru: "У вас нет добавленных слов!"
         },
         DELETE_WORD: {
             en: word => `Delete "${word}"?`,
@@ -91,80 +93,92 @@ const WordologyStrings = {
         PREFIX: {
             en: "Prefix",
             fr: "Préfixe",
-            pl: "Przedrostek"
+            pl: "Przedrostek",
+            ru: "Приставка"
         },
         SUFFIX: {
             en: "Suffix",
             fr: "Suffixe",
-            pl: "Przyrostek"
+            pl: "Przyrostek",
+            ru: "Суффикс"
         },
         MINIMUM_LENGTH_OF_ROOT: {
             en: "Minimum length of a root:",
             fr: "Longueur minimale d'une racine:",
-            pl: "Minimalna długość rdzeni:"
+            pl: "Minimalna długość rdzeni:",
+            ru: "Минимальная длина корня:"
         },
         BLACKLISTED_PREFIXES: {
             en: "Blacklisted prefixes:",
             fr: "Liste noire de préfixes:",
-            pl: "Czarna lista przedrostków:"
+            pl: "Czarna lista przedrostków:",
+            ru: "Черный список приставок:"
         },
         ADD_PREFIXES: {
             en: "Add prefixes to your blacklist below.",
             fr: "Ajoutez des préfixes à votre liste noire ci-dessous.",
-            pl: "Dodać poniżej przedrostki do czarnej listy."
+            pl: "Dodać poniżej przedrostki do czarnej listy.",
+            ru: "Внесите приставки в черный список ниже."
         },
         BLACKLIST_PROMPT: {
             en: "Blacklist prefix:",
             fr: "Ajouter préfixe:",
-            pl: "Dodać przedrostek:"
+            pl: "Dodać przedrostek:",
+            ru: "Внести приставку:"
         },
         MAXIMUM_LENGTH_OF_SUFFIX: {
             en: "Maximum length of a suffix:",
             fr: "Longueur maximale d'un suffixe:",
-            pl: "Maksymalna długość przyrostka:"
+            pl: "Maksymalna długość przyrostka:",
+            ru: "Максимальная длина суффикса:"
         },
         WHITELISTED_SUFFIXES: {
             en: "Whitelisted suffixes:",
             fr: "Liste blanche de suffixes:",
-            pl: "Biała lista przyrostków"
+            pl: "Biała lista przyrostków:",
+            ru: "Белый список суффиксов:"
         },
         ADD_SUFFIXES: {
             en: "Add suffixes to your whitelist below.",
             fr: "Ajoutez des suffixes à votre liste blanche ci-dessous.",
-            pl: "Dodać poniżej przyrostki do białej listy."
+            pl: "Dodać poniżej przyrostki do białej listy.",
+            ru: "Внесите суффиксы в белый список ниже."
         },
         WHITELIST_PROMPT: {
             en: "Whitelist suffix:",
             fr: "Ajouter suffixe:",
-            pl: "Dodać przyrostek:"
+            pl: "Dodać przyrostek:",
+            ru: "Внести суффикс:"
         },
         ADD_BUTTON: {
             en: "Add",
             fr: "Ajouter",
-            ru: "Добавить",
-            pl: "Dodać"
+            pl: "Dodać",
+            ru: "Добавить"
         },
         USE_SMART_MATCHING: {
             en: "Use Smart Matching",
             fr: "Utiliser la détéction d'infléction",
-            pl: "Używać inteligentne dopasowanie"
+            pl: "Używać inteligentne dopasowanie",
+            ru: "Использовать обнаружение словоизменения"
         },
         LOOKUP_HEADER: {
             en: "Lookup",
             fr: "Recherche",
-            ru: "Искание",
-            pl: "Wyszukiwanie"
+            pl: "Wyszukiwanie",
+            ru: "Искание"
         },
         LOOKUP_DESCRIPTION: {
             en: `Enter the URL of your preferred online dictionary, typing a dollar sign ($) where the word should be, e.g.: <em>http://en.wiktionary.org/wiki/$</em>.`,
             fr: `Entrez l'URL de votre dictionnaire en-ligne préferé, tapant un signe dollar ($) là où devrait figurer le mot, e.g.: <em>http://fr.wiktionary.org/wiki/$</em>.`,
-            pl: `Wpisz tutaj URL twojego preferowanego internetowego słowniku, pisący znak dolara ($) tam gdzie powinno być słowo, n.p.: <em>http://pl.wiktionary.org/wiki/$</em>.`
+            pl: `Wpisz tutaj URL twojego preferowanego internetowego słowniku, pisący znak dolara ($) tam gdzie powinno być słowo, n.p.: <em>http://pl.wiktionary.org/wiki/$</em>.`,
+            ru: `Введите URL предпочитаемого вами онлайн-словаря и введите знак доллара ($) там, где должно быть слово, например: <em>http://ru.wiktionary.org/wiki/$</em>.`
         },
         LOOKUP_URL: {
             en: "Lookup URL:",
             fr: "URL de recherche:",
-            ru: "URL исканий:",
-            pl: "URL wyszukiwania:"
+            pl: "URL wyszukiwania:",
+            ru: "URL исканий:"
         },
         COLORS: {
             en: "Colors",
@@ -175,33 +189,38 @@ const WordologyStrings = {
         UNDEFINED_WORDS: {
             en: "Undefined words:",
             fr: "Mots non-définis:",
-            pl: "Słowa niezdefiniowane:"
+            pl: "Słowa niezdefiniowane:",
+            ru: "Неопределенные слова:"
         },
         DEFINED_WORDS: {
             en: "Defined words:",
             fr: "Mots définis:",
-            pl: "Słowa zdefiniowane:"
+            pl: "Słowa zdefiniowane:",
+            ru: "Определенные слова:"
         },
         SMART_MATCHED_WORDS: {
             en: "Smart matched words:",
             fr: "Mots définis par la detéction de flexion:",
-            pl: "Słowa inteligentnie dopasowane"
+            pl: "Słowa inteligentnie dopasowane:",
+            ru: "Слова определенные обнаружением словоизменения:"
         },
         OPACITY: {
             en: "Opacity:",
             fr: "Opacité",
-            ru: "Неясность",
-            pl: "Mętność"
+            pl: "Mętność",
+            ru: "Неясность"
         },
         RESET_COLORS: {
             en: "Reset to default colors",
             fr: "Revenir aux couleurs par défaut",
-            pl: "Przywracać domyślnych kolorów"
+            pl: "Przywracać domyślnych kolorów",
+            ru: "Сбросить цвета по умолчанию"
         },
         EXTENDED_ALPHABET_HEADER: {
             en: "Extended Alphabet",
             fr: "Alphabet étendu",
-            pl: "Alfabet rozszerzony"
+            pl: "Alfabet rozszerzony",
+            ru: "Расширенный алфавит"
         },
         EXTENDED_ALPHABET_DESCRIPTION: {
             en: `Add extra characters to the alphabet recognized by Wordology. For example, if you add the hyphen ("-"), then Wordology will consider "flower-pot"
@@ -209,47 +228,58 @@ const WordologyStrings = {
             fr: `Ajoutez des caractères supplémentaires à l'alphabet reconnu par Wordology. Par exemple, en ajoutant le tiret ("-"), Wordology considérera "tire-bouchon"
             comme un seul mot plutôt que "tire" et "bouchon". Ecrivez simplement tous les caractères à la suite, sans éspaces, e.g. <em>'-</em> pour ajouter ' et -.`,
             pl: `Dodać więcej znaki do alfabetu rozpoznanego przez Wordology. Na przekład, jeżeli dodajesz myślnik ("-"), to Wordology uważa "czarno-biały"
-            za jednego słowa a nie za "czarno" a "biały". Wpisz prosto wszystkie znaki razem, bez spacje, n.p. <em>'-</em> aby dodać ' i -.`
+            za jednego słowa a nie za "czarno" a "biały". Wpisz prosto wszystkie znaki razem, bez spacje, n.p. <em>'-</em> aby dodać ' i -.`,
+            ru: `Добавьте дополнительные символы в алфавит, распознаваемый Wordology. Например, если вы добавите дефис ("-"),
+            тогда Wordology будет рассматривать "ярко-красный"»" как одно слово, а не "ярко" и "красный". Просто введите все
+            лишние символы вместе без пробелов, например, <em>'-</ em> добавить' и -.`
         },
         EXTENDED_ALPHABET_PROMPT: {
             en: "Extended alphabet:",
             fr: "Alphabet étendu:",
-            pl: "Alfabet rozszerzony:"
+            pl: "Alfabet rozszerzony:",
+            ru: "Расширенный алфавит"
         },
         LOGIN_FOR_OPTIONS: {
             en: "Log in to a profile to access options.",
             fr: "Connectez-vous à un profil pour accéder aux options.",
-            pl: "Zaloguj się na profil aby dostępić do ustawienia."
+            pl: "Zaloguj się na profil aby dostępić do ustawienia.",
+            ru: "Войдите в профиль, чтобы получить доступ к параметрам."
         },
         EXPORT: {
             en: "Export as file",
             fr: "Exporter comme fichier",
-            pl: "Wyeksportować jako pliku"
+            pl: "Wyeksportować jako pliku",
+            ru: "Экспортировать в файл"
         },
         IMPORT: {
             en: "Import from file",
             fr: "Importer un fichier",
-            pl: "Importować plik"
+            pl: "Importować plik",
+            ru: "Импортировать из файла"
         },
         CLEAR: {
             en: "Clear data",
             fr: "Effacer données",
-            pl: "Usunąć dane"
+            pl: "Usunąć dane",
+            ru: "Удалить данные"
         },
         IMPORT_ERROR: {
             en: "There was an error reading your file. Was that the right file?",
             fr: "Une erreur est survenue en lisant votre fichier. Etait-ce le bon fichier?",
-            pl: "Wystąpił problem podczas czytanie pliku. Czy to był poprawny plik?"
+            pl: "Wystąpił problem podczas czytanie pliku. Czy to był poprawny plik?",
+            ru: "Произошла ошибка при чтении вашего файла. Это был правильный файл?"
         },
         DELETE_WORDLIST_WARNING: {
             en: "To delete your entire wordlist for this profile permanently, type DELETE below in all-capital letters, and click OK.",
             fr: "Pour supprimer tous les mots de ce profil de façon permanante, tapez SUPPRIMER ci-dessous en lettre majuscules, et appuyez sur OK.",
-            pl: "Aby usunąć trwale wszystkie słowa z tego profilu, wpisz poniziej USUNAC w dużych literach, i kliknij OK."
+            pl: "Aby usunąć trwale wszystkie słowa z tego profilu, wpisz poniziej USUNAC w dużych literach, i kliknij OK.",
+            ru: "Чтобы окончательно удалить весь список слов для этого профиля, введите УДАЛИТЬ ниже заглавными буквами и нажмите ОК."
         },
         DELETE_PASSWORD: {
             en: "DELETE",
             fr: "SUPPRIMER",
-            pl: "USUNAC"
+            pl: "USUNAC",
+            ru: "УДАЛИТЬ"
         },
         OK: {
             en: "OK",
@@ -278,7 +308,8 @@ const WordologyStrings = {
         RENAME_PROFILE: {
             en: name => `Enter new profile name for "${name}":`,
             fr: name => `Entrez un nouveau nom pour le profil "${name}":`,
-            pl: name => `Wpisz nową nazwę dla profilu "${name}":`
+            pl: name => `Wpisz nową nazwę dla profilu "${name}":`,
+            ru: name => `Введите новое имя профиля для "${name}":`
         },
         DELETE_PROFILE_WARNING: {
             en: name =>
@@ -289,18 +320,22 @@ const WordologyStrings = {
                 Ecrivez SUPPRIMER (en majuscules) pour supprimer.`,
             pl: name =>
                 `Naprawdę usunąć profil "${name}"? Twoje słowa i ustawienia zostają usuniąte na zawsze.
-                Wpisz USUNAC (w dużach literach) aby usunąć.`
+                Wpisz USUNAC (w dużach literach) aby usunąć.`,
+            ru: name =>
+                `Определенно удалить профиль "$ {name}"? Ваш список слов и настройки исчезнут навсегда.
+                Введите УДАЛИТЬ заглавными буквами чтобы удалить.`
         },
         ADD_PROFILE: {
             en: "Enter name for new profile:",
             fr: "Entrez un nom pour le nouveau profil:",
-            pl: "Wpisz nazwę nowego profilu:"
+            pl: "Wpisz nazwę nowego profilu:",
+            ru: "Введите имя для нового профиля:"
         },
         ADD_PROFILE_TOOLTIP: {
             en: "Add profile",
             fr: "Ajouter profil",
-            ru: "Добавить профиль",
-            pl: "Dodać profil"
+            pl: "Dodać profil",
+            ru: "Добавить профиль"
         },
         RENAME_PROFILE_TOOLTIP: {
             en: "Rename profile",
