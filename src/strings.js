@@ -465,6 +465,8 @@ const WordologyStrings = {
         }
     },
 
+    SUPPORTED_LANGUAGES: ["en", "fr", "es", "pl", "pt", "ru"],
+
     getStrings: function(languageCode)
     {
         let result = {};

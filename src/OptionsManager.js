@@ -5,18 +5,15 @@ class OptionsManager
 		this.dataSetPending = false;
 	}
 
-	async initializeStorage()
+	async initializeStorage(language)
 	{
 		var localData = await browser.storage.local.get();
-		var modificationsNecessary = false;
-
-		let browserLanguageTag = browser.i18n.getUILanguage();
-		let [primaryLanguageTag, secondaryTag] = browserLanguageTag.split("-");
+		var modificationsNecessary = false
 
 		const defaultOptions = {
 			version  : "1.2",
 			profile  : 0,
-			language : primaryLanguageTag,
+			language : language,
 			profiles : [{id: 0, name: "Default Profile"}]
 		};
 
