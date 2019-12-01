@@ -413,7 +413,14 @@ const WordologyStrings = {
         let result = {};
         for (let stringName in WordologyStrings.strings)
         {
-            result[stringName] = WordologyStrings.strings[stringName][languageCode];
+            if (WordologyStrings.strings[stringName][languageCode])
+            {
+                result[stringName] = WordologyStrings.strings[stringName][languageCode];
+            }
+            else
+            {
+                result[stringName] = WordologyStrings.strings[stringName]["en"];
+            }
         }
         return result;
     }
