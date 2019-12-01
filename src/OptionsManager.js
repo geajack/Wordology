@@ -10,11 +10,21 @@ class OptionsManager
 		var localData = await browser.storage.local.get();
 		var modificationsNecessary = false;
 
-		for (let optionName in OptionsManager.DefaultOptions)
+		let browserLanguageTag = browser.i18n.getUILanguage();
+		let [primaryLanguageTag, secondaryTag] = browserLanguageTag.split("-");
+
+		const defaultOptions = {
+			version  : "1.2",
+			profile  : 0,
+			language : primaryLanguageTag,
+			profiles : [{id: 0, name: "Default Profile"}]
+		};
+
+		for (let optionName in defaultOptions)
 		{
 			if (localData[optionName] === undefined)
 			{
-				localData[optionName] = OptionsManager.DefaultOptions[optionName];
+				localData[optionName] = defaultOptions[optionName];
 				modificationsNecessary = true;
 			}
 		}
@@ -266,14 +276,6 @@ class OptionsManager
 OptionsManager.PublicGlobalOptions = [
 	"language"
 ]
-
-OptionsManager.DefaultOptions =
-{
-	version  : "1.2",
-	profile  : 0,
-	language : "en",
-	profiles : [{id: 0, name: "Default Profile"}]
-};
 
 OptionsManager.DefaultProfileOptions =
 {
