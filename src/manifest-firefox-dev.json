@@ -23,6 +23,7 @@
 	"background": {
 		"scripts": [
 			"browser-polyfill.min.js",
+			"strings.js",
 			"OptionsManager.js",
 			"messages.js",
 			"Dictionary.js",
