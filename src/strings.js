@@ -99,8 +99,8 @@ const WordologyStrings = {
         HELP: {
             en: "Help",
             fr: "Aide (Anglais)",
-            ru: "Помощь (Angielski)",
-            pl: "Pomoc (Английский)",
+            ru: "Помощь (Английский)",
+            pl: "Pomoc (Angielski)",
             es: "Ayuda (Inglés)",
             pt: "Socorro (Inglês)"
         },
