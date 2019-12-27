@@ -114,7 +114,10 @@
 	async function showLoggedOutPopup()
 	{
 		let options = await (new OptionsManager()).getGlobalOptions();
-		message = WordologyStrings.getStrings(options.language).LOGGED_OUT;
+		const strings = WordologyStrings.getStrings(options.language);
+		message = strings.LOGGED_OUT;
+		vex.dialog.buttons.YES.text = strings.OK;
+        vex.dialog.buttons.NO.text = strings.CANCEL;
 		vex.dialog.open({
 			input: message
 		});
@@ -123,7 +126,10 @@
 	async function showChangedProfilePopup()
 	{
 		let options = await (new OptionsManager()).getGlobalOptions();
-		message = WordologyStrings.getStrings(options.language).CHANGED_PROFILE;
+		const strings = WordologyStrings.getStrings(options.language);
+		message = strings.CHANGED_PROFILE;
+		vex.dialog.buttons.YES.text = strings.OK;
+        vex.dialog.buttons.NO.text = strings.CANCEL;
 		vex.dialog.open({
 			input: message
 		});
