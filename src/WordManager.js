@@ -65,25 +65,7 @@ class WordManager
 				{word: word, definition: definition},
 				options
 			);
-
-			var matchedWordElements = this.wordElements.filter(
-				we => we.hasMatch() && !we.hasExactMatch()
-			);
-
-			var taggedMatches = matchedWordElements.map(
-				we =>
-				{
-					let match = we.getMatch();
-					match.word = we.getWord();
-					return match;
-				}
-			);
-			var matches2 = WordMatching.UpdateMatchedWords(taggedMatches,
-				{word: word, definition: definition},
-				options
-			);
 			this.setData(matches1);
-			this.setData(matches2);
 		}
 
 		var match = {entry:{word:word,definition:definition}, exact:true};
