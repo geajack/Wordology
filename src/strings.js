@@ -1,5 +1,7 @@
 const WordologyStrings = {
     strings: {
+        ALREADY_KNOW: "Knew this word before? Just click OK.",
+
         TRANSLATION: {
             en: "Translation",
             fr: "Traduction",

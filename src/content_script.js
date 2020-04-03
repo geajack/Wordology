@@ -104,6 +104,8 @@
 
 			if (userResponse.definition)
 			{
+				if (userResponse.definition == WordologyStrings.strings.ALREADY_KNOW)
+					userResponse.definition = ""
 				WM.updateDefinition(wordElement.getWord(), userResponse.definition, options);
 				var entry = {word: wordElement.getWord(), definition: userResponse.definition};
 				DF.setData([entry]);

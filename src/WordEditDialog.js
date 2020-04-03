@@ -78,7 +78,7 @@ WordEditDialog =
 		}
 		else
 		{
-			suggestion = "";
+			suggestion = WordologyStrings.strings.ALREADY_KNOW;
 			suggestionNote = "";
 		}
 
