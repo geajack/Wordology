@@ -26,6 +26,18 @@ class Dictionary
 						resolve(db);
 					}
 				};
+
+				request.onerror = function(event)
+				{
+					try
+					{
+						reject();
+					}
+					finally
+					{
+						throw new Error("Database could not be opened.");
+					}
+				};
 			}
 		);
 	}
