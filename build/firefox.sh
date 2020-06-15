@@ -1,9 +1,11 @@
-rm -r ../Builds/3/Firefox
-cp -r src ../Builds/3/Firefox
-mv ../Builds/3/Firefox/manifest-firefox.json ../Builds/3/Firefox/manifest.json
-rm ../Builds/3/Firefox/manifest-*
+source build/version.sh
 
-cd ../Builds/3/Firefox
-zip -r ../wordology-firefox-V3.xpi .
+rm -r ../Builds/$version/Firefox
+cp -r src ../Builds/$version/Firefox
+mv ../Builds/$version/Firefox/manifest-firefox.json ../Builds/$version/Firefox/manifest.json
+rm ../Builds/$version/Firefox/manifest-*
+
+cd ../Builds/$version/Firefox
+zip -r ../wordology-firefox-V$version.xpi .
 rm -r *
-mv ../wordology-firefox-V3.xpi .
+mv ../wordology-firefox-V$version.xpi .
