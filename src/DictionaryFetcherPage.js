@@ -13,7 +13,14 @@ class DictionaryFetcherPage
 
 	onResponseDataMessage(message, sender)
 	{
-		this.dataRequestCallback(message.entries);
+		if (message.successful)
+		{
+			this.dataRequestCallback(message.entries);
+		}
+		else
+		{
+			this.dataRequestCallback(null);
+		}
 	}
 
 	getMatches(requestObject)

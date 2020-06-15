@@ -56,6 +56,16 @@
 				options : options
 			};
 		var dictOfMatches = await DF.getMatches(dictionaryFetcherRequest);
+		if (dictOfMatches === null)
+		{
+			WM.hide();
+			vex.dialog.alert(
+				{
+					unsafeMessage: "<p>Wordology could not access its internal database.</p><p>This can happen if your browser is set not to remember browsing history, in which case Wordology cannot function as this also disables its ability to store words.</p>"
+				}
+			);
+			return;
+		}
 
 		if (!loggedIn)
 		{

@@ -16,22 +16,30 @@ class DictionaryFetcherBackground
 
 	async onRequestDataMessage(message, sender)
 	{
-		var dictionaryEntries;
-
-		if (message && message.words)
-		{
-			var dictionaryRequest = {};
-			dictionaryRequest.words = message.words;
-			dictionaryEntries = await this.dictionary.getMatches(message);
-		}
-		else
-		{
-			dictionaryEntries = await this.dictionary.getEverything();
-		}
-
 		var messageSender = new MessageSender(this.name + "ResponseData");
-		var response = { entries: dictionaryEntries };
-		messageSender.sendToTab(sender.tab.id, response);
+
+		try
+		{
+			var dictionaryEntries;
+
+			if (message && message.words)
+			{
+				var dictionaryRequest = {};
+				dictionaryRequest.words = message.words;
+				dictionaryEntries = await this.dictionary.getMatches(message);
+			}
+			else
+			{
+				dictionaryEntries = await this.dictionary.getEverything();
+			}
+
+			var response = { entries: dictionaryEntries, successful: true };
+			messageSender.sendToTab(sender.tab.id, response);
+		}
+		catch
+		{
+			messageSender.sendToTab(sender.tab.id, { successful: false });
+		}
 	}
 
 	onSetDataMessage(message, sender)
