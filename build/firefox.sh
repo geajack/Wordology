@@ -1,5 +1,6 @@
 source build/version.sh
 
+mkdir -p ../Builds/$version/Firefox
 rm -r ../Builds/$version/Firefox
 cp -r src ../Builds/$version/Firefox
 mv ../Builds/$version/Firefox/manifest-firefox.json ../Builds/$version/Firefox/manifest.json
