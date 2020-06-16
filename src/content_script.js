@@ -59,9 +59,10 @@
 		if (dictOfMatches === null)
 		{
 			WM.hide();
+			let language = (await (new OptionsManager().getGlobalOptions())).language;
 			vex.dialog.alert(
 				{
-					unsafeMessage: "<p>Wordology could not access its internal database.</p><p>This can happen if your browser is set not to remember browsing history, in which case Wordology cannot function as this also disables its ability to store words.</p>"
+					unsafeMessage: WordologyStrings.getStrings(language).DATABASE_ERROR
 				}
 			);
 			return;

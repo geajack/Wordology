@@ -462,6 +462,42 @@ const WordologyStrings = {
             pl: "Usunąć profil",
             es: "Eliminar perfil",
             pt: "Apagar perfil"
+        },
+        DATABASE_ERROR: {
+            en: `
+                <p>Wordology could not access its internal database.</p>
+                <p>This can happen if your browser is set not to remember browsing history, in which case Wordology
+                cannot function as this also disables its ability to store words.</p>
+            `,
+            fr: `
+                <p>Wordology n'a pas pu ouvrir sa base de données interne.</p>
+                <p>Ceci peut arriver si votre navigateur est configuré pour ne pas se souvenir de son historique,
+                dans lequel cas Wordology ne peut pas fonctionner puisque il ne peut pas enregistrer de mots.</p>
+            `,
+            ru: `
+                <p>Wordology не мо́г получить доступ к своей внутренней базе данных.</p>
+                <p>Это может произойти, если ваш браузер настроен на не запоминать историю, а в этом случае
+                Wordology не может функционировать, поскольку не может хранить слова.</p>
+            `,
+            pl: `
+                <p>Wordology nie mógł otworzyć wewnętrzną bazę danych.</p>
+                <p>To się może zdarzyć jeśli przeglądarka jest tak skonfigurowana
+                aby nie pamiętać historię przglądarki. W takim razie, Wordology
+                nie może funkcjonować dlatego nie może zapisać słów.</p>
+            `,
+            es: `
+                <p>Wordology no pudo abrir su base de datos interna.</p>
+                <p>Esto puede ocurrir si su navegador està configurada para que
+                ne recordar historial, en cuyo caso Wordology no puede
+                funcionar porque no puede guardar palabras.</p>
+            `,
+            pt: `
+                <p>Wordology não pôde acessar seu banco de dados interno.</p>
+                <p>Isso pode acontecer se o seu navegador estiver configurado para
+                não lembrar o histórico de navegação. Nesse caso, Wordology não
+                poderá funcionar, pois isso também desabilita a capacidade de
+                armazenar palavras.</p>
+            `
         }
     },
 
