@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 
-	"name": "Wordology Dev",
+	"name": "Wordology (Development)",
 	"description": "Adds a calque to foreign-language web-pages to aid language learning.",
 	"version": "3",
 
