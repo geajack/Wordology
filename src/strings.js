@@ -424,7 +424,7 @@ const WordologyStrings = {
                 Wpisz USUNAC (dużymi literami) aby usunąć.`,
             ru: name =>
                 `Уверены, что хотите удалить профиль "${name}"? Ваш список слов и настройки исчезнут навсегда.
-                Введите слово \"УДАЛИТЬ\" заглавными буквами без кавычек, чтобы удалить.`,
+                Введите слово "УДАЛИТЬ" заглавными буквами без кавычек, чтобы удалить.`,
             es: name =>
                 `¿Definitivamente eliminar el perfil "${name}"? Su lista de palabras y configuraciones desaparecerán para siempre. Escriba ELIMINAR (en mayúsculas) para eliminar.`,
             pt: name =>
