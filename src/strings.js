@@ -12,7 +12,7 @@ const WordologyStrings = {
             en: "Look up",
             fr: "Rechercher",
             pl: "Wyszukiwać",
-            ru: "Искать",
+            ru: "Поиск",
             es: "Buscar",
             pt: "Procurar"
         },
@@ -20,7 +20,7 @@ const WordologyStrings = {
             en: "Lookup",
             fr: "Recherche",
             pl: "Wyszukiwanie",
-            ru: "Искание",
+            ru: "Поиск",
             es: "Búsqueda",
             pt: "Pesquisa"
         },
@@ -28,7 +28,7 @@ const WordologyStrings = {
             en: `Enter the URL of your preferred online dictionary, typing a dollar sign ($) where the word should be, e.g.: <em>https://en.wiktionary.org/wiki/$</em>.`,
             fr: `Entrez l'URL de votre dictionnaire en-ligne préferé, tapant un signe dollar ($) là où devrait figurer le mot, e.g.: <em>https://fr.wiktionary.org/wiki/$</em>.`,
             pl: `Wpisz tutaj URL twojego preferowanego internetowego słownika, dodając znak dolara ($) tam gdzie powinno być słowo, n.p.: <em>https://pl.wiktionary.org/wiki/$</em>.`,
-            ru: `Введите URL предпочитаемого вами онлайн-словаря и введите знак доллара ($) там, где должно быть слово, например: <em>https://ru.wiktionary.org/wiki/$</em>.`,
+            ru: `Введите URL предпочитаемого онлайн-словаря и введите знак доллара ($) там, где должно быть слово, например: <em>https://ru.wiktionary.org/wiki/$</em>.`,
             es: `Ingrese la URL de su diccionario en línea preferido, escribiendo un signo de dólar ($) donde debería estar la palabra, por ejemplo: <em>https://es.wiktionary.org/wiki/$</em>.`,
             pt: `Digite o URL do seu dicionário online preferido, digitando um símbolo de dólar ($) onde a palavra deve estar, por exemplo: <em>https://pt.wiktionary.org/wiki/$</em>.`
         },
@@ -36,7 +36,7 @@ const WordologyStrings = {
             en: "Lookup URL:",
             fr: "URL de recherche:",
             pl: "URL wyszukiwania:",
-            ru: "URL исканий:",
+            ru: "URL поиска:",
             es: "URL de búsqueda:",
             pt: "URL de pesquisa:"
         },
@@ -52,7 +52,7 @@ const WordologyStrings = {
             en: `You don't seem to be logged into a Wordology profile right now. Go to your settings page to log in, and then <a href="javascript:window.location.reload();">reload</a> this page.`,
             fr: `Vous ne semblez pas être connecté à un profil Wordology. Allez à la page de paramètres pour vous connecter, puis <a href="javascript:window.location.reload();">rechargez</a> cette page.`,
             pl: `Wydaje się, że nie jesteś obecnie zalogowany na profil Wordology. Przejdź do strony ustawienia aby się zalogować, a potem <a href="javascript:window.location.reload();">załaduj</a> tę stronę.`,
-            ru: `Похоже, вы не вошли сейчас в профиль Wordology. Перейдите на страницу настроек, чтобы войти в систему, а затем <a href="javascript:window.location.reload();">перезагрузите</a> эту страницу.`,
+            ru: `Похоже, вы не вошли в профиль Wordology. Перейдите на страницу настроек, чтобы войти в систему, а затем <a href="javascript:window.location.reload();">перезагрузите</a> страницу.`,
             es: `No parece haber iniciado sesión en un perfil de Wordology en este momento. Vaya a su página de configuración para iniciar sesión y luego <a href="javascript:window.location.reload();">recargar</a> esta página.`,
             pt: `Você não parece estar conectado a um perfil do Wordology no momento. Vá para a página de configurações para efetuar login e, em seguida, <a href="javascript:window.location.reload();">recarregue</a> esta página.`
         },
@@ -60,7 +60,7 @@ const WordologyStrings = {
             en: `You seem to have changed Wordology profiles since the last time this page was loaded. <a href="javascript:window.location.reload();">Reload</a> this page to keep using Wordology.`,
             fr: `Vous semblez avoir changé de profil Wordology depuis que cette page ait été chargée. <a href="javascript:window.location.reload();">Rechargez</a> cette page pour continuer à utiliser Wordology.`,
             pl: `Wydaje się, że zmieniłeś profil Wordology od kiedy była ładowana ta strona. <a href="javascript:window.location.reload();">Załaduj</a> tę stronę aby nadal używać Wordology.`,
-            ru: `Похоже, вы изменили профили Wordology с момента последней загрузки этой страницы. <a href="javascript:window.location.reload();">Перезагрузите</a> эту страницу, чтобы продолжать использовать Wordology.`,
+            ru: `Похоже, вы изменили профили Wordology с момента последней загрузки этой страницы. <a href="javascript:window.location.reload();">Перезагрузите</a> страницу, чтобы продолжать использовать Wordology.`,
             es: `Parece que ha cambiado de perfil de Wordology desde la última vez que se cargó esta página. <a href="javascript:window.location.reload();">Recarga</a> esta página para seguir usando Wordology.`,
             pt: `Você parece ter alterado os perfis do Wordology desde a última vez que esta página foi carregada. <a href="javascript:window.location.reload();">Recarregue</a> esta página para continuar usando o Wordology.`
         },
@@ -91,7 +91,7 @@ const WordologyStrings = {
         NO_PROFILE: {
             en: "None",
             fr: "Aucun",
-            ru: "Никако́й",
+            ru: "Отсутствует",
             pl: "Żaden",
             es: "Ninguno",
             pt: "Nenhum"
@@ -99,7 +99,7 @@ const WordologyStrings = {
         HELP: {
             en: "Help",
             fr: "Aide (Anglais)",
-            ru: "Помощь (Английский)",
+            ru: "Справка (на английском)",
             pl: "Pomoc (Angielski)",
             es: "Ayuda (Inglés)",
             pt: "Socorro (Inglês)"
@@ -107,7 +107,7 @@ const WordologyStrings = {
         FEEDBACK: {
             en: "Feedback",
             fr: "Contact",
-            ru: "Отзывы",
+            ru: "Обратная связь",
             pl: "Opinie",
             es: "Comentarios",
             pt: "Comentários"
@@ -115,7 +115,7 @@ const WordologyStrings = {
         DONATE: {
             en: "Donate",
             fr: "Soutenir",
-            ru: "Дарить",
+            ru: "Поблагодарить",
             pl: "Daj",
             es: "Donar",
             pt: "Doar"
@@ -124,7 +124,7 @@ const WordologyStrings = {
             en: "Smart Matching",
             fr: "Detéction de flexion",
             pl: "Inteligentne dopasowanie",
-            ru: "Обнаружение словоизменение",
+            ru: "Умное обнаружение",
             es: "Detección de flexión",
             pt: "Detecção de flexão"
         },
@@ -132,7 +132,7 @@ const WordologyStrings = {
             en: "Use Smart Matching",
             fr: "Utiliser la détéction d'infléction",
             pl: "Używać inteligentne dopasowanie",
-            ru: "Использовать обнаружение словоизменения",
+            ru: "Использовать умное обнаружение",
             es: "Usar detección de flexión",
             pt: "Usar detecção de flexão"
         },
@@ -140,7 +140,7 @@ const WordologyStrings = {
             en: "Smart matched words:",
             fr: "Mots définis par la detéction de flexion:",
             pl: "Słowa inteligentnie dopasowane:",
-            ru: "Слова определенные обнаружением словоизменения:",
+            ru: "Слова, определенные умным обнаружением:",
             es: "Palabras definidas por la detección de flexión:",
             pt: "Palavras definidas pela detecção de flexão"
         },
@@ -276,7 +276,7 @@ const WordologyStrings = {
             en: "Opacity:",
             fr: "Opacité:",
             pl: "Nieprzezroczystość:",
-            ru: "Неясность:",
+            ru: "Прозрачность:",
             es: "Opacidad:",
             pt: "Opacidade:"
         },
@@ -303,8 +303,8 @@ const WordologyStrings = {
             pl: `Dodaj więcej znaków do alfabetu rozpoznanego przez Wordology. Na przykład, jeżeli dodajesz myślnik ("-"), to Wordology uważa "czarno-biały"
             za jedno słowo a nie za "czarno" a "biały". Wpisz wszystkie znaki razem, bez spacji, n.p. <em>'-</em> aby dodać ' i -.`,
             ru: `Добавьте дополнительные символы в алфавит, распознаваемый Wordology. Например, если вы добавите дефис ("-"),
-            тогда Wordology будет рассматривать "ярко-красный"»" как одно слово, а не "ярко" и "красный". Просто введите все
-            лишние символы вместе без пробелов, например, <em>'-</ em> добавить' и -.`,
+            тогда Wordology будет рассматривать "ярко-красный" как одно слово, а не "ярко" и "красный". Просто введите все
+            дополнительные символы вместе без пробелов, например, <em>'-</ em> добавить' и -.`,
             es: `Agregue caracteres adicionales al alfabeto reconocido por Wordology. Por ejemplo, si agrega el guión ("-"), Wordology considerará "norte-sur" como una palabra en lugar de "norte" y "sur". Simplemente escriba todos los caracteres adicionales juntos, sin espacios, p.ej. <em>'-</em> para agregar ' y -.`,
             pt: `Adicione caracteres extras ao alfabeto reconhecido por Wordology. Por exemplo, se você adicionar o hífen ("-"), Wordology considerará "norte-americano" como uma palavra em vez de "norte" e "americano". Basta digitar todos os caracteres extras juntos, sem espaços, por exemplo <em>'-</em> para adicionar ' e -.`
         },
@@ -360,7 +360,7 @@ const WordologyStrings = {
             en: "To delete your entire wordlist for this profile permanently, type DELETE below in all-capital letters, and click OK.",
             fr: "Pour supprimer tous les mots de ce profil de façon permanante, tapez SUPPRIMER ci-dessous en lettre majuscules, et appuyez sur OK.",
             pl: "Aby usunąć trwale wszystkie słowa z tego profilu, wpisz poniżej USUNAC dużymi literami i kliknij OK.",
-            ru: "Чтобы окончательно удалить весь список слов для этого профиля, введите УДАЛИТЬ ниже заглавными буквами и нажмите ОК.",
+            ru: "Чтобы окончательно удалить весь список слов для этого профиля, введите слово \"УДАЛИТЬ\" заглавными буквами без кавычек ниже и нажмите ОК.",
             es: "Para eliminar toda su lista de palabras para este perfil de forma permanente, escriba ELIMINAR en mayúsculas y clique en Aceptar.",
             pt: "Para apagar permanentemente sua lista de palavras inteira desse perfil, digite APAGAR abaixo em letras maiúsculas e clique em OK."
         },
@@ -423,8 +423,8 @@ const WordologyStrings = {
                 `Naprawdę usunąć profil "${name}"? Twoje słowa i ustawienia zostają usunięte na zawsze.
                 Wpisz USUNAC (dużymi literami) aby usunąć.`,
             ru: name =>
-                `Определенно удалить профиль "${name}"? Ваш список слов и настройки исчезнут навсегда.
-                Введите УДАЛИТЬ заглавными буквами чтобы удалить.`,
+                `Уверены, что хотите удалить профиль "${name}"? Ваш список слов и настройки исчезнут навсегда.
+                Введите слово \"УДАЛИТЬ\" заглавными буквами без кавычек, чтобы удалить.`,
             es: name =>
                 `¿Definitivamente eliminar el perfil "${name}"? Su lista de palabras y configuraciones desaparecerán para siempre. Escriba ELIMINAR (en mayúsculas) para eliminar.`,
             pt: name =>
